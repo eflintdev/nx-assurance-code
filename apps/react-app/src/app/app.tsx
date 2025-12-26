@@ -3,7 +3,7 @@
 import NxWelcome from './nx-welcome';
 
 import { Route, Routes, Link } from 'react-router-dom';
-
+import { MyComponent  } from '../my-component/dist/components';
 export function App() {
   return (
     <div>
@@ -45,6 +45,7 @@ export function App() {
         />
       </Routes>
       {/* END: routes */}
+      <MyComponent first="Emmanuel" last="Smiley" />
     </div>
   );
 }

@@ -1,9 +1,10 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nx-welcome',
   imports: [CommonModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <!--
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -865,6 +866,8 @@ nx g &#64;nx/angular:component ui/src/lib/button</pre>
         </p>
       </div>
     </div>
+    <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
+
   `,
   styles: [],
   encapsulation: ViewEncapsulation.None,

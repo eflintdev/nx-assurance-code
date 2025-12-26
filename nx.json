@@ -52,14 +52,17 @@
     {
       "plugin": "@nx/playwright/plugin",
       "options": {
-        "targetName": "e2e"
-      }
+        "targetName": "e2e",
+        "ciTargetName": "e2e-ci"
+      },
+      "exclude": ["apps/angular-app-e2e/**/*", "apps/react-app-e2e/**/*"]
     },
     {
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
-      }
+      },
+      "exclude": ["apps/angular-app/**/*", "apps/react-app/**/*"]
     }
   ],
   "targetDefaults": {

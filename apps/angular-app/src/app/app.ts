@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxWelcome } from './nx-welcome';
 
@@ -7,6 +7,7 @@ import { NxWelcome } from './nx-welcome';
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class App {
   protected title = 'angular-app';
