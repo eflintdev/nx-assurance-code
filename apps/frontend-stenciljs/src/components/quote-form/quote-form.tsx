@@ -6,7 +6,7 @@ import { Component, h, State, Event, EventEmitter, Listen } from '@stencil/core'
  */
 @Component({
   tag: 'quote-form',
-  styleUrl: 'quote-form.css',
+  styleUrl: 'quote-form.scss',
   shadow: true,
 })
 export class QuoteForm {

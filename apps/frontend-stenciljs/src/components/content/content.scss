@@ -1,0 +1,50 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  flex: 1;
+}
+
+.main {
+  width: 100%;
+  max-width: $max-width-container;
+  margin: 0 auto;
+  padding: 0 1.875rem 2rem;
+  font-family: $font-family-primary;
+
+  @include tablet {
+    padding: 0 1.25rem 1.5rem;
+  }
+}
+
+.breadcrumbs {
+  font-size: 1rem;
+  color: #003366;
+  margin: 1.5rem 0 $spacing-md;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #9a9a9a;
+
+  a {
+    color: $color-primary-blue;
+    text-decoration: none;
+    font-weight: $font-weight-regular;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.breadcrumbs-separator {
+  color: #7a7a7a;
+  padding: 0 $spacing-sm;
+}
+
+.quote-section {
+  margin-top: 1.25rem;
+}

@@ -1,0 +1,37 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+:host {
+  display: inline-block;
+}
+
+.custom-link {
+  color: #0351aa;
+  text-decoration: underline;
+  font-size: 0.875rem;
+  font-weight: $font-weight-regular;
+  transition: text-decoration $transition-base;
+  white-space: nowrap;
+  font-family: $font-family-primary;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  @include mobile {
+    font-size: 0.875rem;
+    min-width: 80px;
+    text-align: center;
+  }
+}
+
+.custom-link--footer-bottom {
+  color: $color-white;
+  text-decoration: none;
+  font-size: 0.8rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

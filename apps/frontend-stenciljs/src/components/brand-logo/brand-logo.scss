@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+:host {
+  display: inline-block;
+}
+
+svg {
+  width: 196px;
+  height: 58px;
+  display: block;
+
+  @include small {
+    &.logo--nav {
+      width: 9.0625rem;
+      height: 2.5rem;
+    }
+  }
+}

@@ -1,56 +1,55 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 :host {
   display: block;
 }
 
 .app-header {
-  background-color: #0078d6;
+  background-color: $color-primary-blue;
   padding: 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-family: $font-family-primary;
 }
 
 .header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 4.375rem;
-  padding: 0 1rem;
-  max-width: 1130px;
+  @include flex-between;
+  min-height: $header-min-height;
+  padding: 0 $spacing-md;
+  max-width: $max-width-container;
   margin: 0 auto;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: $spacing-md;
 }
 
 .menu-toggle {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: $spacing-sm;
+  @include flex-center;
 }
 
 .menu-toggle-icon svg {
   width: 20px;
   height: 20px;
   display: block;
-  color: #ffffff;
+  color: $color-white;
 }
 
 .menu-toggle:hover .menu-toggle-icon svg {
-  color: #e0e0e0;
+  color: $color-hover-gray;
 }
 
 .brand-logo {
@@ -62,7 +61,7 @@
 .header-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: $spacing-md;
 }
 
 .search-btn {
@@ -70,38 +69,46 @@
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
+  padding: $spacing-sm;
+  @include flex-center;
+  color: $color-white;
 }
 
 .search-icon {
   display: block;
-  color: #ffffff;
-}
+  color: $color-white;
 
-.search-icon svg {
-  width: 21px;
-  height: 21px;
-  display: block;
-  transform: scale(1.4);
-  transform-origin: center;
+  svg {
+    width: 21px;
+    height: 21px;
+    display: block;
+    transform: scale(1.4);
+    transform-origin: center;
+  }
 }
 
 .login-link {
-  color: #000000;
+  color: $color-black;
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
-  background-color: #ff7826;
-  padding: 0 1rem;
-  border-radius: 2.5rem;
+  background-color: $color-orange;
+  padding: 0 $spacing-md;
+  border-radius: $border-radius-pill;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: $spacing-sm;
   height: 2.25rem;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.26);
+  @include shadow-sm;
+
+  &:hover {
+    background-color: $color-orange-dark;
+    color: $color-white;
+
+    .login-icon {
+      color: $color-white;
+    }
+  }
 }
 
 .login-icon {
@@ -110,35 +117,26 @@
   flex-shrink: 0;
 }
 
-.login-link:hover {
-  background-color: #bc4605;
-  color: #ffffff;
-}
-
-.login-link:hover .login-icon {
-  color: #ffffff;
-}
-
 .phone-link {
-  color: #ffffff;
+  color: $color-white;
   text-decoration: underline;
-  font-weight: 600;
+  font-weight: $font-weight-semibold;
   font-size: 1rem;
   white-space: nowrap;
-  padding: 0.5rem 0.5rem;
+  padding: $spacing-sm $spacing-sm;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
-.phone-link:hover {
-  text-decoration: none;
-}
-
-@media (max-width: 767px) {
+@include mobile {
   .header-container {
     padding: 0 0.75rem;
   }
 
   .header-right {
-    gap: 1rem;
+    gap: $spacing-md;
   }
 
   .phone-link {

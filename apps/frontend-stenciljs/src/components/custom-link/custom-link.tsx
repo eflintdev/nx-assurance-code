@@ -1,9 +1,8 @@
 import { Component, Prop, h } from '@stencil/core';
-import './custom-link.css';
 
 @Component({
   tag: 'custom-link',
-  styleUrl: 'custom-link.css',
+  styleUrl: 'custom-link.scss',
   shadow: true,
 })
 export class CustomLink {

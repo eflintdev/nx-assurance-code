@@ -64,7 +64,7 @@ export namespace Components {
      * - label: Visible label text
      * - field: 'input' | 'select' | 'textarea' (default 'input')
      * - type: Input type for <input> (text, email, tel, number, etc.)
-     * - id, name, className, inputClass, labelClass
+     * - fieldId, name, className, inputClass, labelClass
      * - value, placeholder, required, disabled, readonly, autocomplete
      * - pattern, min, max, step, minlength, maxlength
      * - options: For selects, array of { label, value, disabled? }
@@ -84,8 +84,8 @@ export namespace Components {
           * @default 'input'
          */
         "field": 'input' | 'select' | 'textarea';
+        "fieldId"?: string;
         "helpText"?: string;
-        "id"?: string;
         "inputClass"?: string;
         "label": string;
         "labelClass"?: string;
@@ -178,7 +178,7 @@ declare global {
      * - label: Visible label text
      * - field: 'input' | 'select' | 'textarea' (default 'input')
      * - type: Input type for <input> (text, email, tel, number, etc.)
-     * - id, name, className, inputClass, labelClass
+     * - fieldId, name, className, inputClass, labelClass
      * - value, placeholder, required, disabled, readonly, autocomplete
      * - pattern, min, max, step, minlength, maxlength
      * - options: For selects, array of { label, value, disabled? }
@@ -318,7 +318,7 @@ declare namespace LocalJSX {
      * - label: Visible label text
      * - field: 'input' | 'select' | 'textarea' (default 'input')
      * - type: Input type for <input> (text, email, tel, number, etc.)
-     * - id, name, className, inputClass, labelClass
+     * - fieldId, name, className, inputClass, labelClass
      * - value, placeholder, required, disabled, readonly, autocomplete
      * - pattern, min, max, step, minlength, maxlength
      * - options: For selects, array of { label, value, disabled? }
@@ -338,8 +338,8 @@ declare namespace LocalJSX {
           * @default 'input'
          */
         "field"?: 'input' | 'select' | 'textarea';
+        "fieldId"?: string;
         "helpText"?: string;
-        "id"?: string;
         "inputClass"?: string;
         "label": string;
         "labelClass"?: string;
@@ -425,7 +425,7 @@ declare module "@stencil/core" {
              * - label: Visible label text
              * - field: 'input' | 'select' | 'textarea' (default 'input')
              * - type: Input type for <input> (text, email, tel, number, etc.)
-             * - id, name, className, inputClass, labelClass
+             * - fieldId, name, className, inputClass, labelClass
              * - value, placeholder, required, disabled, readonly, autocomplete
              * - pattern, min, max, step, minlength, maxlength
              * - options: For selects, array of { label, value, disabled? }

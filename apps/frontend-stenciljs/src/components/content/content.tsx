@@ -7,7 +7,7 @@ import { Component, h, State } from '@stencil/core';
  */
 @Component({
   tag: 'site-content',
-  styleUrl: 'content.css',
+  styleUrl: 'content.scss',
   shadow: true,
 })
 export class SiteContent {

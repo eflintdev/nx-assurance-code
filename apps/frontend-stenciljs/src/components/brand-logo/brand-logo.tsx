@@ -1,9 +1,8 @@
-import { Component, Fragment, h, Prop } from '@stencil/core';
-import './brand-logo.css';
+import { Component, h, Fragment, Prop } from '@stencil/core';
 
 @Component({
     tag: 'brand-logo',
-    styleUrl: 'brand-logo.css',
+    styleUrl: 'brand-logo.scss',
     shadow: true,
 })
 export class BrandLogo {

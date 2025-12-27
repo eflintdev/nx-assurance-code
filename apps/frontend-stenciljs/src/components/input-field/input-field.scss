@@ -1,0 +1,41 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  display: block;
+}
+
+.if-root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.if-label {
+  font-size: 1.125rem;
+  font-weight: $font-weight-semibold;
+  color: $color-black;
+}
+
+.if-req {
+  color: $color-required;
+  margin-left: $spacing-xs;
+}
+
+.if-control {
+  @include input-base;
+  min-height: 2.78125rem;
+}
+
+.if-desc {
+  font-size: 0.85rem;
+  color: $color-gray-text;
+
+  &.is-error {
+    color: $color-error;
+  }
+}

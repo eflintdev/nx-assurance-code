@@ -7,7 +7,7 @@ import { Component, h, Prop, Event, EventEmitter, State, Element } from '@stenci
  * - label: Visible label text
  * - field: 'input' | 'select' | 'textarea' (default 'input')
  * - type: Input type for <input> (text, email, tel, number, etc.)
- * - id, name, className, inputClass, labelClass
+ * - fieldId, name, className, inputClass, labelClass
  * - value, placeholder, required, disabled, readonly, autocomplete
  * - pattern, min, max, step, minlength, maxlength
  * - options: For selects, array of { label, value, disabled? }
@@ -19,7 +19,7 @@ import { Component, h, Prop, Event, EventEmitter, State, Element } from '@stenci
  */
 @Component({
   tag: 'input-field',
-  styleUrl: 'input-field.css',
+  styleUrl: 'input-field.scss',
   shadow: true,
 })
 export class InputField {
@@ -34,7 +34,7 @@ export class InputField {
   // Structure
   @Prop() field: 'input' | 'select' | 'textarea' = 'input';
   @Prop() type = 'text';
-  @Prop() id?: string;
+  @Prop() fieldId?: string;
   @Prop() name?: string;
 
   // Value & behavior
@@ -69,14 +69,14 @@ export class InputField {
 
   componentWillLoad() {
     // Generate a stable id if not provided
-    if (!this.id) {
+    if (!this.fieldId) {
       const base = this.name || 'field';
       this._uid = `${base}-${Math.random().toString(36).slice(2, 8)}`;
     }
   }
 
   private getId() {
-    return this.id || this._uid;
+    return this.fieldId || this._uid;
   }
 
   private onInput = (ev: Event) => {

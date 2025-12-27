@@ -1,0 +1,119 @@
+@import './variables';
+
+// Breakpoint Mixins
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: $breakpoint-small) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-mobile + 1px}) {
+    @content;
+  }
+}
+
+// Layout Mixins
+@mixin container-centered {
+  max-width: $max-width-container;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Typography Mixins
+@mixin font-heading($size, $weight: $font-weight-light) {
+  font-family: $font-family-heading;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin font-body($size: 1rem, $weight: $font-weight-regular) {
+  font-family: $font-family-primary;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+// Button Mixins
+@mixin button-base {
+  border: none;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  font-weight: $font-weight-semibold;
+  transition: background-color $transition-base, color $transition-base;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: $color-orange;
+  color: $color-black;
+  
+  &:hover:not(:disabled) {
+    background: $color-orange-dark;
+  }
+}
+
+// Form Control Mixins
+@mixin input-base {
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  color: $color-text-base;
+  background: $color-white;
+  border: 1px solid $color-gray-medium;
+  border-radius: $border-radius-sm;
+  padding: $spacing-sm 0.75rem;
+  
+  &:focus {
+    outline: none;
+    border-color: $color-focus-blue;
+    box-shadow: 0 0 0 3px rgba($color-focus-blue, 0.15);
+  }
+}
+
+// Shadow Mixins
+@mixin shadow-sm {
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.26);
+}
+
+@mixin shadow-overlay {
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+// Link Mixins
+@mixin link-reset {
+  text-decoration: none;
+  color: inherit;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
