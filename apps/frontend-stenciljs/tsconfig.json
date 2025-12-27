@@ -17,7 +17,11 @@
     "noUnusedParameters": true,
     "jsx": "react",
     "jsxFactory": "h",
-    "jsxFragmentFactory": "h.Fragment"
+    "jsxFragmentFactory": "h.Fragment",
+    "paths": {
+      "@apps-shared": ["../../apps-shared/src/index.ts"],
+      "@apps-shared/*": ["../../apps-shared/src/*"]
+    }
   },
   "include": [
     "src"

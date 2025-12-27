@@ -1,6 +1,5 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
 :host {
   display: inline-block;
@@ -13,7 +12,6 @@
   font-weight: $font-weight-regular;
   transition: text-decoration $transition-base;
   white-space: nowrap;
-  font-family: $font-family-primary;
 
   &:hover {
     text-decoration: none;
@@ -28,8 +26,9 @@
 
 .custom-link--footer-bottom {
   color: $color-white;
-  text-decoration: none;
+  text-decoration: underline;
   font-size: 0.8rem;
+  font-weight: $font-weight-bold;
 
   &:hover {
     text-decoration: none;

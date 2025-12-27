@@ -1,4 +1,6 @@
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import { Component, Prop, h } from '@stencil/core';
+import { COMPANY_NAME, FOOTER_PHONE, FOOTER_LINKS, SOCIAL_LINKS, FooterLink, SocialLink } from '@apps-shared';
 
 @Component({
   tag: 'app-footer',
@@ -9,34 +11,22 @@ export class AppFooter {
   /**
    * Company name
    */
-  @Prop() companyName = 'Plymouth Rock Assurance';
+  @Prop() companyName: string = COMPANY_NAME;
 
   /**
    * Phone number for quote
    */
-  @Prop() phone = '800-516-9242';
+  @Prop() phone: string = FOOTER_PHONE;
 
   /**
    * Footer links
    */
-  @Prop() links: Array<{ label: string; href: string }> = [
-    { label: 'Home', href: '#' },
-    { label: 'Contact Us', href: '#' },
-    { label: 'Privacy & Security', href: '#' },
-    { label: 'Terms & Conditions', href: '#' },
-    { label: 'States Licensed & Disclaimers', href: '#' },
-    { label: 'Site Map', href: '#' },
-  ];
+  @Prop() links: FooterLink[] = FOOTER_LINKS;
 
   /**
    * Social media links
    */
-  @Prop() socialLinks: Array<{ platform: string; url: string }> = [
-    { platform: 'Facebook', url: '#' },
-    { platform: 'Twitter', url: '#' },
-    { platform: 'Instagram', url: '#' },
-    { platform: 'LinkedIn', url: '#' },
-  ];
+  @Prop() socialLinks: SocialLink[] = SOCIAL_LINKS;
 
   private getSocialIcon(platform: string) {
     const iconMap = {
@@ -79,7 +69,7 @@ export class AppFooter {
           <div class="footer-top-content">
             <brand-logo type="full-slogan"></brand-logo>
             <nav class="footer-top-links">
-              {this.links.map((link) => (
+              {this.links && this.links.map((link) => (
                 <custom-link key={link.label} label={link.label} href={link.href}></custom-link>
               ))}
             </nav>
@@ -101,7 +91,7 @@ export class AppFooter {
                 Call for a quote <a href={`tel:${this.phone}`} class="footer-phone">{this.phone}</a>
               </p>
               <div class="social-links">
-                {this.socialLinks.map((social) => (
+                {this.socialLinks && this.socialLinks.map((social) => (
                   <a key={social.platform} href={social.url} class="social-link" title={social.platform} aria-label={social.platform}>
                     {this.getSocialIcon(social.platform)}
                   </a>

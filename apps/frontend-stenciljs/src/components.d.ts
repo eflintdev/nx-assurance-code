@@ -5,28 +5,30 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { FooterLink, SocialLink } from "../../../apps-shared/src/index";
+export { FooterLink, SocialLink } from "../../../apps-shared/src/index";
 export namespace Components {
     interface AppFooter {
         /**
           * Company name
-          * @default 'Plymouth Rock Assurance'
+          * @default COMPANY_NAME
          */
         "companyName": string;
         /**
           * Footer links
-          * @default [     { label: 'Home', href: '#' },     { label: 'Contact Us', href: '#' },     { label: 'Privacy & Security', href: '#' },     { label: 'Terms & Conditions', href: '#' },     { label: 'States Licensed & Disclaimers', href: '#' },     { label: 'Site Map', href: '#' },   ]
+          * @default FOOTER_LINKS
          */
-        "links": Array<{ label: string; href: string }>;
+        "links": FooterLink[];
         /**
           * Phone number for quote
-          * @default '800-516-9242'
+          * @default FOOTER_PHONE
          */
         "phone": string;
         /**
           * Social media links
-          * @default [     { platform: 'Facebook', url: '#' },     { platform: 'Twitter', url: '#' },     { platform: 'Instagram', url: '#' },     { platform: 'LinkedIn', url: '#' },   ]
+          * @default SOCIAL_LINKS
          */
-        "socialLinks": Array<{ platform: string; url: string }>;
+        "socialLinks": SocialLink[];
     }
     interface AppHeader {
         /**
@@ -263,24 +265,24 @@ declare namespace LocalJSX {
     interface AppFooter {
         /**
           * Company name
-          * @default 'Plymouth Rock Assurance'
+          * @default COMPANY_NAME
          */
         "companyName"?: string;
         /**
           * Footer links
-          * @default [     { label: 'Home', href: '#' },     { label: 'Contact Us', href: '#' },     { label: 'Privacy & Security', href: '#' },     { label: 'Terms & Conditions', href: '#' },     { label: 'States Licensed & Disclaimers', href: '#' },     { label: 'Site Map', href: '#' },   ]
+          * @default FOOTER_LINKS
          */
-        "links"?: Array<{ label: string; href: string }>;
+        "links"?: FooterLink[];
         /**
           * Phone number for quote
-          * @default '800-516-9242'
+          * @default FOOTER_PHONE
          */
         "phone"?: string;
         /**
           * Social media links
-          * @default [     { platform: 'Facebook', url: '#' },     { platform: 'Twitter', url: '#' },     { platform: 'Instagram', url: '#' },     { platform: 'LinkedIn', url: '#' },   ]
+          * @default SOCIAL_LINKS
          */
-        "socialLinks"?: Array<{ platform: string; url: string }>;
+        "socialLinks"?: SocialLink[];
     }
     interface AppHeader {
         /**

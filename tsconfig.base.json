@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "composite": true,
     "declarationMap": true,
     "importHelpers": true,
     "isolatedModules": true,
     "lib": ["es2022"],
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
@@ -15,6 +16,11 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
+    "paths": {
+      "@apps-shared": ["apps-shared/src/index.ts"],
+      "@apps-shared/*": ["apps-shared/src/*"],
+      "@apps-shared/lib/constants": ["apps-shared/src/lib/constants/index.ts"]
+    }
   },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"],

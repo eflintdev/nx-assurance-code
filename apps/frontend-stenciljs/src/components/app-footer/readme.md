@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property      | Attribute      | Description            | Type                                   | Default                                                                                                                                                                                                                                                                            |
-| ------------- | -------------- | ---------------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `companyName` | `company-name` | Company name           | `string`                               | `'Plymouth Rock Assurance'`                                                                                                                                                                                                                                                        |
-| `links`       | --             | Footer links           | `{ label: string; href: string; }[]`   | `[     { label: 'Home', href: '#' },     { label: 'Contact Us', href: '#' },     { label: 'Privacy & Security', href: '#' },     { label: 'Terms & Conditions', href: '#' },     { label: 'States Licensed & Disclaimers', href: '#' },     { label: 'Site Map', href: '#' },   ]` |
-| `phone`       | `phone`        | Phone number for quote | `string`                               | `'800-516-9242'`                                                                                                                                                                                                                                                                   |
-| `socialLinks` | --             | Social media links     | `{ platform: string; url: string; }[]` | `[     { platform: 'Facebook', url: '#' },     { platform: 'Twitter', url: '#' },     { platform: 'Instagram', url: '#' },     { platform: 'LinkedIn', url: '#' },   ]`                                                                                                            |
+| Property      | Attribute      | Description            | Type           | Default        |
+| ------------- | -------------- | ---------------------- | -------------- | -------------- |
+| `companyName` | `company-name` | Company name           | `string`       | `COMPANY_NAME` |
+| `links`       | --             | Footer links           | `FooterLink[]` | `FOOTER_LINKS` |
+| `phone`       | `phone`        | Phone number for quote | `string`       | `FOOTER_PHONE` |
+| `socialLinks` | --             | Social media links     | `SocialLink[]` | `SOCIAL_LINKS` |
 
 
 ## Dependencies
