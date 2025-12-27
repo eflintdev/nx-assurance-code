@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property      | Attribute      | Description            | Type           | Default        |
-| ------------- | -------------- | ---------------------- | -------------- | -------------- |
-| `companyName` | `company-name` | Company name           | `string`       | `COMPANY_NAME` |
-| `links`       | --             | Footer links           | `FooterLink[]` | `FOOTER_LINKS` |
-| `phone`       | `phone`        | Phone number for quote | `string`       | `FOOTER_PHONE` |
-| `socialLinks` | --             | Social media links     | `SocialLink[]` | `SOCIAL_LINKS` |
+| Property                   | Attribute      | Description            | Type           | Default     |
+| -------------------------- | -------------- | ---------------------- | -------------- | ----------- |
+| `companyName` _(required)_ | `company-name` | Company name           | `string`       | `undefined` |
+| `links` _(required)_       | --             | Footer links           | `FooterLink[]` | `undefined` |
+| `phone` _(required)_       | `phone`        | Phone number for quote | `string`       | `undefined` |
+| `socialLinks` _(required)_ | --             | Social media links     | `SocialLink[]` | `undefined` |
 
 
 ## Dependencies

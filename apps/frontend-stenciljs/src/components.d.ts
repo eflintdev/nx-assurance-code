@@ -5,28 +5,24 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { FooterLink, SocialLink } from "../../../apps-shared/src/index";
-export { FooterLink, SocialLink } from "../../../apps-shared/src/index";
+import { BreadcrumbItem, FooterLink, SocialLink } from "../../../apps-shared/src/index";
+export { BreadcrumbItem, FooterLink, SocialLink } from "../../../apps-shared/src/index";
 export namespace Components {
     interface AppFooter {
         /**
           * Company name
-          * @default COMPANY_NAME
          */
         "companyName": string;
         /**
           * Footer links
-          * @default FOOTER_LINKS
          */
         "links": FooterLink[];
         /**
           * Phone number for quote
-          * @default FOOTER_PHONE
          */
         "phone": string;
         /**
           * Social media links
-          * @default SOCIAL_LINKS
          */
         "socialLinks": SocialLink[];
     }
@@ -134,6 +130,14 @@ export namespace Components {
      * `site-content` while the component folder is named `content` per request.
      */
     interface SiteContent {
+        /**
+          * Breadcrumb items for navigation
+         */
+        "breadcrumbs": BreadcrumbItem[];
+        /**
+          * Content paragraphs
+         */
+        "paragraphs": string[];
     }
 }
 export interface InputFieldCustomEvent<T> extends CustomEvent<T> {
@@ -265,24 +269,20 @@ declare namespace LocalJSX {
     interface AppFooter {
         /**
           * Company name
-          * @default COMPANY_NAME
          */
-        "companyName"?: string;
+        "companyName": string;
         /**
           * Footer links
-          * @default FOOTER_LINKS
          */
-        "links"?: FooterLink[];
+        "links": FooterLink[];
         /**
           * Phone number for quote
-          * @default FOOTER_PHONE
          */
-        "phone"?: string;
+        "phone": string;
         /**
           * Social media links
-          * @default SOCIAL_LINKS
          */
-        "socialLinks"?: SocialLink[];
+        "socialLinks": SocialLink[];
     }
     interface AppHeader {
         /**
@@ -401,6 +401,14 @@ declare namespace LocalJSX {
      * `site-content` while the component folder is named `content` per request.
      */
     interface SiteContent {
+        /**
+          * Breadcrumb items for navigation
+         */
+        "breadcrumbs": BreadcrumbItem[];
+        /**
+          * Content paragraphs
+         */
+        "paragraphs": string[];
     }
     interface IntrinsicElements {
         "app-footer": AppFooter;

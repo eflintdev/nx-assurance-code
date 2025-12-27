@@ -4,6 +4,7 @@ import { sass } from '@stencil/sass';
  
 export const config: Config = {
   namespace: 'frontend-stenciljs',
+  globalScript: 'src/global/app-init.ts',
   plugins: [
     sass()
   ],

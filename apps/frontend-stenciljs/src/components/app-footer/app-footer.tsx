@@ -1,6 +1,6 @@
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import { Component, Prop, h } from '@stencil/core';
-import { COMPANY_NAME, FOOTER_PHONE, FOOTER_LINKS, SOCIAL_LINKS, FooterLink, SocialLink } from '@apps-shared';
+import { FooterLink, SocialLink } from '@apps-shared';
 
 @Component({
   tag: 'app-footer',
@@ -11,22 +11,22 @@ export class AppFooter {
   /**
    * Company name
    */
-  @Prop() companyName: string = COMPANY_NAME;
+  @Prop() companyName!: string;
 
   /**
    * Phone number for quote
    */
-  @Prop() phone: string = FOOTER_PHONE;
+  @Prop() phone!: string;
 
   /**
    * Footer links
    */
-  @Prop() links: FooterLink[] = FOOTER_LINKS;
+  @Prop() links!: FooterLink[];
 
   /**
    * Social media links
    */
-  @Prop() socialLinks: SocialLink[] = SOCIAL_LINKS;
+  @Prop() socialLinks!: SocialLink[];
 
   private getSocialIcon(platform: string) {
     const iconMap = {
@@ -69,9 +69,9 @@ export class AppFooter {
           <div class="footer-top-content">
             <brand-logo type="full-slogan"></brand-logo>
             <nav class="footer-top-links">
-              {this.links && this.links.map((link) => (
+              {this.links && this.links.length > 0 ? this.links.map((link) => (
                 <custom-link key={link.label} label={link.label} href={link.href}></custom-link>
-              ))}
+              )) : ''}
             </nav>
           </div>
         </div>
@@ -91,11 +91,11 @@ export class AppFooter {
                 Call for a quote <a href={`tel:${this.phone}`} class="footer-phone">{this.phone}</a>
               </p>
               <div class="social-links">
-                {this.socialLinks && this.socialLinks.map((social) => (
+                {this.socialLinks  && this.socialLinks.length > 0 ? this.socialLinks.map((social) => (
                   <a key={social.platform} href={social.url} class="social-link" title={social.platform} aria-label={social.platform}>
                     {this.getSocialIcon(social.platform)}
                   </a>
-                ))}
+                )) : ''}
               </div>
             </div>
           </div>

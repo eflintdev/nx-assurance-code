@@ -1,4 +1,6 @@
-import { Component, h, State } from '@stencil/core';
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+import { Component, h, Prop } from '@stencil/core';
+import { BreadcrumbItem } from '@apps-shared';
 
 /**
  * Site Content wrapper, extracted from index.html <main>.
@@ -11,25 +13,32 @@ import { Component, h, State } from '@stencil/core';
   shadow: true,
 })
 export class SiteContent {
-  @State() paragraphs: string[] = [];
+  /**
+   * Breadcrumb items for navigation
+   */
+  @Prop() breadcrumbs!: BreadcrumbItem[];
 
-  componentWillLoad() {
-    // Seed with the same paragraphs previously injected via DOMContentLoaded
-    this.paragraphs = [
-      'Think about all of the valuables that are stored within your motorhome. It is an unfortunate fact that these items can be compromised in the event of theft, vandalism, or even a power outage. Plymouth Rock Assurance can protect your stored possessions with motorhome insurance in New Jersey.',
-      'In addition to insuring your RV, we offer other types of insurance in New Jersey through our agent relationships and partnerships.  You can protect the important assets in your life with insurance for your automobile, home, motorcycle, collector car, boat, and more.'
-    ];
-  }
+  /**
+   * Content paragraphs
+   */
+  @Prop() paragraphs!: string[];
 
   render() {
     return (
       <div class="main">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
-          <a href="#">Home</a>
-          <span class="breadcrumbs-separator">&gt;</span>
-          <a href="#">Insurance</a>
-          <span class="breadcrumbs-separator">&gt;</span>
-          <span>New Jersey Motor Home Insurance Coverage</span>
+          {this.breadcrumbs.map((item, index) => (
+            <>
+              {item.current ? (
+                <span>{item.label}</span>
+              ) : (
+                <a href={item.href}>{item.label}</a>
+              )}
+              {index < this.breadcrumbs.length - 1 && (
+                <span class="breadcrumbs-separator">&gt;</span>
+              )}
+            </>
+          ))}
         </nav>
         <section class="content-section">
           <div class="content-body">

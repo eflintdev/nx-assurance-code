@@ -1,0 +1,59 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+.list-block {
+  padding: 0.75rem 0;
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+.list-block-title {
+  margin: 0 0 0.5rem 1.5rem;
+  font-size: 1.375rem;
+  font-weight: $font-weight-semibold;
+  color: #003366;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.list-block-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  border-top: none;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.list-link {
+  display: inline-block;
+  margin: 0 0 0 1.5rem;
+  padding: 0.25rem 0;
+  color: $color-gray-dark;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color $transition-base;
+
+  &:hover {
+    color: #0092d2;
+  }
+}
+
+.list-icon {
+  display: none;
+}
+
+.list-label {
+  flex: none;
+}
