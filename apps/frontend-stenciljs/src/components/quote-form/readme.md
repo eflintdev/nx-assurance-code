@@ -10,18 +10,27 @@
 Quote Form (assembled using <input-field>)
 Emits `formSubmit` with the collected data when valid.
 
+## Properties
+
+| Property            | Attribute        | Description | Type                                                      | Default     |
+| ------------------- | ---------------- | ----------- | --------------------------------------------------------- | ----------- |
+| `consentParagraphs` | --               |             | `string[]`                                                | `undefined` |
+| `formTitle`         | `form-title`     |             | `string`                                                  | `undefined` |
+| `intro`             | `intro`          |             | `string`                                                  | `undefined` |
+| `phonePattern`      | `phone-pattern`  |             | `string`                                                  | `undefined` |
+| `requiredLabel`     | `required-label` |             | `string`                                                  | `undefined` |
+| `states`            | --               |             | `{ label: string; value: string; disabled?: boolean; }[]` | `undefined` |
+| `zipPattern`        | `zip-pattern`    |             | `string`                                                  | `undefined` |
+
+
 ## Events
 
-| Event        | Description | Type                                                                                                                                              |
-| ------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `formSubmit` |             | `CustomEvent<{ firstName: string; lastName: string; email?: string; phone: string; address: string; city: string; zip: string; state: string; }>` |
+| Event        | Description | Type                                                                                                                                             |
+| ------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `formSubmit` |             | `CustomEvent<{ firstName: string; lastName: string; email: string; phone: string; address: string; city: string; zip: string; state: string; }>` |
 
 
 ## Dependencies
-
-### Used by
-
- - [site-content](../content)
 
 ### Depends on
 
@@ -31,7 +40,6 @@ Emits `formSubmit` with the collected data when valid.
 ```mermaid
 graph TD;
   quote-form --> input-field
-  site-content --> quote-form
   style quote-form fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

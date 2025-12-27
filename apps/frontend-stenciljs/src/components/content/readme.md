@@ -19,20 +19,6 @@ Note: Custom element tags require a hyphen by spec. The tag used is
 | `paragraphs` _(required)_  | --        | Content paragraphs              | `string[]`         | `undefined` |
 
 
-## Dependencies
-
-### Depends on
-
-- [quote-form](../quote-form)
-
-### Graph
-```mermaid
-graph TD;
-  site-content --> quote-form
-  quote-form --> input-field
-  style site-content fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

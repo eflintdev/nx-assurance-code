@@ -28,7 +28,8 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 300px;
+  max-width: 375px;
+  width: 100%;
   background-color: #f9f9f9;
   border-right: 1px solid $color-hover-gray;
   font-family: $font-family-primary;
@@ -42,7 +43,7 @@
   }
 
   @include mobile {
-    width: 250px;
+    max-width: 300px;
   }
 
   @media (max-width: 480px) {
@@ -63,8 +64,40 @@
   }
 }
 
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: $color-gray-dark;
+  transition: color $transition-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+
+  &:hover {
+    color: #0092d2;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+}
+
 .drawer-nav {
-  padding: 0;
+  padding: 3.125rem 0 0 0; /* 50px top padding */
 }
 
 .drawer-menu {
@@ -89,13 +122,118 @@
   &:hover {
     background-color: #f0f0f0;
     color: #003366;
-    padding-left: 2rem;
+    padding-left: 1.5rem;
   }
 }
 
 .drawer-icon {
   font-size: 1.2rem;
   flex-shrink: 0;
+}
+
+/* Accordion Styles */
+.accordion-item {
+  border-bottom: 1px solid $color-hover-gray;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  width: auto;
+  padding: 1.125rem 1rem 1.125rem 1.25rem;
+  background: none;
+  color: $color-gray-dark;
+  font-family: $font-family-primary;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: #f0f0f0;
+    color: #003366;
+  }
+
+  &.expanded {
+    color: #003366;
+    background-color: #f0f0f0;
+  }
+}
+
+.accordion-icon-prefix {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.accordion-label {
+  flex: 1;
+  font-weight: 400;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #0092d2;
+  }
+}
+
+.accordion-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  margin: -0.25rem 0;
+  cursor: pointer;
+  color: inherit;
+  flex-shrink: 0;
+  min-width: 32px;
+  min-height: 32px;
+
+  &:hover {
+    color: #0092d2;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.accordion-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  transition: transform $transition-base;
+  flex-shrink: 0;
+  color: currentColor;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.accordion-trigger.expanded .accordion-toggle-btn .accordion-icon {
+  transform: rotate(45deg);
+}
+
+.accordion-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height $transition-base;
+
+  &.open {
+    max-height: 1000px; /* Adjust based on content height */
+  }
 }
 
 .drawer-label {

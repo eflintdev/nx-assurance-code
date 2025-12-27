@@ -48,6 +48,18 @@
         font-weight: 600;
       }
 
+      @media (max-width: 1023px) {
+        .banner-section h1 {
+          max-width: 694px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .banner-section h1 {
+          max-width: 610.5px;
+        }
+      }
+
       @media (max-width: 767px) {
         .banner-section {
           height: 11.25rem; /* 180px */
@@ -69,11 +81,13 @@
     <app-header></app-header>
     <div class="banner-section">
       <div class="banner-container">
-        <h1>Welcome to Plymouth Rock Insurance</h1>
+        <h1>New Jersey motorhome insurance coverage</h1>
       </div>
     </div>
     <side-drawer></side-drawer>
-    <site-content></site-content>
+    <site-content>
+      <quote-form></quote-form>
+    </site-content>
     <app-footer></app-footer>
 
     <!-- content population handled by site-content component -->

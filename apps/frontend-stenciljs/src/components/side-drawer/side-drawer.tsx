@@ -1,4 +1,5 @@
 import { Component, Prop, State, h } from '@stencil/core';
+import { SIDE_DRAWER_SECTIONS, SideDrawerSection } from '@apps-shared/lib/constants';
 
 @Component({
   tag: 'side-drawer',
@@ -12,16 +13,14 @@ export class SideDrawer {
   @State() isOpen = false;
 
   /**
-   * Menu items
+   * Track which accordions are expanded (by section key)
    */
-  @Prop() menuItems: Array<{ label: string; href: string; icon?: string }> = [
-    { label: 'Auto Insurance', href: '#auto' },
-    { label: 'Home Insurance', href: '#home' },
-    { label: 'Motorcycle Insurance', href: '#motorcycle' },
-    { label: 'Motorhome Insurance', href: '#motorhome' },
-    { label: 'Boat Insurance', href: '#boat' },
-    { label: 'Collector Car Insurance', href: '#collector' },
-  ];
+  @State() expandedSections: Record<string, boolean> = {};
+
+  /**
+   * Accordion sections with list blocks
+   */
+  @Prop() sections: SideDrawerSection[] = SIDE_DRAWER_SECTIONS;
 
   componentDidLoad() {
     // Listen for toggle events from app-header
@@ -40,6 +39,19 @@ export class SideDrawer {
     this.isOpen = false;
   };
 
+  handleCloseClick = () => {
+    this.isOpen = false;
+  };
+
+  toggleAccordion = (sectionKey: string) => {
+    // Close all sections, then open only the clicked one
+    const newExpandedSections: Record<string, boolean> = {};
+    this.sections.forEach((section) => {
+      newExpandedSections[section.key] = section.key === sectionKey && !this.expandedSections[sectionKey];
+    });
+    this.expandedSections = newExpandedSections;
+  };
+
   render() {
     return (
       <>
@@ -48,19 +60,50 @@ export class SideDrawer {
           onClick={this.handleBackdropClick}
         ></div>
         <aside class={`side-drawer ${this.isOpen ? 'open' : ''}`}>
-          <div class="drawer-header">
-            <h2>Insurance Types</h2>
-          </div>
+          <button 
+            class="close-btn" 
+            onClick={this.handleCloseClick}
+            aria-label="Close menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
           <nav class="drawer-nav">
             <ul class="drawer-menu">
-              {this.menuItems.map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} class="drawer-link">
-                    {item.icon && <span class="drawer-icon">{item.icon}</span>}
-                    <span class="drawer-label">{item.label}</span>
-                  </a>
+              {this.sections?.length > 0 ? this.sections.map((section) => (
+                <li key={section.key} class="accordion-item">
+                  <div class={`accordion-trigger ${this.expandedSections[section.key] ? 'expanded' : ''}`}>
+                    {section.icon && <span class="accordion-icon-prefix">{section.icon}</span>}
+                    <a href={section.href || `#${section.key}`} class="accordion-label">{section.label}</a>
+                    <button
+                      class="accordion-toggle-btn"
+                      onClick={() => this.toggleAccordion(section.key)}
+                      aria-expanded={this.expandedSections[section.key]}
+                      aria-controls={`${section.key}-submenu`}
+                      aria-label={`Toggle ${section.label}`}
+                    >
+                      <span class="accordion-icon" aria-hidden="true">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <line x1="10" y1="4" x2="10" y2="16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                          <line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+
+                  {/* Accordion Content - delegates to custom-list */}
+                  <div 
+                    id={`${section.key}-submenu`}
+                    class={`accordion-menu ${this.expandedSections[section.key] ? 'open' : ''}`}
+                  >
+                    <custom-list 
+                      listBlocks={section.listBlocks}
+                    ></custom-list>
+                  </div>
                 </li>
-              ))}
+              )) : ''}
             </ul>
           </nav>
         </aside>

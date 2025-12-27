@@ -27,7 +27,7 @@ export class SiteContent {
     return (
       <div class="main">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
-          {this.breadcrumbs.map((item, index) => (
+          {this.breadcrumbs?.length ? this.breadcrumbs.map((item, index) => (
             <>
               {item.current ? (
                 <span>{item.label}</span>
@@ -38,15 +38,15 @@ export class SiteContent {
                 <span class="breadcrumbs-separator">&gt;</span>
               )}
             </>
-          ))}
+          )) : ''}
         </nav>
         <section class="content-section">
           <div class="content-body">
-            {this.paragraphs.map((p) => <p>{p}</p>)}
+            {this.paragraphs?.length ? this.paragraphs.map((p) => <p>{p}</p>) : ''}
           </div>
         </section>
         <section class="quote-section">
-          <quote-form></quote-form>
+          <slot></slot>
         </section>
       </div>
     );

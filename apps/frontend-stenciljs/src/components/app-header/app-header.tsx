@@ -9,12 +9,12 @@ export class AppHeader {
   /**
    * Company name/logo
    */
-  @Prop() brandName = 'Plymouth Rock';
+  @Prop() brandName: string;
 
   /**
    * Phone number
    */
-  @Prop() phone = '844-242-3555';
+  @Prop() phone: string;
 
   handleMenuToggle = () => {
     // Dispatch custom event for side drawer to listen to

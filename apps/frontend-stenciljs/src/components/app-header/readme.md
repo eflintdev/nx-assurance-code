@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property    | Attribute    | Description       | Type     | Default           |
-| ----------- | ------------ | ----------------- | -------- | ----------------- |
-| `brandName` | `brand-name` | Company name/logo | `string` | `'Plymouth Rock'` |
-| `phone`     | `phone`      | Phone number      | `string` | `'844-242-3555'`  |
+| Property    | Attribute    | Description       | Type     | Default     |
+| ----------- | ------------ | ----------------- | -------- | ----------- |
+| `brandName` | `brand-name` | Company name/logo | `string` | `undefined` |
+| `phone`     | `phone`      | Phone number      | `string` | `undefined` |
 
 
 ## Dependencies

@@ -6,7 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreadcrumbItem, FooterLink, SocialLink } from "../../../apps-shared/src/index";
+import { SideDrawerSection } from "../../../apps-shared/src/lib/constants/index";
 export { BreadcrumbItem, FooterLink, SocialLink } from "../../../apps-shared/src/index";
+export { SideDrawerSection } from "../../../apps-shared/src/lib/constants/index";
 export namespace Components {
     interface AppFooter {
         /**
@@ -29,12 +31,10 @@ export namespace Components {
     interface AppHeader {
         /**
           * Company name/logo
-          * @default 'Plymouth Rock'
          */
         "brandName": string;
         /**
           * Phone number
-          * @default '844-242-3555'
          */
         "phone": string;
     }
@@ -55,6 +55,15 @@ export namespace Components {
           * @default 'footer-top'
          */
         "variant": 'footer-top' | 'footer-bottom';
+    }
+    interface CustomList {
+        /**
+          * List blocks with title and items
+         */
+        "listBlocks": Array<{
+    title: string;
+    items: Array<{ label: string; href: string; icon?: string }>;
+  }>;
     }
     /**
      * A reusable input field component supporting input/select/textarea.
@@ -116,13 +125,20 @@ export namespace Components {
      * Emits `formSubmit` with the collected data when valid.
      */
     interface QuoteForm {
+        "consentParagraphs": string[];
+        "formTitle": string;
+        "intro": string;
+        "phonePattern": string;
+        "requiredLabel": string;
+        "states": { label: string; value: string; disabled?: boolean }[];
+        "zipPattern": string;
     }
     interface SideDrawer {
         /**
-          * Menu items
-          * @default [     { label: 'Auto Insurance', href: '#auto' },     { label: 'Home Insurance', href: '#home' },     { label: 'Motorcycle Insurance', href: '#motorcycle' },     { label: 'Motorhome Insurance', href: '#motorhome' },     { label: 'Boat Insurance', href: '#boat' },     { label: 'Collector Car Insurance', href: '#collector' },   ]
+          * Accordion sections with list blocks
+          * @default SIDE_DRAWER_SECTIONS
          */
-        "menuItems": Array<{ label: string; href: string; icon?: string }>;
+        "sections": SideDrawerSection[];
     }
     /**
      * Site Content wrapper, extracted from index.html <main>.
@@ -173,6 +189,12 @@ declare global {
         prototype: HTMLCustomLinkElement;
         new (): HTMLCustomLinkElement;
     };
+    interface HTMLCustomListElement extends Components.CustomList, HTMLStencilElement {
+    }
+    var HTMLCustomListElement: {
+        prototype: HTMLCustomListElement;
+        new (): HTMLCustomListElement;
+    };
     interface HTMLInputFieldElementEventMap {
         "valueChange": { value: string | number | undefined; id?: string; name?: string; valid: boolean };
         "fieldFocus": { id?: string; name?: string };
@@ -211,7 +233,7 @@ declare global {
         "formSubmit": {
     firstName: string;
     lastName: string;
-    email?: string;
+    email: string;
     phone: string;
     address: string;
     city: string;
@@ -259,6 +281,7 @@ declare global {
         "app-header": HTMLAppHeaderElement;
         "brand-logo": HTMLBrandLogoElement;
         "custom-link": HTMLCustomLinkElement;
+        "custom-list": HTMLCustomListElement;
         "input-field": HTMLInputFieldElement;
         "quote-form": HTMLQuoteFormElement;
         "side-drawer": HTMLSideDrawerElement;
@@ -287,12 +310,10 @@ declare namespace LocalJSX {
     interface AppHeader {
         /**
           * Company name/logo
-          * @default 'Plymouth Rock'
          */
         "brandName"?: string;
         /**
           * Phone number
-          * @default '844-242-3555'
          */
         "phone"?: string;
     }
@@ -313,6 +334,15 @@ declare namespace LocalJSX {
           * @default 'footer-top'
          */
         "variant"?: 'footer-top' | 'footer-bottom';
+    }
+    interface CustomList {
+        /**
+          * List blocks with title and items
+         */
+        "listBlocks"?: Array<{
+    title: string;
+    items: Array<{ label: string; href: string; icon?: string }>;
+  }>;
     }
     /**
      * A reusable input field component supporting input/select/textarea.
@@ -377,23 +407,30 @@ declare namespace LocalJSX {
      * Emits `formSubmit` with the collected data when valid.
      */
     interface QuoteForm {
+        "consentParagraphs"?: string[];
+        "formTitle"?: string;
+        "intro"?: string;
         "onFormSubmit"?: (event: QuoteFormCustomEvent<{
     firstName: string;
     lastName: string;
-    email?: string;
+    email: string;
     phone: string;
     address: string;
     city: string;
     zip: string;
     state: string;
   }>) => void;
+        "phonePattern"?: string;
+        "requiredLabel"?: string;
+        "states"?: { label: string; value: string; disabled?: boolean }[];
+        "zipPattern"?: string;
     }
     interface SideDrawer {
         /**
-          * Menu items
-          * @default [     { label: 'Auto Insurance', href: '#auto' },     { label: 'Home Insurance', href: '#home' },     { label: 'Motorcycle Insurance', href: '#motorcycle' },     { label: 'Motorhome Insurance', href: '#motorhome' },     { label: 'Boat Insurance', href: '#boat' },     { label: 'Collector Car Insurance', href: '#collector' },   ]
+          * Accordion sections with list blocks
+          * @default SIDE_DRAWER_SECTIONS
          */
-        "menuItems"?: Array<{ label: string; href: string; icon?: string }>;
+        "sections"?: SideDrawerSection[];
     }
     /**
      * Site Content wrapper, extracted from index.html <main>.
@@ -415,6 +452,7 @@ declare namespace LocalJSX {
         "app-header": AppHeader;
         "brand-logo": BrandLogo;
         "custom-link": CustomLink;
+        "custom-list": CustomList;
         "input-field": InputField;
         "quote-form": QuoteForm;
         "side-drawer": SideDrawer;
@@ -429,6 +467,7 @@ declare module "@stencil/core" {
             "app-header": LocalJSX.AppHeader & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
             "brand-logo": LocalJSX.BrandLogo & JSXBase.HTMLAttributes<HTMLBrandLogoElement>;
             "custom-link": LocalJSX.CustomLink & JSXBase.HTMLAttributes<HTMLCustomLinkElement>;
+            "custom-list": LocalJSX.CustomList & JSXBase.HTMLAttributes<HTMLCustomListElement>;
             /**
              * A reusable input field component supporting input/select/textarea.
              * Props overview:
