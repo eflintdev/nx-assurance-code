@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+}
+
+:host {
+  display: block;
+  flex: 1; /* maintain layout stretch like <main> had */
+}
+
+.main {
+  width: 100%;
+  max-width: 1130px;
+  margin: 0 auto;
+  padding: 0 1.875rem 2rem;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.breadcrumbs {
+  font-size: 1rem;
+  color: #003366;
+  margin: 1.5rem 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #9a9a9a;
+}
+
+.breadcrumbs a {
+  color: #0078d6;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs-separator {
+  color: #7a7a7a;
+  padding: 0 0.5rem;
+}
+
+@media (max-width: 1023px) {
+  .main {
+    padding: 0 1.25rem 1.5rem;
+  }
+}
+
+.quote-section {
+  margin-top: 1.25rem;
+}

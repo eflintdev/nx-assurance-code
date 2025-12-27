@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+:host {
+  display: block;
+}
+
+.app-footer {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Top section - 208px height */
+.footer-top {
+  background-color: #eff6fd;
+  border-bottom: 1px solid #e0e0e0;
+  height: 208px;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+}
+
+.footer-top-content {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.footer-top-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #003366;
+  margin: 0;
+}
+
+.footer-top-tagline {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+  font-weight: 400;
+}
+
+.footer-top-links {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.footer-top-link {
+  color: #0351aa;
+  text-decoration: underline;
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: text-decoration 0.3s ease;
+  white-space: nowrap;
+}
+
+.footer-top-link:hover {
+  text-decoration: none;
+}
+
+/* Bottom section */
+.footer-bottom {
+  background-color: #1f52a7;
+  color: #ffffff;
+}
+
+.footer-bottom-top {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  background-color: #2b79d3;
+}
+
+.footer-bottom-top-content {
+  max-width: 1130px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.footer-bottom-main {
+  padding: 0;
+  background-color: #1f52a7;
+  min-height: 9.5625rem;
+}
+
+.footer-content {
+  max-width: 1130px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  box-sizing: border-box;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-heading {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1rem 0;
+}
+
+.footer-cta {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-phone {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: underline;
+  transition: text-decoration 0.3s ease;
+}
+
+.footer-phone:hover {
+  text-decoration: none;
+}
+
+.footer-subheading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: none;
+}
+
+.footer-info {
+  padding: 1.5rem 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: 'Open Sans Hebrew Condensed', 'Open Sans Condensed', 'Open Sans Hebrew', 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-stretch: condensed;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.social-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.social-link svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  transform: scale(0.875);
+  transform-origin: center;
+}
+
+.social-link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+  .footer-top {
+    height: auto;
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .footer-top-content {
+    padding: 0;
+    gap: 1rem;
+  }
+
+  .footer-top-heading {
+    font-size: 1.25rem;
+  }
+
+  .footer-top-tagline {
+    font-size: 0.875rem;
+  }
+
+  .footer-top-links {
+    grid-auto-flow: row;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.5rem;
+    row-gap: 1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .footer-top-link {
+    font-size: 0.875rem;
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .footer-content {
+    padding: 0 1rem;
+  }
+
+  .social-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .footer-bottom-top {
+    height: auto;
+    padding: 1rem 0;
+    min-height: auto;
+  }
+
+  .footer-bottom-top-content {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 20px;
+    text-align: left;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .footer-cta {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .footer-phone {
+    display: inline-block;
+    font-size: 1rem;
+  }
+
+  .footer-bottom-main {
+    padding: 1.5rem 0;
+  }
+
+  .footer-info {
+    padding: 1rem 0;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-disclaimer {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    padding: 0.4rem;
+  }
+
+  .social-link svg {
+    width: 20px;
+    height: 20px;
+    transform: scale(1.05);
+  }
+}
+
+.footer-copyright {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 0.75rem 0;
+  text-align: left;
+  width: 100%;
+}
+
+.footer-disclaimer {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+  text-align: left;
+}

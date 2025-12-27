@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+:host {
+  display: block;
+}
+
+.app-header {
+  background-color: #0078d6;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 4.375rem;
+  padding: 0 1rem;
+  max-width: 1130px;
+  margin: 0 auto;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: #ffffff;
+}
+
+.menu-toggle:hover .menu-toggle-icon svg {
+  color: #e0e0e0;
+}
+
+.brand-logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+
+.search-icon {
+  display: block;
+  color: #ffffff;
+}
+
+.search-icon svg {
+  width: 21px;
+  height: 21px;
+  display: block;
+  transform: scale(1.4);
+  transform-origin: center;
+}
+
+.login-link {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  background-color: #ff7826;
+  padding: 0 1rem;
+  border-radius: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.25rem;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.26);
+}
+
+.login-icon {
+  width: 15px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.login-link:hover {
+  background-color: #bc4605;
+  color: #ffffff;
+}
+
+.login-link:hover .login-icon {
+  color: #ffffff;
+}
+
+.phone-link {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  padding: 0.5rem 0.5rem;
+}
+
+.phone-link:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .header-container {
+    padding: 0 0.75rem;
+  }
+
+  .header-right {
+    gap: 1rem;
+  }
+
+  .phone-link {
+    display: none;
+  }
+}

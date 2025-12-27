@@ -1,0 +1,16 @@
+:host {
+  display: inline-block;
+}
+
+svg {
+  width: 196px;
+  height: 58px;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  svg.logo--nav {
+    width: 9.0625rem;
+    height: 2.5rem;
+  }
+}

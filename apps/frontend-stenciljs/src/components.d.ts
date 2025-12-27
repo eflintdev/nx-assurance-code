@@ -6,56 +6,447 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
+    interface AppFooter {
         /**
-          * The first name
+          * Company name
+          * @default 'Plymouth Rock Assurance'
          */
-        "first": string;
+        "companyName": string;
         /**
-          * The last name
+          * Footer links
+          * @default [     { label: 'Home', href: '#' },     { label: 'Contact Us', href: '#' },     { label: 'Privacy & Security', href: '#' },     { label: 'Terms & Conditions', href: '#' },     { label: 'States Licensed & Disclaimers', href: '#' },     { label: 'Site Map', href: '#' },   ]
          */
-        "last": string;
+        "links": Array<{ label: string; href: string }>;
         /**
-          * The middle name
+          * Phone number for quote
+          * @default '800-516-9242'
          */
-        "middle": string;
+        "phone": string;
+        /**
+          * Social media links
+          * @default [     { platform: 'Facebook', url: '#' },     { platform: 'Twitter', url: '#' },     { platform: 'Instagram', url: '#' },     { platform: 'LinkedIn', url: '#' },   ]
+         */
+        "socialLinks": Array<{ platform: string; url: string }>;
+    }
+    interface AppHeader {
+        /**
+          * Company name/logo
+          * @default 'Plymouth Rock'
+         */
+        "brandName": string;
+        /**
+          * Phone number
+          * @default '844-242-3555'
+         */
+        "phone": string;
+    }
+    interface BrandLogo {
+        "type": string;
+    }
+    interface CustomLink {
+        /**
+          * Link URL
+         */
+        "href": string;
+        /**
+          * Link text
+         */
+        "label": string;
+        /**
+          * Style variant: 'footer-top' (default) or 'footer-bottom'
+          * @default 'footer-top'
+         */
+        "variant": 'footer-top' | 'footer-bottom';
+    }
+    /**
+     * A reusable input field component supporting input/select/textarea.
+     * Props overview:
+     * - label: Visible label text
+     * - field: 'input' | 'select' | 'textarea' (default 'input')
+     * - type: Input type for <input> (text, email, tel, number, etc.)
+     * - id, name, className, inputClass, labelClass
+     * - value, placeholder, required, disabled, readonly, autocomplete
+     * - pattern, min, max, step, minlength, maxlength
+     * - options: For selects, array of { label, value, disabled? }
+     * - helpText, errorText
+     * Events:
+     * - valueChange: { value, id, name, valid }
+     * - fieldFocus, fieldBlur
+     */
+    interface InputField {
+        "autocomplete"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        "errorText"?: string;
+        /**
+          * @default 'input'
+         */
+        "field": 'input' | 'select' | 'textarea';
+        "helpText"?: string;
+        "id"?: string;
+        "inputClass"?: string;
+        "label": string;
+        "labelClass"?: string;
+        "max"?: string | number;
+        "maxlength"?: number;
+        "min"?: string | number;
+        "minlength"?: number;
+        "name"?: string;
+        "options"?: Array<{ label: string; value: string; disabled?: boolean }>;
+        "pattern"?: string;
+        "placeholder"?: string;
+        /**
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        "rootClass"?: string;
+        "step"?: string | number;
+        /**
+          * @default 'text'
+         */
+        "type": string;
+        "value"?: string | number;
+    }
+    /**
+     * Quote Form (assembled using <input-field>)
+     * Emits `formSubmit` with the collected data when valid.
+     */
+    interface QuoteForm {
+    }
+    interface SideDrawer {
+        /**
+          * Menu items
+          * @default [     { label: 'Auto Insurance', href: '#auto' },     { label: 'Home Insurance', href: '#home' },     { label: 'Motorcycle Insurance', href: '#motorcycle' },     { label: 'Motorhome Insurance', href: '#motorhome' },     { label: 'Boat Insurance', href: '#boat' },     { label: 'Collector Car Insurance', href: '#collector' },   ]
+         */
+        "menuItems": Array<{ label: string; href: string; icon?: string }>;
+    }
+    /**
+     * Site Content wrapper, extracted from index.html <main>.
+     * Note: Custom element tags require a hyphen by spec. The tag used is
+     * `site-content` while the component folder is named `content` per request.
+     */
+    interface SiteContent {
     }
 }
+export interface InputFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLInputFieldElement;
+}
+export interface QuoteFormCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLQuoteFormElement;
+}
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLAppFooterElement extends Components.AppFooter, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLAppFooterElement: {
+        prototype: HTMLAppFooterElement;
+        new (): HTMLAppFooterElement;
+    };
+    interface HTMLAppHeaderElement extends Components.AppHeader, HTMLStencilElement {
+    }
+    var HTMLAppHeaderElement: {
+        prototype: HTMLAppHeaderElement;
+        new (): HTMLAppHeaderElement;
+    };
+    interface HTMLBrandLogoElement extends Components.BrandLogo, HTMLStencilElement {
+    }
+    var HTMLBrandLogoElement: {
+        prototype: HTMLBrandLogoElement;
+        new (): HTMLBrandLogoElement;
+    };
+    interface HTMLCustomLinkElement extends Components.CustomLink, HTMLStencilElement {
+    }
+    var HTMLCustomLinkElement: {
+        prototype: HTMLCustomLinkElement;
+        new (): HTMLCustomLinkElement;
+    };
+    interface HTMLInputFieldElementEventMap {
+        "valueChange": { value: string | number | undefined; id?: string; name?: string; valid: boolean };
+        "fieldFocus": { id?: string; name?: string };
+        "fieldBlur": { id?: string; name?: string; valid: boolean };
+    }
+    /**
+     * A reusable input field component supporting input/select/textarea.
+     * Props overview:
+     * - label: Visible label text
+     * - field: 'input' | 'select' | 'textarea' (default 'input')
+     * - type: Input type for <input> (text, email, tel, number, etc.)
+     * - id, name, className, inputClass, labelClass
+     * - value, placeholder, required, disabled, readonly, autocomplete
+     * - pattern, min, max, step, minlength, maxlength
+     * - options: For selects, array of { label, value, disabled? }
+     * - helpText, errorText
+     * Events:
+     * - valueChange: { value, id, name, valid }
+     * - fieldFocus, fieldBlur
+     */
+    interface HTMLInputFieldElement extends Components.InputField, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLInputFieldElementEventMap>(type: K, listener: (this: HTMLInputFieldElement, ev: InputFieldCustomEvent<HTMLInputFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLInputFieldElementEventMap>(type: K, listener: (this: HTMLInputFieldElement, ev: InputFieldCustomEvent<HTMLInputFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLInputFieldElement: {
+        prototype: HTMLInputFieldElement;
+        new (): HTMLInputFieldElement;
+    };
+    interface HTMLQuoteFormElementEventMap {
+        "formSubmit": {
+    firstName: string;
+    lastName: string;
+    email?: string;
+    phone: string;
+    address: string;
+    city: string;
+    zip: string;
+    state: string;
+  };
+    }
+    /**
+     * Quote Form (assembled using <input-field>)
+     * Emits `formSubmit` with the collected data when valid.
+     */
+    interface HTMLQuoteFormElement extends Components.QuoteForm, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLQuoteFormElementEventMap>(type: K, listener: (this: HTMLQuoteFormElement, ev: QuoteFormCustomEvent<HTMLQuoteFormElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLQuoteFormElementEventMap>(type: K, listener: (this: HTMLQuoteFormElement, ev: QuoteFormCustomEvent<HTMLQuoteFormElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLQuoteFormElement: {
+        prototype: HTMLQuoteFormElement;
+        new (): HTMLQuoteFormElement;
+    };
+    interface HTMLSideDrawerElement extends Components.SideDrawer, HTMLStencilElement {
+    }
+    var HTMLSideDrawerElement: {
+        prototype: HTMLSideDrawerElement;
+        new (): HTMLSideDrawerElement;
+    };
+    /**
+     * Site Content wrapper, extracted from index.html <main>.
+     * Note: Custom element tags require a hyphen by spec. The tag used is
+     * `site-content` while the component folder is named `content` per request.
+     */
+    interface HTMLSiteContentElement extends Components.SiteContent, HTMLStencilElement {
+    }
+    var HTMLSiteContentElement: {
+        prototype: HTMLSiteContentElement;
+        new (): HTMLSiteContentElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "app-footer": HTMLAppFooterElement;
+        "app-header": HTMLAppHeaderElement;
+        "brand-logo": HTMLBrandLogoElement;
+        "custom-link": HTMLCustomLinkElement;
+        "input-field": HTMLInputFieldElement;
+        "quote-form": HTMLQuoteFormElement;
+        "side-drawer": HTMLSideDrawerElement;
+        "site-content": HTMLSiteContentElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface AppFooter {
         /**
-          * The first name
+          * Company name
+          * @default 'Plymouth Rock Assurance'
          */
-        "first"?: string;
+        "companyName"?: string;
         /**
-          * The last name
+          * Footer links
+          * @default [     { label: 'Home', href: '#' },     { label: 'Contact Us', href: '#' },     { label: 'Privacy & Security', href: '#' },     { label: 'Terms & Conditions', href: '#' },     { label: 'States Licensed & Disclaimers', href: '#' },     { label: 'Site Map', href: '#' },   ]
          */
-        "last"?: string;
+        "links"?: Array<{ label: string; href: string }>;
         /**
-          * The middle name
+          * Phone number for quote
+          * @default '800-516-9242'
          */
-        "middle"?: string;
+        "phone"?: string;
+        /**
+          * Social media links
+          * @default [     { platform: 'Facebook', url: '#' },     { platform: 'Twitter', url: '#' },     { platform: 'Instagram', url: '#' },     { platform: 'LinkedIn', url: '#' },   ]
+         */
+        "socialLinks"?: Array<{ platform: string; url: string }>;
+    }
+    interface AppHeader {
+        /**
+          * Company name/logo
+          * @default 'Plymouth Rock'
+         */
+        "brandName"?: string;
+        /**
+          * Phone number
+          * @default '844-242-3555'
+         */
+        "phone"?: string;
+    }
+    interface BrandLogo {
+        "type"?: string;
+    }
+    interface CustomLink {
+        /**
+          * Link URL
+         */
+        "href": string;
+        /**
+          * Link text
+         */
+        "label": string;
+        /**
+          * Style variant: 'footer-top' (default) or 'footer-bottom'
+          * @default 'footer-top'
+         */
+        "variant"?: 'footer-top' | 'footer-bottom';
+    }
+    /**
+     * A reusable input field component supporting input/select/textarea.
+     * Props overview:
+     * - label: Visible label text
+     * - field: 'input' | 'select' | 'textarea' (default 'input')
+     * - type: Input type for <input> (text, email, tel, number, etc.)
+     * - id, name, className, inputClass, labelClass
+     * - value, placeholder, required, disabled, readonly, autocomplete
+     * - pattern, min, max, step, minlength, maxlength
+     * - options: For selects, array of { label, value, disabled? }
+     * - helpText, errorText
+     * Events:
+     * - valueChange: { value, id, name, valid }
+     * - fieldFocus, fieldBlur
+     */
+    interface InputField {
+        "autocomplete"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        "errorText"?: string;
+        /**
+          * @default 'input'
+         */
+        "field"?: 'input' | 'select' | 'textarea';
+        "helpText"?: string;
+        "id"?: string;
+        "inputClass"?: string;
+        "label": string;
+        "labelClass"?: string;
+        "max"?: string | number;
+        "maxlength"?: number;
+        "min"?: string | number;
+        "minlength"?: number;
+        "name"?: string;
+        "onFieldBlur"?: (event: InputFieldCustomEvent<{ id?: string; name?: string; valid: boolean }>) => void;
+        "onFieldFocus"?: (event: InputFieldCustomEvent<{ id?: string; name?: string }>) => void;
+        "onValueChange"?: (event: InputFieldCustomEvent<{ value: string | number | undefined; id?: string; name?: string; valid: boolean }>) => void;
+        "options"?: Array<{ label: string; value: string; disabled?: boolean }>;
+        "pattern"?: string;
+        "placeholder"?: string;
+        /**
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        "rootClass"?: string;
+        "step"?: string | number;
+        /**
+          * @default 'text'
+         */
+        "type"?: string;
+        "value"?: string | number;
+    }
+    /**
+     * Quote Form (assembled using <input-field>)
+     * Emits `formSubmit` with the collected data when valid.
+     */
+    interface QuoteForm {
+        "onFormSubmit"?: (event: QuoteFormCustomEvent<{
+    firstName: string;
+    lastName: string;
+    email?: string;
+    phone: string;
+    address: string;
+    city: string;
+    zip: string;
+    state: string;
+  }>) => void;
+    }
+    interface SideDrawer {
+        /**
+          * Menu items
+          * @default [     { label: 'Auto Insurance', href: '#auto' },     { label: 'Home Insurance', href: '#home' },     { label: 'Motorcycle Insurance', href: '#motorcycle' },     { label: 'Motorhome Insurance', href: '#motorhome' },     { label: 'Boat Insurance', href: '#boat' },     { label: 'Collector Car Insurance', href: '#collector' },   ]
+         */
+        "menuItems"?: Array<{ label: string; href: string; icon?: string }>;
+    }
+    /**
+     * Site Content wrapper, extracted from index.html <main>.
+     * Note: Custom element tags require a hyphen by spec. The tag used is
+     * `site-content` while the component folder is named `content` per request.
+     */
+    interface SiteContent {
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "app-footer": AppFooter;
+        "app-header": AppHeader;
+        "brand-logo": BrandLogo;
+        "custom-link": CustomLink;
+        "input-field": InputField;
+        "quote-form": QuoteForm;
+        "side-drawer": SideDrawer;
+        "site-content": SiteContent;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "app-footer": LocalJSX.AppFooter & JSXBase.HTMLAttributes<HTMLAppFooterElement>;
+            "app-header": LocalJSX.AppHeader & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
+            "brand-logo": LocalJSX.BrandLogo & JSXBase.HTMLAttributes<HTMLBrandLogoElement>;
+            "custom-link": LocalJSX.CustomLink & JSXBase.HTMLAttributes<HTMLCustomLinkElement>;
+            /**
+             * A reusable input field component supporting input/select/textarea.
+             * Props overview:
+             * - label: Visible label text
+             * - field: 'input' | 'select' | 'textarea' (default 'input')
+             * - type: Input type for <input> (text, email, tel, number, etc.)
+             * - id, name, className, inputClass, labelClass
+             * - value, placeholder, required, disabled, readonly, autocomplete
+             * - pattern, min, max, step, minlength, maxlength
+             * - options: For selects, array of { label, value, disabled? }
+             * - helpText, errorText
+             * Events:
+             * - valueChange: { value, id, name, valid }
+             * - fieldFocus, fieldBlur
+             */
+            "input-field": LocalJSX.InputField & JSXBase.HTMLAttributes<HTMLInputFieldElement>;
+            /**
+             * Quote Form (assembled using <input-field>)
+             * Emits `formSubmit` with the collected data when valid.
+             */
+            "quote-form": LocalJSX.QuoteForm & JSXBase.HTMLAttributes<HTMLQuoteFormElement>;
+            "side-drawer": LocalJSX.SideDrawer & JSXBase.HTMLAttributes<HTMLSideDrawerElement>;
+            /**
+             * Site Content wrapper, extracted from index.html <main>.
+             * Note: Custom element tags require a hyphen by spec. The tag used is
+             * `site-content` while the component folder is named `content` per request.
+             */
+            "site-content": LocalJSX.SiteContent & JSXBase.HTMLAttributes<HTMLSiteContentElement>;
         }
     }
 }
