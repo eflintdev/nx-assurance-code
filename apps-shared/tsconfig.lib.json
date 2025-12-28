@@ -1,6 +1,7 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
+    "composite": true,
     "baseUrl": "src",
     "ignoreDeprecations": "6.0",
     "outDir": "../dist",
@@ -16,5 +17,5 @@
     "jest.config.cts",
     "src/**/*.spec.ts",
     "src/**/*.test.ts"
-  ]
+  ],
 }

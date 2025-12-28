@@ -1,4 +1,4 @@
-import { appsShared } from './apps-shared.js';
+import { appsShared } from './apps-shared';
 
 describe('appsShared', () => {
   it('should work', () => {
