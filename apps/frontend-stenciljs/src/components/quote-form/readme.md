@@ -12,15 +12,15 @@ Emits `formSubmit` with the collected data when valid.
 
 ## Properties
 
-| Property            | Attribute        | Description | Type                                                      | Default     |
-| ------------------- | ---------------- | ----------- | --------------------------------------------------------- | ----------- |
-| `consentParagraphs` | --               |             | `string[]`                                                | `undefined` |
-| `formTitle`         | `form-title`     |             | `string`                                                  | `undefined` |
-| `intro`             | `intro`          |             | `string`                                                  | `undefined` |
-| `phonePattern`      | `phone-pattern`  |             | `string`                                                  | `undefined` |
-| `requiredLabel`     | `required-label` |             | `string`                                                  | `undefined` |
-| `states`            | --               |             | `{ label: string; value: string; disabled?: boolean; }[]` | `undefined` |
-| `zipPattern`        | `zip-pattern`    |             | `string`                                                  | `undefined` |
+| Property            | Attribute        | Description | Type                | Default     |
+| ------------------- | ---------------- | ----------- | ------------------- | ----------- |
+| `consentParagraphs` | --               |             | `string[]`          | `undefined` |
+| `formTitle`         | `form-title`     |             | `string`            | `undefined` |
+| `intro`             | `intro`          |             | `string`            | `undefined` |
+| `phonePattern`      | `phone-pattern`  |             | `string`            | `undefined` |
+| `requiredLabel`     | `required-label` |             | `string`            | `undefined` |
+| `states`            | --               |             | `StateOptionType[]` | `undefined` |
+| `zipPattern`        | `zip-pattern`    |             | `string`            | `undefined` |
 
 
 ## Events
