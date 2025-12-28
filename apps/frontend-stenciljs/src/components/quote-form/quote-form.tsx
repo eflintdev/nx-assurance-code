@@ -1,5 +1,6 @@
 import { Component, h, State, Event, EventEmitter, Listen, Prop } from '@stencil/core';
 import { validateQuoteForm } from '../../utils/quote-form.utils';
+import { QuoteFormType, StateOptionType  } from '../../types/types.ts';
 
 /**
  * Quote Form (assembled using <input-field>)
@@ -11,7 +12,7 @@ import { validateQuoteForm } from '../../utils/quote-form.utils';
   shadow: true,
 })
 export class QuoteForm {
-  @State() values: Record<string, any> = {
+  @State() values: QuoteFormType = {
     firstName: '',
     lastName: '',
     email: '',
@@ -30,35 +31,30 @@ export class QuoteForm {
   @Prop() intro: string;
   @Prop() requiredLabel: string;
   @Prop() consentParagraphs: string[];
-  @Prop() states: { label: string; value: string; disabled?: boolean }[];
+  @Prop() states: StateOptionType[];
   @Prop() zipPattern: string;
   @Prop() phonePattern: string;
 
-  @Event() formSubmit!: EventEmitter<{
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    address: string;
-    city: string;
-    zip: string;
-    state: string;
-  }>;
+  @Event() formSubmit!: EventEmitter<QuoteFormType>;
 
   private zipRegex!: RegExp;
   private phoneRegex!: RegExp;
 
   componentWillLoad() {
     if (this.zipPattern) {
-      try { this.zipRegex = new RegExp(this.zipPattern); } catch {}
+      try { this.zipRegex = new RegExp(this.zipPattern); } catch {
+        // Ignore invalid regex patterns
+      }
     }
     if (this.phonePattern) {
-      try { this.phoneRegex = new RegExp(this.phonePattern); } catch {}
+      try { this.phoneRegex = new RegExp(this.phonePattern); } catch {
+        // Ignore invalid regex patterns
+      }
     }
   }
 
   @Listen('valueChange')
-  onChildValueChange(ev: CustomEvent<{ value: any; id?: string; name?: string; valid: boolean }>) {
+  onChildValueChange(ev: CustomEvent<{ value: string | number | boolean; id?: string; name?: string; valid: boolean }>) {
     const name = ev.detail.name;
     if (!name) return;
     this.values = { ...this.values, [name]: ev.detail.value };
@@ -80,7 +76,7 @@ export class QuoteForm {
     if (!this.validate()) return;
     this.submitting = true;
     try {
-      const payload = { ...this.values } as any;
+      const payload = { ...this.values } as QuoteFormType;
       this.formSubmit.emit(payload);
     } finally {
       this.submitting = false;
@@ -167,7 +163,7 @@ export class QuoteForm {
             field="select"
             required
             errorText={this.fieldError('state')}
-            options={this.states as any}
+            options={this.states}
           ></input-field>
         </div>
 

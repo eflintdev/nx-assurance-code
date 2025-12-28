@@ -6,6 +6,7 @@ export const getNavLogo = () => (
     viewBox="0 0 553.3 115.7"
     role="img"
     aria-label="Plymouth Rock"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <style type="text/css">{`.st0{fill:#FFFFFF;}`}</style>
     <g>

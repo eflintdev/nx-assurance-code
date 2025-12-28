@@ -1,5 +1,5 @@
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Fragment } from '@stencil/core';
 import { BreadcrumbItem } from '@apps-shared';
 
 /**
@@ -28,7 +28,7 @@ export class SiteContent {
       <div class="main">
         <nav class="breadcrumbs" aria-label="Breadcrumb">
           {this.breadcrumbs?.length ? this.breadcrumbs.map((item, index) => (
-            <>
+            <Fragment>
               {item.current ? (
                 <span>{item.label}</span>
               ) : (
@@ -37,7 +37,7 @@ export class SiteContent {
               {index < this.breadcrumbs.length - 1 && (
                 <span class="breadcrumbs-separator">&gt;</span>
               )}
-            </>
+            </Fragment>
           )) : ''}
         </nav>
         <section class="content-section">

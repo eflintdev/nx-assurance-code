@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { QuoteFormType, StateOptionType } from "./types/types";
+export { QuoteFormType, StateOptionType } from "./types/types";
 export namespace Components {
     interface AppFooter {
         /**
@@ -132,7 +134,7 @@ export namespace Components {
         "intro": string;
         "phonePattern": string;
         "requiredLabel": string;
-        "states": { label: string; value: string; disabled?: boolean }[];
+        "states": StateOptionType[];
         "zipPattern": string;
     }
     interface SearchBar {
@@ -242,16 +244,7 @@ declare global {
         new (): HTMLInputFieldElement;
     };
     interface HTMLQuoteFormElementEventMap {
-        "formSubmit": {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    address: string;
-    city: string;
-    zip: string;
-    state: string;
-  };
+        "formSubmit": QuoteFormType;
     }
     /**
      * Quote Form (assembled using <input-field>)
@@ -443,19 +436,10 @@ declare namespace LocalJSX {
         "consentParagraphs"?: string[];
         "formTitle"?: string;
         "intro"?: string;
-        "onFormSubmit"?: (event: QuoteFormCustomEvent<{
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    address: string;
-    city: string;
-    zip: string;
-    state: string;
-  }>) => void;
+        "onFormSubmit"?: (event: QuoteFormCustomEvent<QuoteFormType>) => void;
         "phonePattern"?: string;
         "requiredLabel"?: string;
-        "states"?: { label: string; value: string; disabled?: boolean }[];
+        "states"?: StateOptionType[];
         "zipPattern"?: string;
     }
     interface SearchBar {

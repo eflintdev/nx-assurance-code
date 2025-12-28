@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Fragment } from '@stencil/core';
 
 @Component({
   tag: 'custom-list',
@@ -16,7 +16,7 @@ export class CustomList {
 
   render() {
     return (
-      <>
+      <Fragment>
         {this.listBlocks?.length > 0 ? this.listBlocks.map((block, index) => (
           <div key={block.title || `block-${index}`} class="list-block">
             {block.title && <h3 class="list-block-title">{block.title}</h3>}
@@ -32,7 +32,7 @@ export class CustomList {
             </ul>
           </div>
         )) : ''}
-      </>
+      </Fragment>
     );
   }
 }
