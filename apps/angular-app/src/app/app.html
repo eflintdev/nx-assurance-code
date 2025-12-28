@@ -1,3 +1,19 @@
-<app-nx-welcome></app-nx-welcome>
+<!-- <app-nx-welcome></app-nx-welcome> -->
 <router-outlet></router-outlet>
 
+<app-header [brandName]="brandName" [phone]="headerPhone" [links]="headerLinks"></app-header>
+    <side-drawer [sections]="sideDrawerSections"></side-drawer>
+    <banner-section [heading]="bannerHeading"></banner-section>
+    <search-modal></search-modal>
+    <site-content [breadcrumbs]="breadcrumbs" [paragraphs]="contentParagraphs">
+      <quote-form
+        [formTitle]="formTitle"
+        [intro]="formIntro"
+        [requiredLabel]="requiredLabel"
+        [consentParagraphs]="consentParagraphs"
+        [stateOptions]="stateOptions"
+        [zipPattern]="zipPattern"
+        [phonePattern]="phonePattern"
+      ></quote-form>
+    </site-content>
+<app-footer [companyName]="companyName" [phone]="footerPhone" [links]="footerLinks" [socialLinks]="socialLinks"></app-footer>

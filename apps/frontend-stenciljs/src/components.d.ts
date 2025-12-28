@@ -38,6 +38,12 @@ export namespace Components {
          */
         "phone": string;
     }
+    interface BannerSection {
+        /**
+          * Banner heading text
+         */
+        "heading": string;
+    }
     interface BrandLogo {
         "type": string;
     }
@@ -133,6 +139,10 @@ export namespace Components {
         "states": { label: string; value: string; disabled?: boolean }[];
         "zipPattern": string;
     }
+    interface SearchBar {
+    }
+    interface SearchModal {
+    }
     interface SideDrawer {
         /**
           * Accordion sections with list blocks
@@ -176,6 +186,12 @@ declare global {
     var HTMLAppHeaderElement: {
         prototype: HTMLAppHeaderElement;
         new (): HTMLAppHeaderElement;
+    };
+    interface HTMLBannerSectionElement extends Components.BannerSection, HTMLStencilElement {
+    }
+    var HTMLBannerSectionElement: {
+        prototype: HTMLBannerSectionElement;
+        new (): HTMLBannerSectionElement;
     };
     interface HTMLBrandLogoElement extends Components.BrandLogo, HTMLStencilElement {
     }
@@ -259,6 +275,18 @@ declare global {
         prototype: HTMLQuoteFormElement;
         new (): HTMLQuoteFormElement;
     };
+    interface HTMLSearchBarElement extends Components.SearchBar, HTMLStencilElement {
+    }
+    var HTMLSearchBarElement: {
+        prototype: HTMLSearchBarElement;
+        new (): HTMLSearchBarElement;
+    };
+    interface HTMLSearchModalElement extends Components.SearchModal, HTMLStencilElement {
+    }
+    var HTMLSearchModalElement: {
+        prototype: HTMLSearchModalElement;
+        new (): HTMLSearchModalElement;
+    };
     interface HTMLSideDrawerElement extends Components.SideDrawer, HTMLStencilElement {
     }
     var HTMLSideDrawerElement: {
@@ -279,11 +307,14 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-footer": HTMLAppFooterElement;
         "app-header": HTMLAppHeaderElement;
+        "banner-section": HTMLBannerSectionElement;
         "brand-logo": HTMLBrandLogoElement;
         "custom-link": HTMLCustomLinkElement;
         "custom-list": HTMLCustomListElement;
         "input-field": HTMLInputFieldElement;
         "quote-form": HTMLQuoteFormElement;
+        "search-bar": HTMLSearchBarElement;
+        "search-modal": HTMLSearchModalElement;
         "side-drawer": HTMLSideDrawerElement;
         "site-content": HTMLSiteContentElement;
     }
@@ -316,6 +347,12 @@ declare namespace LocalJSX {
           * Phone number
          */
         "phone"?: string;
+    }
+    interface BannerSection {
+        /**
+          * Banner heading text
+         */
+        "heading": string;
     }
     interface BrandLogo {
         "type"?: string;
@@ -425,6 +462,10 @@ declare namespace LocalJSX {
         "states"?: { label: string; value: string; disabled?: boolean }[];
         "zipPattern"?: string;
     }
+    interface SearchBar {
+    }
+    interface SearchModal {
+    }
     interface SideDrawer {
         /**
           * Accordion sections with list blocks
@@ -450,11 +491,14 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-footer": AppFooter;
         "app-header": AppHeader;
+        "banner-section": BannerSection;
         "brand-logo": BrandLogo;
         "custom-link": CustomLink;
         "custom-list": CustomList;
         "input-field": InputField;
         "quote-form": QuoteForm;
+        "search-bar": SearchBar;
+        "search-modal": SearchModal;
         "side-drawer": SideDrawer;
         "site-content": SiteContent;
     }
@@ -465,6 +509,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-footer": LocalJSX.AppFooter & JSXBase.HTMLAttributes<HTMLAppFooterElement>;
             "app-header": LocalJSX.AppHeader & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
+            "banner-section": LocalJSX.BannerSection & JSXBase.HTMLAttributes<HTMLBannerSectionElement>;
             "brand-logo": LocalJSX.BrandLogo & JSXBase.HTMLAttributes<HTMLBrandLogoElement>;
             "custom-link": LocalJSX.CustomLink & JSXBase.HTMLAttributes<HTMLCustomLinkElement>;
             "custom-list": LocalJSX.CustomList & JSXBase.HTMLAttributes<HTMLCustomListElement>;
@@ -489,6 +534,8 @@ declare module "@stencil/core" {
              * Emits `formSubmit` with the collected data when valid.
              */
             "quote-form": LocalJSX.QuoteForm & JSXBase.HTMLAttributes<HTMLQuoteFormElement>;
+            "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
+            "search-modal": LocalJSX.SearchModal & JSXBase.HTMLAttributes<HTMLSearchModalElement>;
             "side-drawer": LocalJSX.SideDrawer & JSXBase.HTMLAttributes<HTMLSideDrawerElement>;
             /**
              * Site Content wrapper, extracted from index.html <main>.

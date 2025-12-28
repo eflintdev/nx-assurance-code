@@ -1,52 +1,61 @@
-// Uncomment this line to use CSS modules
-// import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
-
+import './app.module.scss';
 import { Route, Routes, Link } from 'react-router-dom';
-import { MyComponent  } from '../my-component/dist/components';
+import {  AppHeader, AppFooter, BannerSection, SiteContent, QuoteForm, SideDrawer, SearchModal } from '../app/components/custom/components.ts';
+import {
+  BRAND_NAME,
+  HEADER_PHONE,
+  COMPANY_NAME,
+  FOOTER_PHONE,
+  FOOTER_LINKS,
+  SOCIAL_LINKS,
+  SIDE_DRAWER_SECTIONS,
+  FORM_TITLE,
+  FORM_INTRO,
+  REQUIRED_LABEL,
+  CONSENT_PARAGRAPHS,
+  STATE_OPTIONS,
+  ZIP_PATTERN,
+  PHONE_PATTERN,
+  BREADCRUMBS,
+  CONTENT_PARAGRAPHS,
+  BANNER_HEADING,
+} from '@apps-shared/lib/constants';
+
 export function App() {
   return (
-    <div>
-      <NxWelcome title="@org/react-app" />
-
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
+    <>
+      <AppHeader 
+        brandName={BRAND_NAME}
+        phone={HEADER_PHONE}
+      />
+      <BannerSection 
+        heading={BANNER_HEADING}
+      />
+      <SideDrawer 
+        sections={SIDE_DRAWER_SECTIONS}
+      />
+      <SearchModal />
+      <SiteContent
+        breadcrumbs={BREADCRUMBS}
+        paragraphs={CONTENT_PARAGRAPHS}
+      >
+        <QuoteForm
+          formTitle={FORM_TITLE}
+          intro={FORM_INTRO}
+          requiredLabel={REQUIRED_LABEL}
+          consentParagraphs={CONSENT_PARAGRAPHS}
+          states={STATE_OPTIONS}
+          zipPattern={ZIP_PATTERN}
+          phonePattern={PHONE_PATTERN}
         />
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
-      <MyComponent first="Emmanuel" last="Smiley" />
-    </div>
+      </SiteContent>
+      <AppFooter 
+        companyName={COMPANY_NAME}
+        phone={FOOTER_PHONE}
+        links={FOOTER_LINKS}
+        socialLinks={SOCIAL_LINKS}
+      />
+    </>
   );
 }
 

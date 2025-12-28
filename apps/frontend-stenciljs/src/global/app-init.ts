@@ -15,6 +15,7 @@ import {
   ZIP_PATTERN,
   PHONE_PATTERN,
   SIDE_DRAWER_SECTIONS,
+  BANNER_HEADING,
 } from '@apps-shared/lib/constants';
 
 export default async function appInit() {
@@ -59,12 +60,19 @@ export default async function appInit() {
     sideDrawerElement.sections = SIDE_DRAWER_SECTIONS;
   };
 
+  const setBannerData = () => {
+    const bannerElement = document.querySelector('banner-section');
+    if (!bannerElement) return;
+    bannerElement.heading = BANNER_HEADING;
+  };
+
   const initAll = () => {
     setContentData();
     setQuoteFormData();
     setFooterData();
     setHeaderData();
     setSideDrawerData();
+    setBannerData();
   };
 
   if (document.readyState === 'loading') {
