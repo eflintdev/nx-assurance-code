@@ -43,6 +43,9 @@ if (process.env.NX_BUILD_ENV === 'react') {
     }),)
 }
 
+// Can simply extend the list if you ever consume more esModules
+const esModules = ['some-esm-package'].join('|'); 
+
 export const config: Config = {
   namespace: 'frontend-stenciljs',
   globalScript: 'src/global/app-init.ts',
@@ -51,6 +54,17 @@ export const config: Config = {
   ],
   outputTargets,
   testing: {
-    browserHeadless: "shell",
-  },
+    testRunner: 'jest-circus/runner',
+    testEnvironment: 'node',
+    transform: {
+      '^.+\\.(ts|tsx|js|jsx|css)$': './jest-transformer.js'
+    },
+    transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx'],
+    collectCoverageFrom: [
+      'src/**/*.{ts,tsx}',
+      '!src/**/*.d.ts',
+      '!src/components.d.ts'
+    ]
+  }
 };

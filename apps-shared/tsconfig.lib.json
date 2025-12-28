@@ -3,14 +3,13 @@
   "compilerOptions": {
     "composite": true,
     "baseUrl": "src",
-    "ignoreDeprecations": "6.0",
     "outDir": "../dist",
     "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
     "emitDeclarationOnly": false,
     "forceConsistentCasingInFileNames": true,
     "types": ["jest", "node"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/lib/constants/footer.constants.ts"],
   "references": [],
   "exclude": [
     "jest.config.ts",

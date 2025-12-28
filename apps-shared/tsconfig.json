@@ -1,9 +1,12 @@
 {
+  "compilerOptions": {
+    "composite": true
+  },
   "extends": "../tsconfig.base.json",
   "files": [],
   "include": [
     "./src/lib/**/*.ts"
-  ],
+, "src/lib/constants/footer.constants.ts"  ],
   "references": [
     {
       "path": "./tsconfig.lib.json"

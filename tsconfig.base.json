@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",
-    "composite": true,
+    "composite": false,
     "declarationMap": true,
     "importHelpers": true,
     "isolatedModules": true,
@@ -30,17 +30,13 @@
       "@apps-shared/*": [
         "apps-shared/src/*"
       ],
-      "@apps-shared/lib/*": [
-        "libs/apps-shared/src/lib/*"
-      ],
       "@apps-shared/lib/constants": [
         "apps-shared/src/lib/constants/index.ts"
       ]
     }
   },
   "include": [
-    "src/**/*",
-    "apps-shared/src/**/**/*.ts"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",

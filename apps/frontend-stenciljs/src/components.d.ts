@@ -5,10 +5,6 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreadcrumbItem, FooterLink, SocialLink } from "../../../apps-shared/src/index";
-import { SideDrawerSection } from "../../../apps-shared/src/lib/constants/index";
-export { BreadcrumbItem, FooterLink, SocialLink } from "../../../apps-shared/src/index";
-export { SideDrawerSection } from "../../../apps-shared/src/lib/constants/index";
 export namespace Components {
     interface AppFooter {
         /**

@@ -5,7 +5,7 @@
     "outDir": "../../dist/out-tsc",
     "types": ["node", "jest"]
   },
-  "include": ["src/**/*.ts", "../../apps-shared/src/**/**/*.ts"],
+  "include": ["src/**/*.ts", "../../apps-shared/src/**/**/*.ts", "../../apps-shared/src/lib/constants/footer.constants.ts"],
   "exclude": [
     "src/**/*.spec.ts",
     "src/**/*.test.ts",
