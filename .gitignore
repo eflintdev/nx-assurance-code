@@ -49,3 +49,6 @@ test-output
 .angular
 COPILOT_CHANGES_TRANSCRIPT.md
 README_INSTRUCTIONS.md
+.env
+apps/angular-app/src/app/components
+apps/react-app/src/app/components

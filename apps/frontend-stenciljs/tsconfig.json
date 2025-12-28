@@ -6,10 +6,7 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "strictPropertyInitialization": false,
-    "lib": [
-      "dom",
-      "es2022"
-    ],
+    "lib": ["dom", "es2022"],
     "moduleResolution": "bundler",
     "module": "esnext",
     "target": "es2022",
@@ -23,10 +20,11 @@
       "@apps-shared/*": ["../../apps-shared/src/*"]
     }
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
+  "include": ["src"],
+  "exclude": ["node_modules"],
+  "references": [
+    {
+      "path": "../../apps-shared"
+    }
   ]
 }

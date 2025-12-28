@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "rootDir": ".",
     "composite": true,
     "declarationMap": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "lib": ["es2022"],
+    "lib": [
+      "es2022"
+    ],
     "module": "esnext",
     "moduleResolution": "bundler",
     "noEmitOnError": true,
@@ -15,13 +18,39 @@
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,
+    "esModuleInterop": true,
     "target": "es2022",
     "paths": {
-      "@apps-shared": ["apps-shared/src/index.ts"],
-      "@apps-shared/*": ["apps-shared/src/*"],
-      "@apps-shared/lib/constants": ["apps-shared/src/lib/constants/index.ts"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@apps-shared": [
+        "apps-shared/src/index.ts"
+      ],
+      "@apps-shared/*": [
+        "apps-shared/src/*"
+      ],
+      "@apps-shared/lib/*": [
+        "libs/apps-shared/src/lib/*"
+      ],
+      "@apps-shared/lib/constants": [
+        "apps-shared/src/lib/constants/index.ts"
+      ]
     }
   },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"],
+  "include": [
+    "src/**/*",
+    "apps-shared/src/**/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }
