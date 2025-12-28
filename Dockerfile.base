@@ -1,0 +1,9 @@
+# Base Builder for dependencies
+
+FROM docker.io/node:lts-alpine
+
+WORKDIR /apps
+
+# Install only production dependencies
+COPY package.json package-lock.json ./
+RUN npm ci --only=production --legacy-peer-deps

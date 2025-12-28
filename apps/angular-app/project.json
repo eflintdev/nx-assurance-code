@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/angular-app/browser",
+        "outputPath": "apps/angular-app/dist/apps/angular-app/browser",
         "index": "apps/angular-app/src/index.html",
         "main": "apps/angular-app/src/main.ts",
         "tsConfig": "apps/angular-app/tsconfig.app.json",

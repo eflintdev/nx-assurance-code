@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  base_service:
+    build:
+      context: .
+      dockerfile: Dockerfile.base
+  react-app:
+    build:
+      context: .
+      dockerfile: apps/react-app/Dockerfile
+    container_name: nx-react-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - nx-network
+
+  angular-app:
+    build:
+      context: .
+      dockerfile: apps/angular-app/Dockerfile
+    container_name: nx-angular-app
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - nx-network
+
+networks:
+  nx-network:
+    driver: bridge

@@ -96,10 +96,10 @@
           }
         },
         "build-stenciljs-to-all:development": {
-          "command": "npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-react:development; npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-angular:development"
+          "command": "npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-react:development; npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-angular:development; npx nx run angular-app:build:development; npx nx run @org/react-app:build"
         },
         "build-stenciljs-to-all:prod": {
-          "command": "npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-react:prod; npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-angular:prod"
+          "command": "npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-react:prod; npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-angular:prod; npx nx run angular-app:build:production; npx nx run @org/react-app:build"
         }
       }
     }

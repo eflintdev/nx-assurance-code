@@ -135,6 +135,112 @@ npm install --legacy-peer-deps
   npx nx format:check
   ```
 
+## Docker Deployment
+
+This project includes Docker support for containerizing the React and Angular apps.
+
+### Prerequisites for Docker
+
+- Docker: `20.10+`
+- Docker Compose: `1.29+`
+
+Verify installation:
+
+```bash
+docker --version
+docker compose --version
+```
+
+### Project Structure
+
+- `docker compose.yml` - Orchestrates both services at root level
+- `apps/react-app/Dockerfile` - React app production image
+- `apps/angular-app/Dockerfile` - Angular app production image
+
+### Building and Running Containers
+
+FIRST => Run stenciljs build first and then copy its output to Angular and React apps which then get built:
+```bash
+npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-all:prod
+```
+
+#### Build and start all services:
+
+```bash
+docker compose up --build
+```
+
+The apps will be available at:
+
+- React app: http://localhost:3000
+- Angular app: http://localhost:4200
+
+#### Run without rebuilding:
+
+```bash
+docker compose up
+```
+
+#### Stop services:
+
+```bash
+docker compose down
+```
+
+#### Rebuild without cache:
+
+```bash
+docker compose build --no-cache
+```
+
+#### View service logs:
+
+```bash
+# All services
+docker compose logs -f
+
+# Specific service
+docker compose logs -f react-app
+docker compose logs -f angular-app
+```
+
+### Building Individual Images
+
+#### Build React app image only:
+
+```bash
+docker build -f apps/react-app/Dockerfile -t nx-react-app .
+```
+
+#### Build Angular app image only:
+
+```bash
+docker build -f apps/angular-app/Dockerfile -t nx-angular-app .
+```
+
+#### Run individual container:
+
+```bash
+docker run -p 3000:3000 nx-react-app
+docker run -p 4200:4200 nx-angular-app
+```
+
+### Docker Details
+
+- **Base image**: Node 20-alpine (lightweight, ~170MB)
+- **Build strategy**: Multi-stage builds to optimize image size
+- **Ports**: React on 3000, Angular on 4200
+- **Network**: Both services connected via `nx-network` bridge
+- **Restart policy**: `unless-stopped` - auto-restarts on failure
+- **Environment**: Production mode (`NODE_ENV=production`)
+
+Both Dockerfiles:
+
+1. Install workspace dependencies
+2. Build the app using Nx
+3. Copy only production assets to final image
+4. Serve using `npx serve` on configured port
+
 ## Troubleshooting
 
 - If you see dependency resolution issues, prefer the provided install command:
