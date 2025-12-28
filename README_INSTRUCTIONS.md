@@ -3,6 +3,7 @@
 This repository is an Nx monorepo containing multiple frontend apps (Angular, React, Stencil) plus shared libraries. This guide provides a concise, structured set of instructions for setting up, running, and working with the workspace.
 
 ## Prerequisites
+
 - Node: `20.19.6`
 - npm: `10.8.2`
 - nvm: `0.39.7` (optional, but recommended)
@@ -32,112 +33,119 @@ npm install --legacy-peer-deps
 ## Workspace Layout
 
 - Apps
-	- `apps/angular-app` (Angular)
-	- `apps/react-app` (React + Vite)
-	- `apps/frontend-stenciljs` (Stencil)
-	- `apps/*-e2e` (Playwright E2E projects)
+  - `apps/angular-app` (Angular)
+  - `apps/react-app` (React + Vite)
+  - `apps/frontend-stenciljs` (Stencil)
+  - `apps/*-e2e` (Playwright E2E projects)
 - Shared libraries
-	- `apps-shared` (shared TS utilities/constants)
+  - `apps-shared` (shared TS utilities/constants)
 
 ## Common Nx Commands
 
 - List all projects and targets visually:
-	```bash
-	npx nx graph
-	```
+  ```bash
+  npx nx graph
+  ```
 - Run a target for a project:
-	```bash
-	npx nx <target> <project>
-	# e.g.
-	npx nx build react-app
-	npx nx test angular-app
-	```
+  ```bash
+  npx nx <target> <project>
+  # e.g.
+  npx nx build react-app
+  npx nx test angular-app
+  ```
 
 ## Run Applications (Dev)
 
 - Stencil app:
-	```bash
-	npx nx run frontend-stenciljs:start
-	```
+
+  ```bash
+  npx nx run frontend-stenciljs:start
+  ```
 
 - React app:
-	```bash
-	npx nx run react-app:serve
-	```
+
+  ```bash
+  npx nx run react-app:serve
+  ```
 
 - Angular app:
-	```bash
-	npx nx run angular-app:serve
-	```
+  ```bash
+  npx nx run angular-app:serve
+  ```
 
 ## Build Applications
 
 - Stencil app build:
-	```bash
-	npx nx run frontend-stenciljs:build
-	```
+
+  ```bash
+  npx nx run frontend-stenciljs:build
+  ```
 
 - React app build:
-	```bash
-	npx nx run react-app:build
-	```
+
+  ```bash
+  npx nx run react-app:build
+  ```
 
 - Angular app build:
-	```bash
-	npx nx run angular-app:build
-	```
+  ```bash
+  npx nx run angular-app:build
+  ```
 
 ## Unit Tests
 
 - All tests:
-	```bash
-	npx nx run-many --target=test --all
-	```
+
+  ```bash
+  npx nx run-many --target=test --all
+  ```
 
 - Per app/library:
-	```bash
-	npx nx test react-app
-	npx nx test angular-app
-	npx nx test apps-shared
-	```
+  ```bash
+  npx nx test react-app
+  npx nx test angular-app
+  npx nx test apps-shared
+  ```
 
 ## E2E Tests (Playwright)
 
 - React E2E:
-	```bash
-	npx nx run react-app-e2e:e2e
-	```
+
+  ```bash
+  npx nx run react-app-e2e:e2e
+  ```
 
 - Angular E2E:
-	```bash
-	npx nx run angular-app-e2e:e2e
-	```
+  ```bash
+  npx nx run angular-app-e2e:e2e
+  ```
 
 ## Linting & Formatting
 
 - Lint a project:
-	```bash
-	npx nx lint react-app
-	```
+
+  ```bash
+  npx nx lint react-app
+  ```
 
 - Format files:
-	```bash
-	npx nx format:write
-	# check only
-	npx nx format:check
-	```
+  ```bash
+  npx nx format:write
+  # check only
+  npx nx format:check
+  ```
 
 ## Troubleshooting
 
 - If you see dependency resolution issues, prefer the provided install command:
-	```bash
-	npm install --legacy-peer-deps
-	```
+  ```bash
+  npm install --legacy-peer-deps
+  ```
 - Ensure you’re on the expected Node/npm versions (see Prerequisites).
 - Clear Nx cache if needed:
-	```bash
-	npx nx reset
-	```
+  ```bash
+  npx nx reset
+  ```
 
 ## Useful Links
 

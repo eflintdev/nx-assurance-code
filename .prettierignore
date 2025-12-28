@@ -1,5 +1,8 @@
 # Add files here to ignore them from prettier formatting
-/dist
+**/dist/**
+/apps/react-app/src/app/components/custom/**
+/apps/angular-app/src/app/components/custom/**
+/apps/frontend-stenciljs/**
 /coverage
 /.nx/cache
 /.nx/workspace-data

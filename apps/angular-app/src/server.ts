@@ -9,9 +9,7 @@ import bootstrap from './main.server';
 export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/apps/angular-app/browser');
-  const indexHtml = existsSync(join(distFolder, 'index.original.html'))
-    ? join(distFolder, 'index.original.html')
-    : join(distFolder, 'index.html');
+  const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? join(distFolder, 'index.original.html') : join(distFolder, 'index.html');
 
   const commonEngine = new CommonEngine();
 
@@ -24,7 +22,7 @@ export function app(): express.Express {
   server.get(
     '*.*',
     express.static(distFolder, {
-      maxAge: '1y',
+      maxAge: '1y'
     })
   );
 
@@ -38,10 +36,10 @@ export function app(): express.Express {
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: distFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
+        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }]
       })
-      .then((html) => res.send(html))
-      .catch((err) => next(err));
+      .then(html => res.send(html))
+      .catch(err => next(err));
   });
 
   return server;

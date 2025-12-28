@@ -11,7 +11,7 @@ export interface ContentSection {
 export const BREADCRUMBS: BreadcrumbItem[] = [
   { label: 'Home', href: '#' },
   { label: 'Insurance', href: '#' },
-  { label: 'New Jersey Motor Home Insurance Coverage', current: true },
+  { label: 'New Jersey Motor Home Insurance Coverage', current: true }
 ];
 
 export const CONTENT_PARAGRAPHS: string[] = [

@@ -18,12 +18,12 @@ export const FOOTER_LINKS: FooterLink[] = [
   { label: 'Privacy & Security', href: '#' },
   { label: 'Terms & Conditions', href: '#' },
   { label: 'States Licensed & Disclaimers', href: '#' },
-  { label: 'Site Map', href: '#' },
+  { label: 'Site Map', href: '#' }
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { platform: 'Facebook', url: '#' },
   { platform: 'Twitter', url: '#' },
   { platform: 'Instagram', url: '#' },
-  { platform: 'LinkedIn', url: '#' },
+  { platform: 'LinkedIn', url: '#' }
 ];

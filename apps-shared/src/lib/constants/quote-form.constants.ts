@@ -23,7 +23,7 @@ export const STATE_OPTIONS: StateOption[] = [
   { label: 'Connecticut', value: 'CT' },
   { label: 'Massachusetts', value: 'MA' },
   { label: 'Rhode Island', value: 'RI' },
-  { label: 'New Hampshire', value: 'NH' },
+  { label: 'New Hampshire', value: 'NH' }
 ];
 
 export const ZIP_PATTERN = '^\\d{5}(?:-\\d{4})?$';

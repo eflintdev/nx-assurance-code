@@ -1,6 +1,6 @@
 import './app.module.scss';
 import { Route, Routes, Link } from 'react-router-dom';
-import {  AppHeader, AppFooter, BannerSection, SiteContent, QuoteForm, SideDrawer, SearchModal } from '../app/components/custom/components.ts';
+import { AppHeader, AppFooter, BannerSection, SiteContent, QuoteForm, SideDrawer, SearchModal } from '../app/components/custom/components.ts';
 import {
   BRAND_NAME,
   HEADER_PHONE,
@@ -18,27 +18,17 @@ import {
   PHONE_PATTERN,
   BREADCRUMBS,
   CONTENT_PARAGRAPHS,
-  BANNER_HEADING,
+  BANNER_HEADING
 } from '@apps-shared/lib/constants';
 
 export function App() {
   return (
     <>
-      <AppHeader 
-        brandName={BRAND_NAME}
-        phone={HEADER_PHONE}
-      />
-      <BannerSection 
-        heading={BANNER_HEADING}
-      />
-      <SideDrawer 
-        sections={SIDE_DRAWER_SECTIONS}
-      />
+      <AppHeader brandName={BRAND_NAME} phone={HEADER_PHONE} />
+      <BannerSection heading={BANNER_HEADING} />
+      <SideDrawer sections={SIDE_DRAWER_SECTIONS} />
       <SearchModal />
-      <SiteContent
-        breadcrumbs={BREADCRUMBS}
-        paragraphs={CONTENT_PARAGRAPHS}
-      >
+      <SiteContent breadcrumbs={BREADCRUMBS} paragraphs={CONTENT_PARAGRAPHS}>
         <QuoteForm
           formTitle={FORM_TITLE}
           intro={FORM_INTRO}
@@ -49,12 +39,7 @@ export function App() {
           phonePattern={PHONE_PATTERN}
         />
       </SiteContent>
-      <AppFooter 
-        companyName={COMPANY_NAME}
-        phone={FOOTER_PHONE}
-        links={FOOTER_LINKS}
-        socialLinks={SOCIAL_LINKS}
-      />
+      <AppFooter companyName={COMPANY_NAME} phone={FOOTER_PHONE} links={FOOTER_LINKS} socialLinks={SOCIAL_LINKS} />
     </>
   );
 }

@@ -8,9 +8,7 @@
     "importHelpers": true,
     "isolatedModules": true,
     "noImplicitAny": true,
-    "lib": [
-      "es2022"
-    ],
+    "lib": ["es2022"],
     "module": "esnext",
     "moduleResolution": "bundler",
     "noEmitOnError": true,
@@ -22,28 +20,14 @@
     "esModuleInterop": true,
     "target": "es2022",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@apps-shared": [
-        "apps-shared/src/index.ts"
-      ],
-      "@apps-shared/*": [
-        "apps-shared/src/*"
-      ],
-      "@apps-shared/lib/constants": [
-        "apps-shared/src/lib/constants/index.ts"
-      ]
+      "@/*": ["./src/*"],
+      "@apps-shared": ["apps-shared/src/index.ts"],
+      "@apps-shared/*": ["apps-shared/src/*"],
+      "@apps-shared/lib/constants": ["apps-shared/src/lib/constants/index.ts"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.test.ts",
-    "**/*.spec.ts"
-  ],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

@@ -4,10 +4,7 @@
   },
   "extends": "../tsconfig.base.json",
   "files": [],
-  "include": [
-    "./src/lib/**/*.ts",
-    "./src/lib/*.ts"
-  ],
+  "include": ["./src/lib/**/*.ts", "./src/lib/*.ts"],
   "references": [
     {
       "path": "./tsconfig.lib.json"

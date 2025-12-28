@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "emitDeclarationOnly": true,
-      "customConditions": ["@org/source"],
-      "module": "esnext",
-      "moduleResolution": "bundler"
+    "customConditions": ["@org/source"],
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "files": [],
   "include": [],

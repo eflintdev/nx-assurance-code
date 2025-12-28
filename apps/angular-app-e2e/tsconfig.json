@@ -10,21 +10,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.js",
-    "playwright.config.ts",
-    "src/**/*.spec.ts",
-    "src/**/*.spec.js",
-    "src/**/*.test.ts",
-    "src/**/*.test.js",
-    "src/**/*.d.ts"
-  ],
-  "exclude": [
-    "out-tsc",
-    "test-output",
-    "eslint.config.js",
-    "eslint.config.mjs",
-    "eslint.config.cjs"
-  ]
+  "include": ["**/*.ts", "**/*.js", "playwright.config.ts", "src/**/*.spec.ts", "src/**/*.spec.js", "src/**/*.test.ts", "src/**/*.test.js", "src/**/*.d.ts"],
+  "exclude": ["out-tsc", "test-output", "eslint.config.js", "eslint.config.mjs", "eslint.config.cjs"]
 }
