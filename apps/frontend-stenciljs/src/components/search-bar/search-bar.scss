@@ -1,0 +1,73 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+.search-form {
+  width: 100%;
+}
+
+.search-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  border-radius: $border-radius-pill;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-family: $font-family-primary;
+  outline: none;
+  background: transparent;
+
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.search-submit-btn {
+  background-color: $color-orange;
+  border: none;
+  color: $color-black;
+  cursor: pointer;
+  border-radius: 50%;
+  margin: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color $transition-base, opacity $transition-base;
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
+
+  &:hover {
+    opacity: 0.9;
+    background-color: $color-orange-dark;
+  }
+
+  &:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+
+  &:focus, &:hover{
+    svg{
+        color: white;
+    }
+  }
+
+  svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    transform: scale(1.5);
+  }
+}
