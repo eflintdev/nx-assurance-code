@@ -5,8 +5,9 @@
   "extends": "../tsconfig.base.json",
   "files": [],
   "include": [
-    "./src/lib/**/*.ts"
-, "src/lib/constants/footer.constants.ts"  ],
+    "./src/lib/**/*.ts",
+    "./src/lib/*.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.lib.json"

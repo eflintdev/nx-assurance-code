@@ -83,19 +83,34 @@
             "executor": "nx:run-commands",
             "configurations": {
                 "build-stenciljs-to-react:development": {
-                    "command": "rm -R apps/react-app/src/app/components/custom; nx run frontend-stenciljs:build; cp -R apps/frontend-stenciljs/dist apps/react-app/src/app/components/custom",
+                    "command": "rm -R apps/react-app/src/app/components/custom; nx run frontend-stenciljs:build --configuration=development; cp -R apps/frontend-stenciljs/dist apps/react-app/src/app/components/custom",
+                    "env": {
+                        "NX_BUILD_ENV": "react"
+                    }
+                },
+                "build-stenciljs-to-react:prod": {
+                    "command": "rm -R apps/react-app/src/app/components/custom; nx run frontend-stenciljs:build --configuration=production; cp -R apps/frontend-stenciljs/dist apps/react-app/src/app/components/custom",
                     "env": {
                         "NX_BUILD_ENV": "react"
                     }
                 },
                 "build-stenciljs-to-angular:development": {
-                    "command": "rm -R apps/angular-app/src/app/components/custom/dist; nx run frontend-stenciljs:build; cp -R apps/frontend-stenciljs/dist apps/angular-app/src/app/components/custom",
+                    "command": "rm -R apps/angular-app/src/app/components/custom/dist; nx run frontend-stenciljs:build --configuration=development; cp -R apps/frontend-stenciljs/dist apps/angular-app/src/app/components/custom",
+                    "env": {
+                        "NX_BUILD_ENV": "angular"
+                    }
+                },
+                "build-stenciljs-to-angular:prod": {
+                    "command": "rm -R apps/angular-app/src/app/components/custom/dist; nx run frontend-stenciljs:build --configuration=production; cp -R apps/frontend-stenciljs/dist apps/angular-app/src/app/components/custom",
                     "env": {
                         "NX_BUILD_ENV": "angular"
                     }
                 },
                 "build-stenciljs-to-all:development": {
                     "command": "npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-react:development; npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-angular:development"
+                },
+                "build-stenciljs-to-all:prod": {
+                    "command": "npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-react:prod; npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-angular:prod"
                 }
             }
         }
