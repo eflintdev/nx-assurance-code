@@ -17,6 +17,8 @@
   border-radius: $border-radius-pill;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #bec7d1;
+  padding: 0.125rem;
 }
 
 .search-input {
@@ -44,8 +46,8 @@
   align-items: center;
   justify-content: center;
   transition: background-color $transition-base, opacity $transition-base;
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
   flex-shrink: 0;
 
   &:hover {
@@ -58,9 +60,10 @@
     outline-offset: 2px;
   }
 
-  &:focus, &:hover{
-    svg{
-        color: white;
+  &:focus,
+  &:hover {
+    svg {
+      color: white;
     }
   }
 

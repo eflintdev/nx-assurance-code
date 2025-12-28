@@ -56,6 +56,10 @@ export class SearchModal {
         >
           
           <div class="modal-body">
+            <div class="modal-search__info">
+              <h2 class="modal-search__title">Search</h2>
+              <p class="modal-search__description">Find answers quickly for claims, billing, and more.</p>
+            </div>
             <search-bar></search-bar>
           </div>
         </div>

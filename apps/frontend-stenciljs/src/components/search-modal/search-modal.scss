@@ -30,10 +30,33 @@
 .modal-content {
   position: relative;
   width: 90%;
-  max-width: 800px;
+  max-width: 1140px;
   background-color: transparent;
   padding: 3rem 2rem 2rem 2rem;
 }
+
+.modal-search {
+  &__info{
+    padding: 0 1rem;
+  }
+  &__description,
+  &__title {
+    font-family: 'Manrope', Arial, sans-serif;
+  }
+
+  &__title {
+    font-size: 2.25rem;
+    margin: 0 0 1rem;
+  }
+  &__description{
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-top: 0;
+    margin-bottom: 0.9375rem;
+  }
+}
+
+
 
 .close-btn {
   position: absolute;
