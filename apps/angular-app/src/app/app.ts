@@ -18,7 +18,7 @@ import {
   ZIP_PATTERN,
   PHONE_PATTERN,
   BREADCRUMBS,
-  CONTENT_PARAGRAPHS,
+  CONTENT_PARAGRAPHS_DATA,
   BANNER_HEADING
 } from '../../../../apps-shared/src/lib/constants/index';
 // } from '@apps-shared/lib/constants';
@@ -52,5 +52,5 @@ export class App {
   protected zipPattern = ZIP_PATTERN;
   protected phonePattern = PHONE_PATTERN;
   protected breadcrumbs = BREADCRUMBS;
-  protected contentParagraphs = CONTENT_PARAGRAPHS;
+  protected contentParagraphs = CONTENT_PARAGRAPHS_DATA;
 }

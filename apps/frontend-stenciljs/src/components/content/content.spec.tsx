@@ -1,28 +1,37 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { SiteContent } from './content';
-import { BreadcrumbItem } from '@apps-shared';
+import {
+  CONTENT_BREADCRUMBS,
+  CONTENT_PARAGRAPHS,
+  CONTENT_SINGLE_BREADCRUMB,
+  CONTENT_SINGLE_PARAGRAPH,
+  CONTENT_EMPTY_BREADCRUMBS,
+  CONTENT_EMPTY_PARAGRAPHS,
+  CONTENT_BREADCRUMB_ARIA_LABEL,
+  CONTENT_BREADCRUMB_SEPARATOR_CLASS,
+  CONTENT_BREADCRUMB_NAV_CLASS,
+  CONTENT_BREADCRUMB_LINKS_LENGTH,
+  CONTENT_BREADCRUMB_SPAN_TEXT,
+  CONTENT_SECTION_CLASS,
+  CONTENT_SECTION_TAG,
+  CONTENT_BODY_CLASS,
+  CONTENT_MAIN_CLASS,
+  CONTENT_MAIN_TAG,
+  CONTENT_QUOTE_SECTION_CLASS,
+  CONTENT_UPDATED_BREADCRUMBS,
+  CONTENT_UPDATED_PARAGRAPHS
+} from '@apps-shared/lib/mocks/content.mock';
 
 describe('site-content', () => {
-  const mockBreadcrumbs: BreadcrumbItem[] = [
-    { label: 'Home', href: '/', current: false },
-    { label: 'Insurance', href: '/insurance', current: false },
-    { label: 'Auto Insurance', href: '/insurance/auto', current: true },
-  ];
-
-  const mockParagraphs: string[] = [
-    'Welcome to our insurance services.',
-    'We provide comprehensive coverage options.',
-    'Get your quote today and save on premiums.',
-  ];
 
   it('renders with breadcrumbs and paragraphs props', async () => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
@@ -35,15 +44,15 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const nav = page.root.shadowRoot.querySelector('nav.breadcrumbs');
+    const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
     expect(nav).toBeTruthy();
-    expect(nav.getAttribute('aria-label')).toBe('Breadcrumb');
+    expect(nav.getAttribute('aria-label')).toBe(CONTENT_BREADCRUMB_ARIA_LABEL);
   });
 
   it('renders all breadcrumb items', async () => {
@@ -51,15 +60,15 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const nav = page.root.shadowRoot.querySelector('nav.breadcrumbs');
+    const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
     const links = nav.querySelectorAll('a');
-    expect(links.length).toBe(2); // Home and Insurance are links
+    expect(links.length).toBe(CONTENT_BREADCRUMB_LINKS_LENGTH); // Home and Insurance are links
   });
 
   it('renders current breadcrumb as span not link', async () => {
@@ -67,16 +76,16 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const nav = page.root.shadowRoot.querySelector('nav.breadcrumbs');
+    const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
     const spans = nav.querySelectorAll('span');
     const currentBreadcrumb = Array.from(spans).find(
-      (span) => span.textContent === 'Auto Insurance'
+      (span) => span.textContent === CONTENT_BREADCRUMB_SPAN_TEXT
     );
     expect(currentBreadcrumb).toBeTruthy();
   });
@@ -86,15 +95,15 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const nav = page.root.shadowRoot.querySelector('nav.breadcrumbs');
-    const separators = nav.querySelectorAll('.breadcrumbs-separator');
-    expect(separators.length).toBe(mockBreadcrumbs.length - 1);
+    const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
+    const separators = nav.querySelectorAll(`.${CONTENT_BREADCRUMB_SEPARATOR_CLASS}`);
+    expect(separators.length).toBe(CONTENT_BREADCRUMBS.length - 1);
   });
 
   it('renders all content paragraphs', async () => {
@@ -102,15 +111,15 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const contentBody = page.root.shadowRoot.querySelector('.content-body');
+    const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
     const paragraphs = contentBody.querySelectorAll('p');
-    expect(paragraphs.length).toBe(mockParagraphs.length);
+    expect(paragraphs.length).toBe(CONTENT_PARAGRAPHS.length);
   });
 
   it('renders correct paragraph text', async () => {
@@ -118,16 +127,16 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const contentBody = page.root.shadowRoot.querySelector('.content-body');
+    const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
     const paragraphs = contentBody.querySelectorAll('p');
 
-    mockParagraphs.forEach((text, index) => {
+    CONTENT_PARAGRAPHS.forEach((text, index) => {
       expect(paragraphs[index].textContent).toBe(text);
     });
   });
@@ -137,15 +146,15 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const contentSection = page.root.shadowRoot.querySelector('.content-section');
+    const contentSection = page.root.shadowRoot.querySelector(`.${CONTENT_SECTION_CLASS}`);
     expect(contentSection).toBeTruthy();
-    expect(contentSection.tagName).toBe('SECTION');
+    expect(contentSection.tagName).toBe(CONTENT_SECTION_TAG);
   });
 
   it('renders quote-section with slot', async () => {
@@ -153,13 +162,13 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const quoteSection = page.root.shadowRoot.querySelector('.quote-section');
+    const quoteSection = page.root.shadowRoot.querySelector(`.${CONTENT_QUOTE_SECTION_CLASS}`);
     expect(quoteSection).toBeTruthy();
     const slot = quoteSection.querySelector('slot');
     expect(slot).toBeTruthy();
@@ -170,13 +179,13 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={[]}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_EMPTY_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const nav = page.root.shadowRoot.querySelector('nav.breadcrumbs');
+    const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
     const links = nav.querySelectorAll('a');
     expect(links.length).toBe(0);
   });
@@ -186,13 +195,13 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={[]}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_EMPTY_PARAGRAPHS}
         />
       ),
     });
 
-    const contentBody = page.root.shadowRoot.querySelector('.content-body');
+    const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
     const paragraphs = contentBody.querySelectorAll('p');
     expect(paragraphs.length).toBe(0);
   });
@@ -202,15 +211,15 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const main = page.root.shadowRoot.querySelector('.main');
+    const main = page.root.shadowRoot.querySelector(`.${CONTENT_MAIN_CLASS}`);
     expect(main).toBeTruthy();
-    expect(main.tagName).toBe('DIV');
+    expect(main.tagName).toBe(CONTENT_MAIN_TAG);
   });
 
   it('breadcrumb links have correct href attributes', async () => {
@@ -218,51 +227,49 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const nav = page.root.shadowRoot.querySelector('nav.breadcrumbs');
+    const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
     const links = nav.querySelectorAll('a');
-    expect(links[0].getAttribute('href')).toBe('/');
-    expect(links[1].getAttribute('href')).toBe('/insurance');
+    expect(links[0].getAttribute('href')).toBe(CONTENT_BREADCRUMBS[0].href);
+    expect(links[1].getAttribute('href')).toBe(CONTENT_BREADCRUMBS[1].href);
   });
 
   it('renders with single breadcrumb item', async () => {
-    const singleBreadcrumb = [{ label: 'Home', href: '/', current: true }];
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={singleBreadcrumb}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_SINGLE_BREADCRUMB}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const nav = page.root.shadowRoot.querySelector('nav.breadcrumbs');
-    const separators = nav.querySelectorAll('.breadcrumbs-separator');
+    const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
+    const separators = nav.querySelectorAll(`.${CONTENT_BREADCRUMB_SEPARATOR_CLASS}`);
     expect(separators.length).toBe(0);
   });
 
   it('renders with single paragraph', async () => {
-    const singleParagraph = ['Single paragraph text'];
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={singleParagraph}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_SINGLE_PARAGRAPH}
         />
       ),
     });
 
-    const contentBody = page.root.shadowRoot.querySelector('.content-body');
+    const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
     const paragraphs = contentBody.querySelectorAll('p');
     expect(paragraphs.length).toBe(1);
-    expect(paragraphs[0].textContent).toBe('Single paragraph text');
+    expect(paragraphs[0].textContent).toBe(CONTENT_SINGLE_PARAGRAPH[0]);
   });
 
   it('has proper shadow DOM structure', async () => {
@@ -270,14 +277,14 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
     expect(page.root.shadowRoot).toBeTruthy();
-    const main = page.root.shadowRoot.querySelector('.main');
+    const main = page.root.shadowRoot.querySelector(`.${CONTENT_MAIN_CLASS}`);
     expect(main).toBeTruthy();
   });
 
@@ -286,21 +293,17 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const newBreadcrumbs: BreadcrumbItem[] = [
-      { label: 'New', href: '/new', current: true },
-    ];
-
     // Update via host element property to respect Stencil immutability
-    page.root.breadcrumbs = newBreadcrumbs;
+    page.root.breadcrumbs = CONTENT_UPDATED_BREADCRUMBS;
     await page.waitForChanges();
 
-    const nav = page.root.shadowRoot.querySelector('nav.breadcrumbs');
+    const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
     const links = nav.querySelectorAll('a');
     expect(links.length).toBe(0);
   });
@@ -310,21 +313,19 @@ describe('site-content', () => {
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={mockBreadcrumbs}
-          paragraphs={mockParagraphs}
+          breadcrumbs={CONTENT_BREADCRUMBS}
+          paragraphs={CONTENT_PARAGRAPHS}
         />
       ),
     });
 
-    const newParagraphs = ['Updated paragraph'];
-
     // Update via host element property to respect Stencil immutability
-    page.root.paragraphs = newParagraphs;
+    page.root.paragraphs = CONTENT_UPDATED_PARAGRAPHS;
     await page.waitForChanges();
 
-    const contentBody = page.root.shadowRoot.querySelector('.content-body');
+    const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
     const paragraphs = contentBody.querySelectorAll('p');
     expect(paragraphs.length).toBe(1);
-    expect(paragraphs[0].textContent).toBe('Updated paragraph');
+    expect(paragraphs[0].textContent).toBe(CONTENT_UPDATED_PARAGRAPHS[0]);
   });
 });

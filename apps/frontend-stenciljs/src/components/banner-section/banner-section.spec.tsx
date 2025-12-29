@@ -1,13 +1,29 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { BannerSection } from './banner-section';
+import {
+  BANNER_HEADING_MOCK,
+  BANNER_HEADING_ALT_MOCK,
+  BANNER_HEADING_VARIANTS_MOCK,
+  BANNER_SECTION_CLASS,
+  BANNER_SECTION_TAG,
+  BANNER_CONTAINER_CLASS,
+  BANNER_CONTAINER_TAG,
+  BANNER_HEADING_NESTED,
+  BANNER_HEADING_EMPTY,
+  BANNER_HEADING_SPECIAL,
+  BANNER_HEADING_SHADOW_DOM,
+  BANNER_HEADING_INITIAL,
+  BANNER_HEADING_UPDATED,
+  BANNER_HEADING_TEST
+} from '@apps-shared/lib/mocks';
 
 describe('banner-section', () => {
   it('renders with heading prop', async () => {
     const page = await newSpecPage({
       components: [BannerSection],
       template: () => (
-        <banner-section heading="Get Your Quote Today" />
+        <banner-section heading={BANNER_HEADING_MOCK} />
       ),
     });
 
@@ -15,27 +31,20 @@ describe('banner-section', () => {
   });
 
   it('displays the heading text correctly', async () => {
-    const testHeading = 'Protect Your Home and Valuables';
     const page = await newSpecPage({
       components: [BannerSection],
       template: () => (
-        <banner-section heading={testHeading} />
+        <banner-section heading={BANNER_HEADING_ALT_MOCK} />
       ),
     });
 
     const heading = page.root.shadowRoot.querySelector('h1');
     expect(heading).toBeTruthy();
-    expect(heading.textContent).toBe(testHeading);
+    expect(heading.textContent).toBe(BANNER_HEADING_ALT_MOCK);
   });
 
   it('renders with different heading values', async () => {
-    const headings = [
-      'Get Your Quote Today',
-      'Welcome to Plymouth Rock Assurance',
-      'Fast and Affordable Coverage',
-    ];
-
-    for (const heading of headings) {
+    for (const heading of BANNER_HEADING_VARIANTS_MOCK) {
       const page = await newSpecPage({
         components: [BannerSection],
         template: () => (
@@ -52,73 +61,72 @@ describe('banner-section', () => {
     const page = await newSpecPage({
       components: [BannerSection],
       template: () => (
-        <banner-section heading="Test Heading" />
+        <banner-section heading={BANNER_HEADING_TEST} />
       ),
     });
 
-    const bannerSection = page.root.shadowRoot.querySelector('.banner-section');
+    const bannerSection = page.root.shadowRoot.querySelector(`.${BANNER_SECTION_CLASS}`);
     expect(bannerSection).toBeTruthy();
-    expect(bannerSection.tagName).toBe('SECTION');
+    expect(bannerSection.tagName).toBe(BANNER_SECTION_TAG);
   });
 
   it('renders banner-container div inside section', async () => {
     const page = await newSpecPage({
       components: [BannerSection],
       template: () => (
-        <banner-section heading="Test Heading" />
+        <banner-section heading={BANNER_HEADING_TEST} />
       ),
     });
 
-    const container = page.root.shadowRoot.querySelector('.banner-container');
+    const container = page.root.shadowRoot.querySelector(`.${BANNER_CONTAINER_CLASS}`);
     expect(container).toBeTruthy();
-    expect(container.tagName).toBe('DIV');
+    expect(container.tagName).toBe(BANNER_CONTAINER_TAG);
   });
 
   it('renders heading inside banner-container', async () => {
     const page = await newSpecPage({
       components: [BannerSection],
       template: () => (
-        <banner-section heading="Nested Test" />
+        <banner-section heading={BANNER_HEADING_NESTED} />
       ),
     });
 
-    const container = page.root.shadowRoot.querySelector('.banner-container');
+    const container = page.root.shadowRoot.querySelector(`.${BANNER_CONTAINER_CLASS}`);
     const heading = container.querySelector('h1');
     expect(heading).toBeTruthy();
-    expect(heading.textContent).toBe('Nested Test');
+    expect(heading.textContent).toBe(BANNER_HEADING_NESTED);
   });
 
   it('renders with empty heading string', async () => {
     const page = await newSpecPage({
       components: [BannerSection],
       template: () => (
-        <banner-section heading="" />
+        <banner-section heading={BANNER_HEADING_EMPTY} />
       ),
     });
 
     const heading = page.root.shadowRoot.querySelector('h1');
     expect(heading).toBeTruthy();
-    expect(heading.textContent).toBe('');
+    expect(heading.textContent).toBe(BANNER_HEADING_EMPTY);
   });
 
   it('renders with special characters in heading', async () => {
-    const specialHeading = 'Save 20% & Get $100 Off Today!';
     const page = await newSpecPage({
       components: [BannerSection],
       template: () => (
-        <banner-section heading={specialHeading} />
+        <banner-section heading={BANNER_HEADING_SPECIAL} />
       ),
     });
 
     const heading = page.root.shadowRoot.querySelector('h1');
-    expect(heading.textContent).toBe(specialHeading);
+    expect(heading.textContent).toBe(BANNER_HEADING_SPECIAL);
   });
 
   it('has proper structure with shadow DOM', async () => {
     const page = await newSpecPage({
       components: [BannerSection],
       template: () => (
-        <banner-section heading="Shadow DOM Test" />
+        <banner-section heading={BANNER_HEADING_SHADOW_DOM} />
       ),
     });
 
@@ -131,18 +139,18 @@ describe('banner-section', () => {
     const page = await newSpecPage({
       components: [BannerSection],
       template: () => (
-        <banner-section heading="Initial Heading" />
+        <banner-section heading={BANNER_HEADING_INITIAL} />
       ),
     });
 
     let heading = page.root.shadowRoot.querySelector('h1');
-    expect(heading.textContent).toBe('Initial Heading');
+    expect(heading.textContent).toBe(BANNER_HEADING_INITIAL);
 
     // Update via attribute to avoid mutating an immutable @Prop
-    page.root.setAttribute('heading', 'Updated Heading');
+    page.root.setAttribute('heading', BANNER_HEADING_UPDATED);
     await page.waitForChanges();
 
     heading = page.root.shadowRoot.querySelector('h1');
-    expect(heading.textContent).toBe('Updated Heading');
+    expect(heading.textContent).toBe(BANNER_HEADING_UPDATED);
   });
 });

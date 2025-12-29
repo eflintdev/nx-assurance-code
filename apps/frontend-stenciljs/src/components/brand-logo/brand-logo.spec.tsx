@@ -1,13 +1,22 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { BrandLogo } from './brand-logo';
+import {
+  BRAND_LOGO_TYPE_NAV,
+  BRAND_LOGO_TYPE_FULL_SLOGAN,
+  BRAND_LOGO_TYPE_INVALID,
+  BRAND_LOGO_TYPE_UNKNOWN,
+  BRAND_LOGO_TYPE_CASE_SENSITIVE,
+  BRAND_LOGO_TAG,
+  BRAND_LOGO_EXPECT_FRAGMENT_CHILDREN_LENGTH
+} from '@apps-shared/lib/mocks';
 
 describe('brand-logo', () => {
   it('renders with nav-logo type', async () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="nav-logo" />
+        <brand-logo type={BRAND_LOGO_TYPE_NAV} />
       ),
     });
 
@@ -18,7 +27,7 @@ describe('brand-logo', () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="full-slogan" />
+        <brand-logo type={BRAND_LOGO_TYPE_FULL_SLOGAN} />
       ),
     });
 
@@ -29,7 +38,7 @@ describe('brand-logo', () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="nav-logo" />
+        <brand-logo type={BRAND_LOGO_TYPE_NAV} />
       ),
     });
 
@@ -41,7 +50,7 @@ describe('brand-logo', () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="full-slogan" />
+        <brand-logo type={BRAND_LOGO_TYPE_FULL_SLOGAN} />
       ),
     });
 
@@ -53,7 +62,7 @@ describe('brand-logo', () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="invalid-type" />
+        <brand-logo type={BRAND_LOGO_TYPE_INVALID} />
       ),
     });
 
@@ -65,19 +74,19 @@ describe('brand-logo', () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="unknown" />
+        <brand-logo type={BRAND_LOGO_TYPE_UNKNOWN} />
       ),
     });
 
     expect(page.root).toBeTruthy();
-    expect(page.root.shadowRoot.children.length).toBe(0);
+    expect(page.root.shadowRoot.children.length).toBe(BRAND_LOGO_EXPECT_FRAGMENT_CHILDREN_LENGTH);
   });
 
   it('updates logo when type prop changes from nav-logo to full-slogan', async () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="nav-logo" />
+        <brand-logo type={BRAND_LOGO_TYPE_NAV} />
       ),
     });
 
@@ -85,7 +94,7 @@ describe('brand-logo', () => {
     expect(svg).toBeTruthy();
 
     // Update via attribute to avoid mutating an immutable @Prop
-    page.root.setAttribute('type', 'full-slogan');
+    page.root.setAttribute('type', BRAND_LOGO_TYPE_FULL_SLOGAN);
     await page.waitForChanges();
 
     svg = page.root.shadowRoot.querySelector('svg');
@@ -96,7 +105,7 @@ describe('brand-logo', () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="full-slogan" />
+        <brand-logo type={BRAND_LOGO_TYPE_FULL_SLOGAN} />
       ),
     });
 
@@ -104,7 +113,7 @@ describe('brand-logo', () => {
     expect(svg).toBeTruthy();
 
     // Update via attribute to avoid mutating an immutable @Prop
-    page.root.setAttribute('type', 'nav-logo');
+    page.root.setAttribute('type', BRAND_LOGO_TYPE_NAV);
     await page.waitForChanges();
 
     svg = page.root.shadowRoot.querySelector('svg');
@@ -126,7 +135,7 @@ describe('brand-logo', () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="Nav-Logo" />
+        <brand-logo type={BRAND_LOGO_TYPE_CASE_SENSITIVE} />
       ),
     });
 
@@ -138,12 +147,12 @@ describe('brand-logo', () => {
     const page = await newSpecPage({
       components: [BrandLogo],
       template: () => (
-        <brand-logo type="nav-logo" />
+        <brand-logo type={BRAND_LOGO_TYPE_NAV} />
       ),
     });
 
     expect(page.root).toBeTruthy();
-    expect(page.root.tagName).toBe('BRAND-LOGO');
+    expect(page.root.tagName).toBe(BRAND_LOGO_TAG);
   });
 
   it('nav-logo contains SVG with proper structure', async () => {

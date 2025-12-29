@@ -1,1 +1,1 @@
-export * from './footer.types';
+export * from './general-types';
