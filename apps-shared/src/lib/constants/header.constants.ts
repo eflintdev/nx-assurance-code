@@ -1,9 +1,6 @@
 // Header-related shared constants
 
-export interface HeaderLink {
-  label: string;
-  href: string;
-}
+import { HeaderLink } from "../types";
 
 export const BRAND_NAME = 'Plymouth Rock';
 export const HEADER_PHONE = '844-242-3555';

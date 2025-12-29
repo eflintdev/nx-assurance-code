@@ -1,5 +1,6 @@
 import { Component, Prop, State, h, Fragment } from '@stencil/core';
-import { SIDE_DRAWER_SECTIONS, SideDrawerSection } from '@apps-shared/lib/constants';
+import { SIDE_DRAWER_SECTIONS } from '@apps-shared/lib/constants';
+import { SideDrawerSection } from '@apps-shared/lib/types';
 
 @Component({
   tag: 'side-drawer',

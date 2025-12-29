@@ -1,21 +1,4 @@
-export interface SideDrawerItem {
-  label: string;
-  href: string;
-  icon?: string;
-}
-
-export interface SideDrawerListBlock {
-  title: string;
-  items: SideDrawerItem[];
-}
-
-export interface SideDrawerSection {
-  key: string;
-  label: string;
-  href?: string;
-  icon?: string;
-  listBlocks: SideDrawerListBlock[];
-}
+import { SideDrawerSection } from "../types";
 
 export const SIDE_DRAWER_SECTIONS: SideDrawerSection[] = [
   {

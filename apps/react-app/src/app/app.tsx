@@ -17,7 +17,7 @@ import {
   ZIP_PATTERN,
   PHONE_PATTERN,
   BREADCRUMBS,
-  CONTENT_PARAGRAPHS,
+  CONTENT_PARAGRAPHS_DATA,
   BANNER_HEADING
 } from '@apps-shared/lib/constants';
 
@@ -28,7 +28,7 @@ export function App() {
       <BannerSection heading={BANNER_HEADING} />
       <SideDrawer sections={SIDE_DRAWER_SECTIONS} />
       <SearchModal />
-      <SiteContent breadcrumbs={BREADCRUMBS} paragraphs={CONTENT_PARAGRAPHS}>
+      <SiteContent breadcrumbs={BREADCRUMBS} paragraphs={CONTENT_PARAGRAPHS_DATA}>
         <QuoteForm
           formTitle={FORM_TITLE}
           intro={FORM_INTRO}

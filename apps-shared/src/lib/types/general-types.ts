@@ -1,4 +1,19 @@
+export interface ContentSection {
+  paragraphs: string[];
+}
+
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
+  current?: boolean;
+}
+
 export interface FooterLink {
+  label: string;
+  href: string;
+}
+
+export interface HeaderLink {
   label: string;
   href: string;
 }
@@ -8,12 +23,21 @@ export interface SocialLink {
   url: string;
 }
 
-export interface BreadcrumbItem {
+export interface SideDrawerItem {
   label: string;
-  href?: string;
-  current?: boolean;
+  href: string;
+  icon?: string;
 }
 
-export interface ContentSection {
-  paragraphs: string[];
+export interface SideDrawerListBlock {
+  title: string;
+  items: SideDrawerItem[];
+}
+
+export interface SideDrawerSection {
+  key: string;
+  label: string;
+  href?: string;
+  icon?: string;
+  listBlocks: SideDrawerListBlock[];
 }

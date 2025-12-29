@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreadcrumbItem, FooterLink, SocialLink } from "../../../apps-shared/src/index";
+import { BreadcrumbItem, FooterLink, SideDrawerSection, SocialLink } from "../../../apps-shared/src/lib/types/index";
 import { QuoteFormType, StateOptionType } from "./types/types";
-export { BreadcrumbItem, FooterLink, SocialLink } from "../../../apps-shared/src/index";
+export { BreadcrumbItem, FooterLink, SideDrawerSection, SocialLink } from "../../../apps-shared/src/lib/types/index";
 export { QuoteFormType, StateOptionType } from "./types/types";
 export namespace Components {
     interface AppFooter {

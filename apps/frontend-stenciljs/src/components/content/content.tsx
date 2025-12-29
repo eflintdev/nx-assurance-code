@@ -1,6 +1,5 @@
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import { Component, h, Prop, Fragment } from '@stencil/core';
-import { BreadcrumbItem } from '@apps-shared';
+import { BreadcrumbItem } from '@apps-shared/lib/types';
 
 /**
  * Site Content wrapper, extracted from index.html <main>.

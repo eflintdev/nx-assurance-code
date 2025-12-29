@@ -4,7 +4,7 @@ import {
   FOOTER_LINKS, 
   SOCIAL_LINKS,
   BREADCRUMBS,
-  CONTENT_PARAGRAPHS,
+  CONTENT_PARAGRAPHS_DATA,
   BRAND_NAME,
   HEADER_PHONE,
   FORM_TITLE,
@@ -57,7 +57,7 @@ export default async function appInit() {
     const contentElement = document.querySelector('site-content');
     if (!contentElement) return;
     contentElement.breadcrumbs = BREADCRUMBS;
-    contentElement.paragraphs = CONTENT_PARAGRAPHS;
+    contentElement.paragraphs = CONTENT_PARAGRAPHS_DATA;
   };
 
   /**

@@ -26,7 +26,8 @@
       "@apps-shared/lib/constants": ["apps-shared/src/lib/constants/index.ts"],
       "@apps-shared/lib/mocks": ["apps-shared/src/lib/mock/index.ts"],
       "@apps-shared/lib/mocks/header.mocks": ["apps-shared/src/lib/mocks/header.mocks.ts"],
-      "@apps-shared/lib/mocks/footer.mocks": ["apps-shared/src/lib/mocks/footer.mocks.ts"]
+      "@apps-shared/lib/mocks/footer.mocks": ["apps-shared/src/lib/mocks/footer.mocks.ts"],
+      "@apps-shared/lib/types": ["apps-shared/src/lib/types/index.ts"]
     }
   },
   "include": ["src/**/*"],

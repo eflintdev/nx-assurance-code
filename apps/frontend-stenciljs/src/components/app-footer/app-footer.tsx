@@ -1,5 +1,5 @@
 import { Component, Prop, h } from '@stencil/core';
-import { FooterLink, SocialLink } from '@apps-shared';
+import { FooterLink, SocialLink } from '@apps-shared/lib/types';
 
 @Component({
   tag: 'app-footer',
