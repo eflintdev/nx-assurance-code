@@ -2,14 +2,13 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "composite": true,
-    "baseUrl": "src",
-    "outDir": "../dist",
+    "outDir": "dist",
     "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo",
     "emitDeclarationOnly": false,
     "forceConsistentCasingInFileNames": true,
     "types": ["jest", "node"]
   },
-  "include": ["src/**/*.ts", "src/lib/constants/footer.constants.ts"],
+  "include": ["src/**/*.ts", "src/lib/**/*.ts"],
   "references": [],
   "exclude": ["jest.config.ts", "jest.config.cts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

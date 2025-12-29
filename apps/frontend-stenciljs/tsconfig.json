@@ -10,8 +10,9 @@
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
     "lib": ["dom", "es2022"],
-    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
     "module": "esnext",
+    "moduleResolution": "bundler",
     "target": "es2022",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -19,12 +20,16 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "h.Fragment",
     "paths": {
-      "@apps-shared": ["../../dist/apps-shared/src/index.js"],
-      "@apps-shared/*": ["../../dist/apps-shared/src/*"],
-      "@apps-shared/lib/constants": ["../../dist/apps-shared/src/lib/constants/index.js"]
+      "@/*": ["./src/*"],
+      "@apps-shared": ["../../apps-shared/src/index.ts"],
+      "@apps-shared/*": ["../../apps-shared/src/*"],
+      "@apps-shared/lib/constants": ["../../apps-shared/dist/apps-shared/src/lib/constants/index.js"],
+      "@apps-shared/lib/mocks": ["../../apps-shared/dist/apps-shared/src/lib/mocks/index.js"],
+      "@apps-shared/lib/mocks/header.mocks": ["../../apps-shared/dist/apps-shared/src/lib/mocks/header.mocks.js"],
+      "@apps-shared/lib/mocks/footer.mocks": ["../../apps-shared/dist/apps-shared/src/lib/mocks/footer.mocks.js"]
     }
   },
-  "include": ["src", "../../apps-shared/src/lib/constants/*.ts", "../../apps-shared/src/lib/constants/footer.constants.ts"],
+  "include": ["src"],
   "exclude": ["node_modules"],
   "references": [
     {

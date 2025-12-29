@@ -23,7 +23,10 @@
       "@/*": ["./src/*"],
       "@apps-shared": ["apps-shared/src/index.ts"],
       "@apps-shared/*": ["apps-shared/src/*"],
-      "@apps-shared/lib/constants": ["apps-shared/src/lib/constants/index.ts"]
+      "@apps-shared/lib/constants": ["apps-shared/src/lib/constants/index.ts"],
+      "@apps-shared/lib/mocks": ["apps-shared/src/lib/mock/index.ts"],
+      "@apps-shared/lib/mocks/header.mocks": ["apps-shared/src/lib/mocks/header.mocks.ts"],
+      "@apps-shared/lib/mocks/footer.mocks": ["apps-shared/src/lib/mocks/footer.mocks.ts"]
     }
   },
   "include": ["src/**/*"],

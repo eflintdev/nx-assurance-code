@@ -61,7 +61,7 @@ export const config: Config = {
       '^.+\\.(ts|tsx|js|jsx|css)$': './jest-transformer.js'
     },
     transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx'],
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx', 'map'],
     collectCoverageFrom: [
       'src/**/*.{ts,tsx}',
       '!src/**/*.d.ts',

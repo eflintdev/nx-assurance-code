@@ -31,12 +31,12 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --coverage",
-    "test:e2e": "stencil test --e2e",
-    "test.watch": "stencil test --spec --coverage --watchAll",
-    "test.watch:e2e": "stencil test --e2e --watchAll",
+    "build": "npx nx run apps-shared:build; stencil build",
+    "start": "npx nx run apps-shared:build; stencil build --dev --watch --serve",
+    "test": "npx nx run apps-shared:build; stencil test --spec --coverage",
+    "test:e2e": "npx nx run apps-shared:build; stencil test --e2e",
+    "test.watch": "npx nx run apps-shared:build; stencil test --spec --coverage --watchAll",
+    "test.watch:e2e": "npx nx run apps-shared:build; stencil test --e2e --watchAll",
     "generate": "stencil generate"
   },
   "devDependencies": {
