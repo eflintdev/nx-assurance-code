@@ -7,6 +7,14 @@ This repository is an Nx monorepo containing multiple frontend apps (Angular, Re
 - Node: `20.19.6`
 - npm: `10.8.2`
 - nvm: `0.39.7` (optional, but recommended)
+- Docker: `version 29.1.3, build f52814d`
+
+## OS Environments Utilized
+
+    Distributor ID:	Ubuntu
+    Description:  Ubuntu 24.04 LTS
+    Release:  24.04
+    Codename:	noble
 
 You can verify versions with:
 
@@ -14,6 +22,7 @@ You can verify versions with:
 node -v
 npm -v
 nvm --version
+docker --version
 ```
 
 If you use nvm, select the correct Node version:
