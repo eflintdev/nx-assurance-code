@@ -65,48 +65,84 @@ export class AppFooter {
   render() {
     return (
       <footer class="app-footer">
-        <div class="footer-top">
-          <div class="footer-top-content">
-            <brand-logo type="full-slogan"></brand-logo>
-            <nav class="footer-top-links">
-              {this.links && this.links.length > 0 ? this.links.map((link) => (
-                <custom-link key={link.label} label={link.label} href={link.href}></custom-link>
-              )) : ''}
-            </nav>
+        <div class="footer-top bg-light border-bottom">
+          <div class="container py-4">
+            <div class="row flex-column justify-content-center justify-content-md-between text-center text-md-start gy-3">
+              <div class="col-12 col-md-auto d-flex justify-content-center">
+                <brand-logo type="full-slogan"></brand-logo>
+              </div>
+
+              <div class="col-12 col-md">
+                <nav class="footer-top-links d-flex flex-wrap justify-content-center gap-3" aria-label="Footer">
+                  {this.links && this.links.length > 0
+                    ? this.links.map((link) => (
+                      <custom-link
+                        key={link.label}
+                        label={link.label}
+                        href={link.href}
+                        class="nav-link link-primary text-decoration-underline p-0"
+                      ></custom-link>
+                    ))
+                    : ''}
+                </nav>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <div class="footer-bottom-top">
-            <div class="footer-bottom-top-content">
-              <p class="footer-cta">
-                <span class="footer-cta-icon" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                    <path
-                      d="M1.50677 0C0.684808 0 0.00732144 0.646928 0.00732144 1.43182V2.78347C-0.00244048 2.83567 -0.00244048 2.88787 0.00732144 2.93821V17.5789C-0.00244048 17.6311 -0.00244048 17.6833 0.00732144 17.7337V19.5682C0.00732144 20.3531 0.684808 21 1.50677 21H11.5031C12.3251 21 13.0026 20.3531 13.0026 19.5682V17.7393C13.0123 17.6871 13.0123 17.6349 13.0026 17.5845V2.9438C13.0123 2.8916 13.0123 2.8394 13.0026 2.78906V1.43182C13.0026 0.646928 12.3251 0 11.5031 0H1.50677ZM1.50677 0.954545H11.5031C11.7804 0.954545 12.0029 1.16708 12.0029 1.43182V2.38636H1.00696V1.43182C1.00696 1.16708 1.22953 0.954545 1.50677 0.954545ZM1.00696 3.34091H12.0029V17.1818H1.00696V3.34091ZM17.3193 4.46884L16.6106 5.1456C18.073 6.41335 19.0004 8.23109 19.0004 10.2614C19.0004 12.1686 18.1843 13.8968 16.8722 15.1497L17.5732 15.819C19.0687 14.3946 20 12.4333 20 10.2614C20 7.96822 18.9613 5.90998 17.3193 4.46884ZM15.199 6.49352L14.4864 7.17401C15.4099 7.91602 16.0015 9.02157 16.0015 10.2614C16.0015 11.38 15.5173 12.3867 14.748 13.1213L15.4548 13.7962C16.4056 12.8901 17.0011 11.6428 17.0011 10.2614C17.0011 8.7587 16.3002 7.41264 15.199 6.49352ZM1.00696 18.1364H12.0029V19.5682C12.0029 19.8329 11.7804 20.0455 11.5031 20.0455H1.50677C1.22953 20.0455 1.00696 19.8329 1.00696 19.5682V18.1364ZM5.00549 18.6136C4.82587 18.6118 4.65796 18.7013 4.5662 18.8504C4.47639 18.9996 4.47639 19.1823 4.5662 19.3314C4.65796 19.4806 4.82587 19.57 5.00549 19.5682H8.00439C8.18401 19.57 8.35192 19.4806 8.44368 19.3314C8.5335 19.1823 8.5335 18.9996 8.44368 18.8504C8.35192 18.7013 8.18401 18.6118 8.00439 18.6136H5.00549Z"
-                      fill="white"
-                    />
-                  </svg>
-                </span>
-                Call for a quote <a href={`tel:${this.phone}`} class="footer-phone">{this.phone}</a>
-              </p>
-              <div class="social-links">
-                {this.socialLinks  && this.socialLinks.length > 0 ? this.socialLinks.map((social) => (
-                  <a key={social.platform} href={social.url} class="social-link" title={social.platform} aria-label={social.platform}>
-                    {this.getSocialIcon(social.platform)}
-                  </a>
-                )) : ''}
+          <div class="footer-bottom-top text-white">
+            <div class="container py-3">
+              <div class="row align-items-center gy-3">
+                <div class="col">
+                  <p class="footer-cta d-flex align-items-center flex-wrap gap-2 mb-0">
+                    <span class="footer-cta-icon" aria-hidden="true">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                        <path
+                          d="M1.50677 0C0.684808 0 0.00732144 0.646928 0.00732144 1.43182V2.78347C-0.00244048 2.83567 -0.00244048 2.88787 0.00732144 2.93821V17.5789C-0.00244048 17.6311 -0.00244048 17.6833 0.00732144 17.7337V19.5682C0.00732144 20.3531 0.684808 21 1.50677 21H11.5031C12.3251 21 13.0026 20.3531 13.0026 19.5682V17.7393C13.0123 17.6871 13.0123 17.6349 13.0026 17.5845V2.9438C13.0123 2.8916 13.0123 2.8394 13.0026 2.78906V1.43182C13.0026 0.646928 12.3251 0 11.5031 0H1.50677ZM1.50677 0.954545H11.5031C11.7804 0.954545 12.0029 1.16708 12.0029 1.43182V2.38636H1.00696V1.43182C1.00696 1.16708 1.22953 0.954545 1.50677 0.954545ZM1.00696 3.34091H12.0029V17.1818H1.00696V3.34091ZM17.3193 4.46884L16.6106 5.1456C18.073 6.41335 19.0004 8.23109 19.0004 10.2614C19.0004 12.1686 18.1843 13.8968 16.8722 15.1497L17.5732 15.819C19.0687 14.3946 20 12.4333 20 10.2614C20 7.96822 18.9613 5.90998 17.3193 4.46884ZM15.199 6.49352L14.4864 7.17401C15.4099 7.91602 16.0015 9.02157 16.0015 10.2614C16.0015 11.38 15.5173 12.3867 14.748 13.1213L15.4548 13.7962C16.4056 12.8901 17.0011 11.6428 17.0011 10.2614C17.0011 8.7587 16.3002 7.41264 15.199 6.49352ZM1.00696 18.1364H12.0029V19.5682C12.0029 19.8329 11.7804 20.0455 11.5031 20.0455H1.50677C1.22953 20.0455 1.00696 19.8329 1.00696 19.5682V18.1364ZM5.00549 18.6136C4.82587 18.6118 4.65796 18.7013 4.5662 18.8504C4.47639 18.9996 4.47639 19.1823 4.5662 19.3314C4.65796 19.4806 4.82587 19.57 5.00549 19.5682H8.00439C8.18401 19.57 8.35192 19.4806 8.44368 19.3314C8.5335 19.1823 8.5335 18.9996 8.44368 18.8504C8.35192 18.7013 8.18401 18.6118 8.00439 18.6136H5.00549Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </span>
+                    <span class="fw-bold">Call for a quote</span>
+                    <a href={`tel:${this.phone}`} class="footer-phone fw-bold text-white text-decoration-underline text-nowrap">
+                      {this.phone}
+                    </a>
+                  </p>
+                </div>
+
+                <div class="col-auto ms-md-auto">
+                  <div class="social-links d-flex flex-wrap gap-2 align-items-center justify-content-start justify-content-md-end">
+                    {this.socialLinks && this.socialLinks.length > 0
+                      ? this.socialLinks.map((social) => (
+                        <a
+                          key={social.platform}
+                          href={social.url}
+                          class="social-link text-white text-decoration-none"
+                          title={social.platform}
+                          aria-label={social.platform}
+                        >
+                          {this.getSocialIcon(social.platform)}
+                        </a>
+                      ))
+                      : ''}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="footer-bottom-main">
-            <div class="footer-content">
-              <div class="footer-info">
-                <p class="footer-disclaimer">
-                  {this.companyName} Assurance<sup>®</sup> and Plymouth Rock<sup>®</sup> are brand names and service marks used by separate underwriting, managed insurance, and management companies that offer property and casualty insurance in multiple states pursuant to licensing agreements. Each underwriting and managed insurance company is a separate legal entity that is financially responsible only for its own insurance products. A full list of underwriting companies by state can be found on our <custom-link variant="footer-bottom" label="states licensed & disclaimers page" href="/states-licensed-disclaimers"></custom-link>. Actual coverage is subject to the language of the policy as issued. Some discounts, coverages, payment plans, features and benefits are not available in all states and companies, and premiums may vary by purchase method. PA Residents: <span>WE RESERVE THE RIGHT TO REFUSE TO QUOTE ANY INDIVIDUAL A PREMIUM RATE FOR THE INSURANCE ADVERTISED HEREIN</span>.
-                </p>
-                <p class="footer-copyright">© 2025 {this.companyName}. All Rights Reserved.</p>
+          <div class="footer-bottom-main text-white">
+            <div class="container py-4">
+              <div class="row">
+                <div class="col">
+                  <div class="footer-info">
+                    <p class="footer-disclaimer mb-3">
+                      {this.companyName} Assurance<sup>®</sup> and Plymouth Rock<sup>®</sup> are brand names and service marks used by separate underwriting, managed insurance, and management companies that offer property and casualty insurance in multiple states pursuant to licensing agreements. Each underwriting and managed insurance company is a separate legal entity that is financially responsible only for its own insurance products. A full list of underwriting companies by state can be found on our <custom-link variant="footer-bottom" label="states licensed & disclaimers page" href="/states-licensed-disclaimers"></custom-link>. Actual coverage is subject to the language of the policy as issued. Some discounts, coverages, payment plans, features and benefits are not available in all states and companies, and premiums may vary by purchase method. PA Residents: <span>WE RESERVE THE RIGHT TO REFUSE TO QUOTE ANY INDIVIDUAL A PREMIUM RATE FOR THE INSURANCE ADVERTISED HEREIN</span>.
+                    </p>
+                    <p class="footer-copyright mb-0">© 2025 {this.companyName}. All Rights Reserved.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -86,7 +86,7 @@
   h2 {
     margin: 0;
     font-size: 1.2rem;
-    color: #003366;
+    color: $color-secondary-blue;
     font-weight: $font-weight-bold;
   }
 }
@@ -109,7 +109,7 @@
   border-radius: 4px;
 
   &:hover {
-    color: #0092d2;
+    color: $color-hover-blue;
   }
 
   &:focus {
@@ -147,8 +147,8 @@
   transition: all $transition-base;
 
   &:hover {
-    background-color: #f0f0f0;
-    color: #003366;
+    background-color: $color-gray-light-1;
+    color: $color-secondary-blue;
     padding-left: 1.5rem;
   }
 }
@@ -179,13 +179,13 @@
   font-size: 1rem;
 
   &:hover {
-    background-color: #f0f0f0;
-    color: #003366;
+    background-color: $color-gray-light-1;
+    color: $color-secondary-blue;
   }
 
   &.expanded {
-    color: #003366;
-    background-color: #f0f0f0;
+    color: $color-secondary-blue;
+    background-color: $color-gray-light-1;
   }
 }
 
@@ -202,7 +202,7 @@
   cursor: pointer;
 
   &:hover {
-    color: #0092d2;
+    color: $color-hover-blue;
   }
 }
 
@@ -221,7 +221,7 @@
   min-height: 32px;
 
   &:hover {
-    color: #0092d2;
+    color: $color-hover-blue;
   }
 
   &:focus {

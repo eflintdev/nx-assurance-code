@@ -77,6 +77,7 @@ export class SideDrawer {
                   <div class={`accordion-trigger ${this.expandedSections[section.key] ? 'expanded' : ''}`}>
                     {section.icon && <span class="accordion-icon-prefix">{section.icon}</span>}
                     <a href={section.href || `#${section.key}`} class="accordion-label">{section.label}</a>
+                    { section.listBlocks.length > 0 ? 
                     <button
                       class="accordion-toggle-btn"
                       onClick={() => this.toggleAccordion(section.key)}
@@ -91,6 +92,7 @@ export class SideDrawer {
                         </svg>
                       </span>
                     </button>
+                     : '' }
                   </div>
 
                   {/* Accordion Content - delegates to custom-list */}

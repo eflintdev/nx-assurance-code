@@ -7,10 +7,10 @@ import { sass } from '@stencil/sass';
 const outputTargets: OutputTarget[] | undefined = [];
 
 outputTargets.push({
-  type: 'dist',
-  esmLoaderPath: '../dist/loader',
-  empty: true,
-},
+    type: 'dist',
+    esmLoaderPath: '../dist/loader',
+    empty: true,
+  },
   {
     type: 'dist-custom-elements',
     customElementsExportBehavior: 'auto-define-custom-elements',
@@ -44,11 +44,12 @@ if (process.env.NX_BUILD_ENV === 'react') {
 }
 
 // Can simply extend the list if you ever consume more esModules
-const esModules = ['some-esm-package'].join('|'); 
+const esModules = ['some-esm-package'].join('|');
 
 export const config: Config = {
   namespace: 'frontend-stenciljs',
   globalScript: 'src/global/app-init.ts',
+  globalStyle: 'src/global/app.scss',
   plugins: [
     sass()
   ],

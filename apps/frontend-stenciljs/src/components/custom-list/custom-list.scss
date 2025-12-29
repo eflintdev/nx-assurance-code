@@ -17,7 +17,7 @@
   margin: 0 0 0.5rem 1.5rem;
   font-size: 1.375rem;
   font-weight: $font-weight-semibold;
-  color: #003366;
+  color: $color-secondary-blue;
   text-transform: capitalize;
   letter-spacing: 0.5px;
 }
@@ -46,7 +46,7 @@
   transition: color $transition-base;
 
   &:hover {
-    color: #0092d2;
+    color: $color-hover-blue;
   }
 }
 

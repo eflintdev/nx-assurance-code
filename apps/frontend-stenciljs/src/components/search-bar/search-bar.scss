@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: white;
+  background-color: $color-white;
   border-radius: $border-radius-pill;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -56,14 +56,14 @@
   }
 
   &:focus {
-    outline: 2px solid white;
+    outline: 2px solid $color-white;
     outline-offset: 2px;
   }
 
   &:focus,
   &:hover {
     svg {
-      color: white;
+      color: $color-white;
     }
   }
 
