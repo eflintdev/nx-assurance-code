@@ -1,53 +1,37 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { AppFooter } from './app-footer';
-import { FooterLink, SocialLink } from '@apps-shared';
+import {
+  COMPANY_NAME_MOCK,
+  PHONE_MOCK,
+  FOOTER_LINKS_MOCK,
+  SOCIAL_LINKS_MOCK,
+  FOOTER_DISCLAIMER_BRAND_MOCK,
+  FOOTER_DISCLAIMER_INSURANCE_MOCK,
+  FOOTER_DISCLAIMER_PA_MOCK,
+  COPYRIGHT_YEAR_MOCK,
+  COPYRIGHT_NOTICE_MOCK,
+  PHONE_DISPLAY_MOCK,
+  FULL_SLOGAN_TYPE_MOCK
+} from '@apps-shared/lib/mocks/footer.mocks';
 
 describe('app-footer', () => {
-  const mockFooterLinks: FooterLink[] = [
-    { label: 'Home', href: '#' },
-    { label: 'Contact Us', href: '#contact' },
-    { label: 'Privacy & Security', href: '#privacy' },
-  ];
-
-  const mockSocialLinks: SocialLink[] = [
-    { platform: 'Facebook', url: 'https://facebook.com' },
-    { platform: 'Twitter', url: 'https://twitter.com' },
-    { platform: 'Instagram', url: 'https://instagram.com' },
-    { platform: 'LinkedIn', url: 'https://linkedin.com' },
-  ];
-
-  it('renders with required props', async () => {
-    const page = await newSpecPage({
-      components: [AppFooter],
-      template: () => (
-        <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
-        />
-      ),
-    });
-
-    expect(page.root).toBeTruthy();
-  });
 
   it('renders company name in footer', async () => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
 
     const footerDisclaimer = page.root.shadowRoot.querySelector('.footer-disclaimer');
-    expect(footerDisclaimer.textContent).toContain('Plymouth Rock Assurance');
+    expect(footerDisclaimer.textContent).toContain(COMPANY_NAME_MOCK);
   });
 
   it('renders phone number with correct format', async () => {
@@ -55,17 +39,17 @@ describe('app-footer', () => {
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
 
     const phoneLink = page.root.shadowRoot.querySelector('.footer-phone') as HTMLAnchorElement;
-    expect(phoneLink.textContent).toBe('800-516-9242');
-    expect(phoneLink.href).toContain('tel:800-516-9242');
+    expect(phoneLink.textContent).toBe(PHONE_DISPLAY_MOCK);
+    expect(phoneLink.href).toContain(`tel:${PHONE_MOCK}`);
   });
 
   it('renders all footer links', async () => {
@@ -73,17 +57,17 @@ describe('app-footer', () => {
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
 
     const footerTopLinks = page.root.shadowRoot.querySelector('.footer-top-links');
     const customLinks = footerTopLinks.querySelectorAll('custom-link');
-    expect(customLinks.length).toBe(mockFooterLinks.length);
+    expect(customLinks.length).toBe(FOOTER_LINKS_MOCK.length);
   });
 
   it('renders all social links', async () => {
@@ -93,15 +77,15 @@ describe('app-footer', () => {
         <app-footer
           companyName="Plymouth Rock Assurance"
           phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
 
     const socialLinksContainer = page.root.shadowRoot.querySelector('.social-links');
     const socialLinkElements = socialLinksContainer.querySelectorAll('.social-link');
-    expect(socialLinkElements.length).toBe(mockSocialLinks.length);
+    expect(socialLinkElements.length).toBe(SOCIAL_LINKS_MOCK.length);
   });
 
   it('renders copyright with correct year and company name', async () => {
@@ -111,15 +95,15 @@ describe('app-footer', () => {
         <app-footer
           companyName="Plymouth Rock Assurance"
           phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
 
     const copyright = page.root.shadowRoot.querySelector('.footer-copyright');
-    expect(copyright.textContent).toContain('© 2025 Plymouth Rock Assurance');
-    expect(copyright.textContent).toContain('All Rights Reserved');
+    expect(copyright.textContent).toContain(COPYRIGHT_YEAR_MOCK);
+    expect(copyright.textContent).toContain(COPYRIGHT_NOTICE_MOCK);
   });
 
   it('renders brand logo component', async () => {
@@ -127,17 +111,17 @@ describe('app-footer', () => {
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
 
     const brandLogo = page.root.shadowRoot.querySelector('brand-logo');
     expect(brandLogo).toBeTruthy();
-    expect(brandLogo.getAttribute('type')).toBe('full-slogan');
+    expect(brandLogo.getAttribute('type')).toBe(FULL_SLOGAN_TYPE_MOCK);
   });
 
   it('handles empty links array gracefully', async () => {
@@ -145,10 +129,10 @@ describe('app-footer', () => {
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
           links={[]}
-          socialLinks={mockSocialLinks}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
@@ -163,9 +147,9 @@ describe('app-footer', () => {
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
+          links={FOOTER_LINKS_MOCK}
           socialLinks={[]}
         />
       ),
@@ -181,10 +165,10 @@ describe('app-footer', () => {
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
@@ -192,7 +176,7 @@ describe('app-footer', () => {
     const socialLinksContainer = page.root.shadowRoot.querySelector('.social-links');
     const socialLinkElements = socialLinksContainer.querySelectorAll('.social-link');
 
-    mockSocialLinks.forEach((social, index) => {
+    SOCIAL_LINKS_MOCK.forEach((social, index) => {
       const link = socialLinkElements[index] as HTMLAnchorElement;
       expect(link.getAttribute('title')).toBe(social.platform);
       expect(link.getAttribute('aria-label')).toBe(social.platform);
@@ -205,10 +189,10 @@ describe('app-footer', () => {
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
@@ -227,18 +211,18 @@ describe('app-footer', () => {
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });
 
     const disclaimer = page.root.shadowRoot.querySelector('.footer-disclaimer');
-    expect(disclaimer.textContent).toContain('brand names and service marks');
-    expect(disclaimer.textContent).toContain('property and casualty insurance');
-    expect(disclaimer.textContent).toContain('PA Residents');
+    expect(disclaimer.textContent).toContain(FOOTER_DISCLAIMER_BRAND_MOCK);
+    expect(disclaimer.textContent).toContain(FOOTER_DISCLAIMER_INSURANCE_MOCK);
+    expect(disclaimer.textContent).toContain(FOOTER_DISCLAIMER_PA_MOCK);
   });
 
   it('renders phone icon SVG', async () => {
@@ -246,10 +230,10 @@ describe('app-footer', () => {
       components: [AppFooter],
       template: () => (
         <app-footer
-          companyName="Plymouth Rock Assurance"
-          phone="800-516-9242"
-          links={mockFooterLinks}
-          socialLinks={mockSocialLinks}
+          companyName={COMPANY_NAME_MOCK}
+          phone={PHONE_MOCK}
+          links={FOOTER_LINKS_MOCK}
+          socialLinks={SOCIAL_LINKS_MOCK}
         />
       ),
     });

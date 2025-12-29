@@ -1,4 +1,3 @@
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import { Component, Prop, h } from '@stencil/core';
 import { FooterLink, SocialLink } from '@apps-shared';
 

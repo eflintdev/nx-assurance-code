@@ -1,6 +1,17 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { AppHeader } from './app-header';
+import {
+  BRAND_NAME_MOCK,
+  BRAND_LOGO_ARIA_LABEL_MOCK,
+  PHONE_LINK_MOCK,
+  MENU_TOGGLE_ARIA_LABEL_MOCK,
+  SEARCH_BUTTON_ARIA_LABEL_MOCK,
+  LOGIN_LINK_TEXT_MOCK,
+  TEST_COMPANY_NAME_MOCK,
+  TEST_PHONE_MOCK,
+  NAV_LOGO_TYPE_MOCK
+} from '@apps-shared/lib/mocks/header.mocks';
 
 describe('app-header', () => {
   it('renders with required props', async () => {
@@ -8,8 +19,8 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
@@ -22,15 +33,15 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
 
     const brandLogoLink = page.root.shadowRoot.querySelector('.brand-logo') as HTMLAnchorElement;
     expect(brandLogoLink).toBeTruthy();
-    expect(brandLogoLink.getAttribute('aria-label')).toBe('Plymouth Rock Assurance');
+    expect(brandLogoLink.getAttribute('aria-label')).toBe(BRAND_LOGO_ARIA_LABEL_MOCK);
   });
 
   it('renders phone number with correct format and tel link', async () => {
@@ -38,16 +49,16 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
 
     const phoneLink = page.root.shadowRoot.querySelector('.phone-link') as HTMLAnchorElement;
     expect(phoneLink).toBeTruthy();
-    expect(phoneLink.textContent).toBe('800-516-9242');
-    expect(phoneLink.href).toContain('tel:800-516-9242');
+    expect(phoneLink.textContent).toBe(TEST_PHONE_MOCK);
+    expect(phoneLink.href).toContain(PHONE_LINK_MOCK);
   });
 
   it('renders menu toggle button with correct aria-label', async () => {
@@ -55,15 +66,15 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
 
     const menuButton = page.root.shadowRoot.querySelector('.menu-toggle') as HTMLButtonElement;
     expect(menuButton).toBeTruthy();
-    expect(menuButton.getAttribute('aria-label')).toBe('Toggle menu');
+    expect(menuButton.getAttribute('aria-label')).toBe(MENU_TOGGLE_ARIA_LABEL_MOCK);
   });
 
   it('renders search button with correct aria-label', async () => {
@@ -71,15 +82,15 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
 
     const searchButton = page.root.shadowRoot.querySelector('.search-btn') as HTMLButtonElement;
     expect(searchButton).toBeTruthy();
-    expect(searchButton.getAttribute('aria-label')).toBe('Search');
+    expect(searchButton.getAttribute('aria-label')).toBe(SEARCH_BUTTON_ARIA_LABEL_MOCK);
   });
 
   it('renders login link with correct text', async () => {
@@ -87,15 +98,15 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
 
     const loginLink = page.root.shadowRoot.querySelector('.login-link') as HTMLAnchorElement;
     expect(loginLink).toBeTruthy();
-    expect(loginLink.textContent.trim()).toContain('Log in');
+    expect(loginLink.textContent.trim()).toContain(LOGIN_LINK_TEXT_MOCK);
   });
 
   it('dispatches toggleDrawer event when menu button is clicked', async () => {
@@ -103,8 +114,8 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
@@ -126,8 +137,8 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
@@ -149,8 +160,8 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={TEST_COMPANY_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
@@ -167,15 +178,15 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Test Company"
-          phone="555-123-4567"
+          brandName={TEST_COMPANY_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
 
     const phoneLink = page.root.shadowRoot.querySelector('.phone-link') as HTMLAnchorElement;
-    expect(phoneLink.textContent).toBe('555-123-4567');
-    expect(phoneLink.href).toContain('tel:555-123-4567');
+    expect(phoneLink.textContent).toBe(TEST_PHONE_MOCK);
+    expect(phoneLink.href).toContain(`tel:${TEST_PHONE_MOCK}`);
   });
 
   it('renders brand-logo component', async () => {
@@ -183,15 +194,15 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
 
     const brandLogo = page.root.shadowRoot.querySelector('brand-logo');
     expect(brandLogo).toBeTruthy();
-    expect(brandLogo.getAttribute('type')).toBe('nav-logo');
+    expect(brandLogo.getAttribute('type')).toBe(NAV_LOGO_TYPE_MOCK);
   });
 
   it('contains menu toggle icon SVG', async () => {
@@ -199,8 +210,8 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
@@ -214,8 +225,8 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });
@@ -229,8 +240,8 @@ describe('app-header', () => {
       components: [AppHeader],
       template: () => (
         <app-header
-          brandName="Plymouth Rock Assurance"
-          phone="800-516-9242"
+          brandName={BRAND_NAME_MOCK}
+          phone={TEST_PHONE_MOCK}
         />
       ),
     });

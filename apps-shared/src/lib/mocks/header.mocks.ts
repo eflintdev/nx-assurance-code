@@ -1,0 +1,9 @@
+export const TEST_COMPANY_NAME_MOCK = 'Test Company';
+export const TEST_PHONE_MOCK = '555-123-4567';
+export const NAV_LOGO_TYPE_MOCK = 'nav-logo';
+export const BRAND_NAME_MOCK = 'Plymouth Rock Assurance';
+export const BRAND_LOGO_ARIA_LABEL_MOCK = 'Plymouth Rock Assurance';
+export const PHONE_LINK_MOCK = 'tel:555-123-4567';
+export const MENU_TOGGLE_ARIA_LABEL_MOCK = 'Toggle menu';
+export const SEARCH_BUTTON_ARIA_LABEL_MOCK = 'Search';
+export const LOGIN_LINK_TEXT_MOCK = 'Log in';

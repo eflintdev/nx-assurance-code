@@ -1,12 +1,4 @@
-export interface FooterLink {
-  label: string;
-  href: string;
-}
-
-export interface SocialLink {
-  platform: string;
-  url: string;
-}
+import { FooterLink, SocialLink } from "../types";
 
 export const COMPANY_NAME = 'Plymouth Rock Assurance';
 

@@ -1,6 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { SearchBar } from './search-bar';
-import { QuoteForm } from '../quote-form/quote-form';
 
 describe('search-bar', () => {
   it('renders input and button', async () => {
