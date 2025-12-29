@@ -33,8 +33,10 @@
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
+    "test": "stencil test --spec --coverage",
+    "test:e2e": "stencil test --e2e",
+    "test.watch": "stencil test --spec --coverage --watchAll",
+    "test.watch:e2e": "stencil test --e2e --watchAll",
     "generate": "stencil generate"
   },
   "devDependencies": {

@@ -51,3 +51,4 @@ COPILOT_HISTORY_TRANSCRIPT.md
 .env
 apps/angular-app/src/app/components
 apps/react-app/src/app/components
+coverage
