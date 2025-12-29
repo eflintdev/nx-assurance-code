@@ -1,4 +1,4 @@
-import { Component, Prop, State, h } from '@stencil/core';
+import { Component, Prop, State, h, Fragment } from '@stencil/core';
 import { SIDE_DRAWER_SECTIONS, SideDrawerSection } from '@apps-shared/lib/constants';
 
 @Component({
@@ -54,7 +54,7 @@ export class SideDrawer {
 
   render() {
     return (
-      <>
+      <Fragment>
         <div 
           class={`drawer-backdrop ${this.isOpen ? 'open' : ''}`}
           onClick={this.handleBackdropClick}
@@ -109,7 +109,7 @@ export class SideDrawer {
             </ul>
           </nav>
         </aside>
-      </>
+      </Fragment>
     );
   }
 }
