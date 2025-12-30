@@ -3,8 +3,8 @@ FROM node:20-alpine
 
 WORKDIR /apps/react-app
 
-# Install only production dependencies
-COPY /apps/node_modules ./node_modules
+# Install only production dependencies - uncomment line below if not using volumes
+# COPY /apps/node_modules ./node_modules
 
 # Copy built assets from builder
 COPY apps/react-app/dist .

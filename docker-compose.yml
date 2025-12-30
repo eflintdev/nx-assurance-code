@@ -5,10 +5,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.base
+    volumes:
+      - ./base_service:/apps
+      - base_service_node_modules:/apps/node_modules
   react-app:
     build:
       context: .
       dockerfile: apps/react-app/Dockerfile
+    volumes:
+      - base_service_node_modules:/apps/node_modules
     container_name: nx-react-app
     ports:
       - "3000:3000"
@@ -22,6 +27,8 @@ services:
     build:
       context: .
       dockerfile: apps/angular-app/Dockerfile
+    volumes:
+      - base_service_node_modules:/apps/node_modules
     container_name: nx-angular-app
     ports:
       - "4200:4200"
@@ -34,3 +41,6 @@ services:
 networks:
   nx-network:
     driver: bridge
+
+volumes:
+  base_service_node_modules:
