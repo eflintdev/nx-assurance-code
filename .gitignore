@@ -52,3 +52,5 @@ COPILOT_HISTORY_TRANSCRIPT.md
 apps/angular-app/src/app/components
 apps/react-app/src/app/components
 coverage
+apps/frontend-stenciljs/playwright-report
+test-results
