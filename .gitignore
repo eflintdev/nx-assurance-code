@@ -49,8 +49,8 @@ test-output
 .angular
 COPILOT_HISTORY_TRANSCRIPT.md
 .env
-apps/angular-app/src/app/components
-apps/react-app/src/app/components
+apps/angular-app/src/app/components/custom/*
+apps/react-app/src/app/components/custom/*
 coverage
 apps/frontend-stenciljs/playwright-report
 test-results
