@@ -60,6 +60,8 @@ export const config: Config = {
     transform: {
       '^.+\\.(ts|tsx|js|jsx|css)$': './jest-transformer.js'
     },
+    testPathIgnorePatterns: ['./src/e2e-playwright','./src/e2e-playwright/src/lib/tests/home.spec.ts'],
+    coveragePathIgnorePatterns: ['./src/e2e-playwright'],
     transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx', 'map'],
     collectCoverageFrom: [
