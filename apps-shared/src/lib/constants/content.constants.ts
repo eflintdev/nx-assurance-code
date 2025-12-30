@@ -1,8 +1,8 @@
 import { BreadcrumbItem } from "../types";
 
 export const BREADCRUMBS: BreadcrumbItem[] = [
-  { label: 'Home', href: '#' },
-  { label: 'Insurance', href: '#' },
+  { label: 'Home', href: '/' },
+  { label: 'Insurance', href: '/' },
   { label: 'New Jersey Motor Home Insurance Coverage', current: true }
 ];
 

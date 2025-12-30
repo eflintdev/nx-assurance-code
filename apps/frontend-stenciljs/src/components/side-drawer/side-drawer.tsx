@@ -71,7 +71,7 @@ export class SideDrawer {
               <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </button>
-          <nav class="drawer-nav">
+          <nav class="drawer-nav" aria-label="Side drawer">
             <ul class="drawer-menu">
               {this.sections?.length > 0 ? this.sections.map((section) => (
                 <li key={section.key} class="accordion-item">

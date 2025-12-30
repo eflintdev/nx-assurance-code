@@ -3,6 +3,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { SiteContent } from './content';
 import {
   CONTENT_BREADCRUMBS,
+  CONTENT_BREADCRUMBS_LAST_ITEM,
   CONTENT_PARAGRAPHS,
   CONTENT_SINGLE_BREADCRUMB,
   CONTENT_SINGLE_PARAGRAPH,
@@ -72,11 +73,12 @@ describe('site-content', () => {
   });
 
   it('renders current breadcrumb as span not link', async () => {
+    
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
         <site-content
-          breadcrumbs={CONTENT_BREADCRUMBS}
+          breadcrumbs={[...CONTENT_BREADCRUMBS, CONTENT_BREADCRUMBS_LAST_ITEM]}
           paragraphs={CONTENT_PARAGRAPHS}
         />
       ),

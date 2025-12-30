@@ -5,9 +5,11 @@ import { BreadcrumbItem } from '../types/index';
 
 export const CONTENT_BREADCRUMBS: BreadcrumbItem[] = [
   { label: 'Home', href: '/', current: false },
-  { label: 'Insurance', href: '/insurance', current: false },
-  { label: 'Auto Insurance', href: '/insurance/auto', current: true },
+  { label: 'Insurance', href: '/insurance', current: false }
 ];
+
+export const CONTENT_BREADCRUMBS_LAST_ITEM: BreadcrumbItem = { label: 'Auto Insurance', href: '/insurance/auto', current: true };
+
 
 export const CONTENT_PARAGRAPHS: string[] = [
   'Welcome to our insurance services.',
