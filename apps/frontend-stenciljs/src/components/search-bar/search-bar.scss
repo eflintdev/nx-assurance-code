@@ -20,8 +20,8 @@
   background-color: $color-white;
   border-radius: $border-radius-pill;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid #bec7d1;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+  border: 0.125rem solid #bec7d1;
   padding: 0.125rem;
 }
 
@@ -60,8 +60,8 @@
   }
 
   &:focus {
-    outline: 2px solid $color-white;
-    outline-offset: 2px;
+    outline: 0.125rem solid $color-white;
+    outline-offset: 0.125rem;
   }
 
   &:focus,
@@ -73,8 +73,8 @@
 
   svg {
     display: block;
-    width: 18px;
-    height: 18px;
+    width: 1.125rem;
+    height: 1.125rem;
     transform: scale(1.5);
   }
 }

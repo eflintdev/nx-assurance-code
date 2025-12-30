@@ -11,8 +11,8 @@
 
 .banner-container {
   width: 100%;
-  max-width: 1130px;
-  max-width: 1072px;
+  max-width: 70.625rem;
+  max-width: 67rem;
   display: flex;
   align-items: center;
   padding: 0 1rem;
@@ -29,13 +29,13 @@
 
 @media (max-width: 1023px) {
   .banner-section h1 {
-    max-width: 694px;
+    max-width: 43.375rem;
   }
 }
 
 @media (min-width: 1024px) {
   .banner-section h1 {
-    max-width: 610.5px;
+    max-width: 38.15625rem;
   }
 }
 
