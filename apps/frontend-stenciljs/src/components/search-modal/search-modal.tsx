@@ -11,29 +11,48 @@ export class SearchModal {
    */
   @State() isOpen = false;
 
+  /**
+   * Lifecycle method called after component is loaded.
+   */
   componentDidLoad() {
     // Listen for toggle events from app-header
     window.addEventListener('toggleSearchModal', this.handleToggle);
   }
 
+  /**
+   * Lifecycle method called when component is removed.
+   * Removes event listener for search modal toggle.
+   */
   disconnectedCallback() {
     window.removeEventListener('toggleSearchModal', this.handleToggle);
   }
 
+  /**
+   * Toggles the modal open/closed state.
+   */
   handleToggle = () => {
     this.isOpen = !this.isOpen;
   };
 
+  /**
+   * Handles click on the close button to close the modal.
+   */
   handleClose = () => {
     this.isOpen = false;
   };
 
+  /**
+   * Handles click on the backdrop to close the modal.
+   */
   handleBackdropClick = () => {
     this.isOpen = false;
   };
 
+  /**
+   * Handles click inside the modal content to prevent closing.
+   * @param e Mouse event
+   */
   handleModalClick = (e: MouseEvent) => {
-    // Prevent clicks inside modal from closing it
     e.stopPropagation();
   };
 

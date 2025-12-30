@@ -11,11 +11,19 @@ export class SearchBar {
    */
   @State() searchValue = '';
 
+  /**
+   * Handles input changes and updates the search value.
+   * @param event Input event from the search field
+   */
   handleInput = (event: Event) => {
     const target = event.target as HTMLInputElement;
     this.searchValue = target.value;
   };
 
+  /**
+   * Handles form submission for the search.
+   * @param event Form submit event
+   */
   handleSubmit = (event: Event) => {
     event.preventDefault();
     // Handle search submission

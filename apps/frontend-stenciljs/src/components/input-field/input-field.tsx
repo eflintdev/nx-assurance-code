@@ -67,6 +67,9 @@ export class InputField {
 
   @State() _uid = '';
 
+  /**
+   * Lifecycle method called after component is loaded.
+   */
   componentWillLoad() {
     // Generate a stable id if not provided
     if (!this.fieldId) {
@@ -75,30 +78,50 @@ export class InputField {
     }
   }
 
+  /**
+   * Returns the field ID, falling back to a generated unique ID if not provided.
+   * @returns {string} The field's unique identifier.
+   */
   private getId() {
     return this.fieldId || this._uid;
   }
 
+  /**
+   * Handles input/change events for the field, updates value and emits valueChange.
+   * @param ev Input event from the field
+   */
   private onInput = (ev: Event) => {
     const target = ev.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
     const newValue: string | number | undefined = this.type === 'number' && this.field === 'input'
       ? (target as HTMLInputElement).valueAsNumber
       : target.value;
-    this.value = newValue as any;
+    this.value = newValue;
     const valid = (target as HTMLInputElement).checkValidity ? (target as HTMLInputElement).checkValidity() : true;
     this.valueChange.emit({ value: this.value, id: this.getId(), name: this.name, valid });
   };
 
+  /**
+   * Handles focus event for the field and emits fieldFocus.
+   */
   private onFocus = () => {
     this.fieldFocus.emit({ id: this.getId(), name: this.name });
   };
 
+  /**
+   * Handles blur event for the field, checks validity, and emits fieldBlur.
+   * @param ev Blur event from the field
+   */
   private onBlur = (ev: Event) => {
     const target = ev.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
     const valid = (target as HTMLInputElement).checkValidity ? (target as HTMLInputElement).checkValidity() : true;
     this.fieldBlur.emit({ id: this.getId(), name: this.name, valid });
   };
 
+  /**
+   * Renders the appropriate form control (input, select, or textarea) based on props.
+   * Applies common attributes, event handlers, and accessibility features.
+   * @returns JSX element for the form control
+   */
   private renderControl() {
     const common = {
       id: this.getId(),
@@ -115,21 +138,23 @@ export class InputField {
       onBlur: this.onBlur,
       'aria-invalid': this.errorText ? 'true' : 'false',
       'aria-describedby': this.helpText || this.errorText ? `${this.getId()}-desc` : undefined,
-    } as any;
+    };
 
-    const constraints = {
+    // For providing selection field option attributes
+    const inputAttributes = {
       pattern: this.pattern,
-      min: this.min as any,
-      max: this.max as any,
-      step: this.step as any,
+      min: this.min,
+      max: this.max,
+      step: this.step,
       minLength: this.minlength,
       maxLength: this.maxlength,
-      value: this.value as any,
-    } as any;
+      value: this.value,
+    };
 
+    // Setup the selection field's options
     if (this.field === 'select') {
       return (
-        <select {...common} {...constraints}>
+        <select {...common} {...inputAttributes}>
           {(this.options || []).map(opt => (
             <option value={opt.value} disabled={!!opt.disabled}>
               {opt.label}
@@ -138,16 +163,16 @@ export class InputField {
         </select>
       );
     }
-
+    // Setup text area fields
     if (this.field === 'textarea') {
       return (
-        <textarea {...common} {...constraints} />
+        <textarea {...common} {...inputAttributes} />
       );
     }
 
-    // default to input
+    // Default to input
     return (
-      <input type={this.type} {...common} {...constraints} />
+      <input type={this.type} {...common} {...inputAttributes} />
     );
   }
 

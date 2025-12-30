@@ -16,13 +16,19 @@ export class AppHeader {
    */
   @Prop() phone: string;
 
+  /**
+   * Handles menu toggle button click.
+   * Dispatches a custom event for the side drawer to listen to.
+   */
   handleMenuToggle = () => {
-    // Dispatch custom event for side drawer to listen to
     window.dispatchEvent(new CustomEvent('toggleDrawer'));
   };
 
+  /**
+   * Handles search button click.
+   * Dispatches a custom event for the search modal to listen to.
+   */
   handleSearchToggle = () => {
-    // Dispatch custom event for search modal to listen to
     window.dispatchEvent(new CustomEvent('toggleSearchModal'));
   };
 

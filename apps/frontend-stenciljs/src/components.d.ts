@@ -45,6 +45,9 @@ export namespace Components {
         "heading": string;
     }
     interface BrandLogo {
+        /**
+          * Brand logo identifier or kind (type)
+         */
         "type": string;
     }
     interface CustomLink {
@@ -346,6 +349,9 @@ declare namespace LocalJSX {
         "heading": string;
     }
     interface BrandLogo {
+        /**
+          * Brand logo identifier or kind (type)
+         */
         "type"?: string;
     }
     interface CustomLink {

@@ -23,29 +23,48 @@ export class SideDrawer {
    */
   @Prop() sections: SideDrawerSection[] = SIDE_DRAWER_SECTIONS;
 
+  /**
+   * Lifecycle method called after component is loaded.
+   */
   componentDidLoad() {
-    // Listen for toggle events from app-header
     window.addEventListener('toggleDrawer', this.handleToggle);
   }
 
+  /**
+   * Lifecycle method called when component is removed.
+   * Removes event listener for drawer toggle.
+   */
   disconnectedCallback() {
     window.removeEventListener('toggleDrawer', this.handleToggle);
   }
 
+  /**
+   * Toggles the drawer open/closed state.
+   */
   handleToggle = () => {
     this.isOpen = !this.isOpen;
   };
 
+  /**
+   * Handles click on the backdrop to close the drawer.
+   */
   handleBackdropClick = () => {
     this.isOpen = false;
   };
 
+  /**
+   * Handles click on the close button to close the drawer.
+   */
   handleCloseClick = () => {
     this.isOpen = false;
   };
 
+  /**
+   * Toggles the accordion section open/closed by key.
+   * Closes all sections except the clicked one.
+   * @param sectionKey Key of the section to toggle
+   */
   toggleAccordion = (sectionKey: string) => {
-    // Close all sections, then open only the clicked one
     const newExpandedSections: Record<string, boolean> = {};
     this.sections.forEach((section) => {
       newExpandedSections[section.key] = section.key === sectionKey && !this.expandedSections[sectionKey];

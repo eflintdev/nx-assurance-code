@@ -7,6 +7,9 @@ import { getNavLogo, getFullSloganLogo } from '../../utils/header.utils';
     shadow: true,
 })
 export class BrandLogo {
+    /**
+     * Brand logo identifier or kind (type)
+     */
     @Prop() type: string;
 
     render() {

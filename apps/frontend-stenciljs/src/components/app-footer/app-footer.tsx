@@ -27,6 +27,12 @@ export class AppFooter {
    */
   @Prop() socialLinks!: SocialLink[];
 
+  /**
+   * Returns the SVG icon for a given social media platform.
+   *
+   * @param platform - The name of the social media platform (e.g., 'Facebook', 'Twitter').
+   * @returns The corresponding SVG icon as a JSX element, or the platform name if not found.
+   */
   private getSocialIcon(platform: string) {
     const iconMap = {
       'Facebook': (

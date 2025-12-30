@@ -40,19 +40,27 @@ export class QuoteForm {
   private zipRegex!: RegExp;
   private phoneRegex!: RegExp;
 
+  /**
+   * Lifecycle method called after component is loaded.
+   */
   componentWillLoad() {
     if (this.zipPattern) {
       try { this.zipRegex = new RegExp(this.zipPattern); } catch {
-        // Ignore invalid regex patterns
+        // Add additional code - ignore invalid regex patterns
       }
     }
     if (this.phonePattern) {
       try { this.phoneRegex = new RegExp(this.phonePattern); } catch {
-        // Ignore invalid regex patterns
+        // Add additional code - ignore invalid regex patterns
       }
     }
   }
 
+  /**
+   * Handles valueChange events from child input-field components.
+   * Updates form values and clears errors for the changed field.
+   * @param ev CustomEvent containing value, id, name, and validity
+   */
   @Listen('valueChange')
   onChildValueChange(ev: CustomEvent<{ value: string | number | boolean; id?: string; name?: string; valid: boolean }>) {
     const name = ev.detail.name;
@@ -65,12 +73,21 @@ export class QuoteForm {
     }
   }
 
+  /**
+   * Validates the form values using external validation logic.
+   * Updates error state and returns true if valid, false otherwise.
+   * @returns {boolean} Whether the form is valid
+   */
   private validate(): boolean {
     const errs = validateQuoteForm(this.values, this.zipRegex, this.phoneRegex);
     this.errors = errs;
     return Object.keys(errs).length === 0;
   }
 
+  /**
+   * Handles form submission, validates, and emits formSubmit if valid.
+   * @param e Form submit event
+   */
   private onSubmit = (e: Event) => {
     e.preventDefault();
     if (!this.validate()) return;
@@ -83,6 +100,11 @@ export class QuoteForm {
     }
   };
 
+  /**
+   * Returns the error message for a given field name, if any.
+   * @param name Field name
+   * @returns Error message string or undefined
+   */
   private fieldError(name: string): string | undefined {
     return this.errors[name];
   }
