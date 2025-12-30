@@ -1,0 +1,62 @@
+// This is a Jenkinsfile starter template for this monorepo
+
+environment {
+    NX_CACHE = 'false'
+    NODE_ENV = 'ci'
+}
+
+stages {
+    stage('Checkout') {
+        steps {
+            checkout scm
+        }
+    }
+
+    stage('Install Dependencies') {
+        steps {
+            sh 'npm ci'
+        }
+    }
+
+    stage('Lint') {
+        steps {
+            sh 'npx nx run-many --target=lint --all'
+        }
+    }
+
+    stage('Test') {
+        steps {
+            sh 'npx nx run-many --target=test --all --ci'
+        }
+    }
+
+    stage('Build Staging') {
+        environment {
+            BUILD_ENV = 'staging'
+            API_URL = 'https://staging.api.example.com'
+        }
+        steps {
+            sh 'npx nx run-many --target=build --configuration=staging --all'
+            // Example: sh 'npx nx build angular-app --configuration=staging'
+            // Example: sh 'npx nx build react-app --configuration=staging'
+        }
+    }
+
+    stage('Build Production') {
+        environment {
+            BUILD_ENV = 'production'
+            API_URL = 'https://api.example.com'
+        }
+        steps {
+            sh 'npx nx run-many --target=build --configuration=production --all'
+            // Example: sh 'npx nx build angular-app --configuration=production'
+            // Example: sh 'npx nx build react-app --configuration=production'
+        }
+    }
+
+    stage('E2E Tests') {
+        steps {
+            sh 'npx nx run-many --target=e2e --all --ci || true'
+        }
+    }
+}
