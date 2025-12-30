@@ -5,6 +5,10 @@
   display: block;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -29,7 +33,7 @@
 
 .modal-content {
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 1140px;
   background-color: transparent;
   padding: 3rem 2rem 2rem 2rem;
@@ -52,7 +56,7 @@
     font-weight: 600;
     font-size: 1.125rem;
     margin-top: 0;
-    margin-bottom: 0.9375rem;
+    margin-bottom: 1.625rem;
   }
 }
 

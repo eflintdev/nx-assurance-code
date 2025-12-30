@@ -5,6 +5,10 @@
   display: block;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .search-form {
   width: 100%;
 }

@@ -34,7 +34,7 @@ export class SiteContent {
                 <a href={item.href}>{item.label}</a>
               )}
               {index < this.breadcrumbs.length - 1 && (
-                <span class="breadcrumbs-separator">&gt;</span>
+                <span class="breadcrumbs-separator" aria-hidden="true">&gt;</span>
               )}
             </Fragment>
           )) : ''}

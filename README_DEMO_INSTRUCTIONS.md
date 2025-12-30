@@ -71,6 +71,10 @@ npm install --legacy-peer-deps
   npx nx run frontend-stenciljs:start
   ```
 
+- If trying to load the StencilJS components in Angular or React run **'npx nx run frontend-stenciljs:start'** first:
+
+  And then either:
+
 - React app:
 
   ```bash
@@ -82,7 +86,51 @@ npm install --legacy-peer-deps
   npx nx run angular-app:serve
   ```
 
-## Build Applications
+- Stencil JS Custom Commands:
+
+- These build StencilJS custom components and copy the dist to **apps/react-app/src/app/components/custom** folder for use in React:
+
+- Development:
+
+  ```bash
+  nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-react:development
+  ```
+
+- Production:
+
+  ```bash
+  nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-react:prod
+  ```
+
+- These build StencilJS custom components and copy the dist **apps/angular-app/src/app/components/custom** folder for use in Angular:
+  
+- Development:
+
+  ```bash
+  nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-angular:development
+  ```
+
+- Production:
+
+  ```bash
+  nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-angular:prod
+  ```
+
+- These build StencilJS custom components and copy the dist to both Angular and React custom folders. Then it builds both apps to use the StencilJS components:
+
+- Development:
+
+  ```bash
+  nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-all:development
+  ```
+- Production:
+
+  ```bash
+  nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-all:prod
+  ```
+
+
+## Normal Application Build Commands
 
 - Stencil app build:
 
@@ -117,6 +165,17 @@ npm install --legacy-peer-deps
   ```
 
 ## E2E Tests (Playwright)
+
+- Dependencies 
+
+  Ensure that Playwright is installed globally:
+  - https://playwright.dev/docs/intro
+
+- StencilJS (Most Relevant E2E for current POC phase): 
+
+  ```bash
+  nx run frontend-stenciljs:test:e2e:playwright
+  ```
 
 - React E2E:
 

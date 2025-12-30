@@ -68,7 +68,7 @@ export class AppFooter {
         <div class="footer-top">
           <div class="footer-top-content">
             <brand-logo type="full-slogan"></brand-logo>
-            <nav class="footer-top-links">
+            <nav class="footer-top-links" aria-label="Footer">
               {this.links && this.links.length > 0 ? this.links.map((link) => (
                 <custom-link key={link.label} label={link.label} href={link.href}></custom-link>
               )) : ''}
@@ -104,7 +104,7 @@ export class AppFooter {
             <div class="footer-content">
               <div class="footer-info">
                 <p class="footer-disclaimer">
-                  {this.companyName} Assurance<sup>®</sup> and Plymouth Rock<sup>®</sup> are brand names and service marks used by separate underwriting, managed insurance, and management companies that offer property and casualty insurance in multiple states pursuant to licensing agreements. Each underwriting and managed insurance company is a separate legal entity that is financially responsible only for its own insurance products. A full list of underwriting companies by state can be found on our <custom-link variant="footer-bottom" label="states licensed & disclaimers page" href="/states-licensed-disclaimers"></custom-link>. Actual coverage is subject to the language of the policy as issued. Some discounts, coverages, payment plans, features and benefits are not available in all states and companies, and premiums may vary by purchase method. PA Residents: <span>WE RESERVE THE RIGHT TO REFUSE TO QUOTE ANY INDIVIDUAL A PREMIUM RATE FOR THE INSURANCE ADVERTISED HEREIN</span>.
+                  {this.companyName} <sup>®</sup> and Plymouth Rock<sup>®</sup> are brand names and service marks used by separate underwriting, managed insurance, and management companies that offer property and casualty insurance in multiple states pursuant to licensing agreements. Each underwriting and managed insurance company is a separate legal entity that is financially responsible only for its own insurance products. A full list of underwriting companies by state can be found on our <custom-link variant="footer-bottom" label="states licensed & disclaimers page" href="/states-licensed-disclaimers"></custom-link>. Actual coverage is subject to the language of the policy as issued. Some discounts, coverages, payment plans, features and benefits are not available in all states and companies, and premiums may vary by purchase method. PA Residents: <span>WE RESERVE THE RIGHT TO REFUSE TO QUOTE ANY INDIVIDUAL A PREMIUM RATE FOR THE INSURANCE ADVERTISED HEREIN</span>.
                 </p>
                 <p class="footer-copyright">© 2025 {this.companyName}. All Rights Reserved.</p>
               </div>

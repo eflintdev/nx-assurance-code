@@ -23,12 +23,13 @@
 
 .if-req {
   color: $color-required;
-  margin-left: $spacing-xs;
+  margin-left: $spacing-sm;
 }
 
 .if-control {
   @include input-base;
   min-height: 2.78125rem;
+  border-color: rgb(154,154,154);
 }
 
 .if-desc {

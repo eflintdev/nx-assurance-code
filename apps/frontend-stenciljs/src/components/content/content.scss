@@ -14,11 +14,19 @@
   width: 100%;
   max-width: $max-width-container;
   margin: 0 auto;
-  padding: 0 1.875rem 2rem;
+  padding: 0 0.65rem 2rem;
   font-family: $font-family-primary;
 
   @include tablet {
     padding: 0 1.25rem 1.5rem;
+  }
+}
+.content{
+  &-body {
+    padding: 0.625rem;
+    & p{
+      margin-top: 0;
+    }
   }
 }
 
@@ -42,9 +50,10 @@
 
 .breadcrumbs-separator {
   color: $color-gray-medium-2;
-  padding: 0 $spacing-sm;
+  padding: 0 0.35rem;
 }
 
 .quote-section {
-  margin-top: 1.25rem;
+  // margin-top: 1.25rem;
+  margin-top: 0;
 }

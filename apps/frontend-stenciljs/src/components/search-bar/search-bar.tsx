@@ -37,7 +37,7 @@ export class SearchBar {
           <input
             type="text"
             class="search-input"
-            placeholder="What can we help you find"
+            placeholder="What can we help you find?"
             value={this.searchValue}
             onInput={this.handleInput}
           />
