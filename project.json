@@ -79,8 +79,15 @@
         "command": "nx run-many -t e2e --all"
       }
     },
+    "create-custom-build-folders": {
+      "executor": "nx:run-commands",
+      "options": {
+      "command": "mkdir -p apps/angular-app/src/app/components/custom; mkdir -p apps/react-app/src/app/components/custom"
+      }
+    },
     "stenciljs-custom-commands": {
       "executor": "nx:run-commands",
+      "dependsOn": ["create-custom-build-folders"],
       "configurations": {
         "build-stenciljs-to-react:development": {
           "command": "rm -rf apps/react-app/src/app/components/custom; nx run frontend-stenciljs:build --configuration=development; cp -R apps/frontend-stenciljs/dist apps/react-app/src/app/components/custom",
