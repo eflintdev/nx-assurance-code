@@ -121,15 +121,20 @@
         }
       }
     },
-    "docker-commands": {
+    "docker-build-commands": {
       "executor": "nx:run-commands",
       "configurations": {
         "docker-compose-up-build": {
-          "command": "docker compose up --build"
+          "command": "nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-all:prod; docker compose up --build"
         },
         "docker-compose-up": {
-          "command": "docker compose up"
-        },
+          "command": "nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-all:prod; docker compose up"
+        }
+      }
+    },
+    "docker-other-commands": {
+      "executor": "nx:run-commands",
+      "configurations": {
         "docker-compose-stop": {
           "command": "docker compose stop"
         },
