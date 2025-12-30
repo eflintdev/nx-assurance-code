@@ -2,7 +2,10 @@
   "name": "nx-assurance-code",
   "root": ".",
   "projectType": "application",
-  "tags": ["type:tool", "scope:root"],
+  "tags": [
+    "type:tool",
+    "scope:root"
+  ],
   "targets": {
     "graph": {
       "executor": "@nx/workspace:run-commands",
@@ -25,27 +28,35 @@
     "clean": {
       "executor": "@nx/workspace:run-commands",
       "options": {
-        "commands": ["rm -rf dist .nx/cache"],
+        "commands": [
+          "rm -rf dist .nx/cache"
+        ],
         "parallel": false
       }
     },
     "build": {
       "executor": "@nx/workspace:run-commands",
-      "outputs": ["{workspaceRoot}/dist"],
+      "outputs": [
+        "{workspaceRoot}/dist"
+      ],
       "options": {
         "command": "nx run-many -t build --all"
       }
     },
     "build:prod": {
       "executor": "@nx/workspace:run-commands",
-      "outputs": ["{workspaceRoot}/dist"],
+      "outputs": [
+        "{workspaceRoot}/dist"
+      ],
       "options": {
         "command": "nx run-many -t build --all --configuration=production"
       }
     },
     "build:development": {
       "executor": "@nx/workspace:run-commands",
-      "outputs": ["{workspaceRoot}/dist"],
+      "outputs": [
+        "{workspaceRoot}/dist"
+      ],
       "options": {
         "command": "nx run-many -t build --all --configuration=development"
       }
@@ -100,6 +111,23 @@
         },
         "build-stenciljs-to-all:prod": {
           "command": "npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-react:prod; npx nx run nx-assurance-code:stenciljs-custom-commands:build-stenciljs-to-angular:prod; npx nx run angular-app:build:production; npx nx run @org/react-app:build"
+        }
+      }
+    },
+    "docker-commands": {
+      "executor": "nx:run-commands",
+      "configurations": {
+        "docker-compose-up-build": {
+          "command": "docker compose up --build"
+        },
+        "docker-compose-up": {
+          "command": "docker compose up"
+        },
+        "docker-compose-stop": {
+          "command": "docker compose stop"
+        },
+        "docker-compose-down": {
+          "command": "docker compose down"
         }
       }
     }
