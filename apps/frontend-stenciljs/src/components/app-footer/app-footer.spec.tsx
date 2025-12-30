@@ -13,7 +13,7 @@ import {
   COPYRIGHT_NOTICE_MOCK,
   PHONE_DISPLAY_MOCK,
   FULL_SLOGAN_TYPE_MOCK
-} from '@apps-shared/lib/mocks/footer.mocks';
+} from '@apps-shared/lib/mocks';
 
 describe('app-footer', () => {
 

@@ -11,7 +11,7 @@ import {
   TEST_COMPANY_NAME_MOCK,
   TEST_PHONE_MOCK,
   NAV_LOGO_TYPE_MOCK
-} from '@apps-shared/lib/mocks/header.mocks';
+} from '@apps-shared/lib/mocks';
 
 describe('app-header', () => {
   it('renders with required props', async () => {
