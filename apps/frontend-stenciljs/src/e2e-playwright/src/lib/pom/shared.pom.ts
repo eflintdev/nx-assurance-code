@@ -15,7 +15,6 @@ export class SharedPage {
     readonly page: Page;
     // readonly locators: SharedPageLocators;
 
-
     /**
      * Creates a new SharedPage instance.
      * @param page Playwright Page object for browser interaction.

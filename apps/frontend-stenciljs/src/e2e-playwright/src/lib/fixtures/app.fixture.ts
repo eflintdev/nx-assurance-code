@@ -19,14 +19,14 @@ export const test = base.extend<AppFixtureType>({
     /**
      * Provides a SharedPage object for shared/common UI interactions.
      */
-    sharedPage: async ({ page }, use) => {
+    sharedPage: async({ page }, use) => {
         const sharedPage = new SharedPage(page);
         await use(sharedPage);
     },
     /**
      * Provides a HomePage object for home page interactions.
      */
-    homePage: async ({ page }, use) => {
+    homePage: async({ page }, use) => {
         const homePage = new HomePage(page);
         await use(homePage);
     }

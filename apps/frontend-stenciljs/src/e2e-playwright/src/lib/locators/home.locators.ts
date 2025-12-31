@@ -23,4 +23,3 @@
  * Type representing the return value of HomePageLocator.
  */
 // export type HomePageLocators = ReturnType<typeof HomePageLocator>;
-

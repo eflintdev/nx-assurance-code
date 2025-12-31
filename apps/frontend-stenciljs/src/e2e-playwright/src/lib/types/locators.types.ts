@@ -17,4 +17,3 @@ export type FeaturePageBaseLocatorsType = {
  * Locators specific to the Home Page, extending the base feature page locators.
  */
 export type HomePageLocatorsType = FeaturePageBaseLocatorsType & {}
-

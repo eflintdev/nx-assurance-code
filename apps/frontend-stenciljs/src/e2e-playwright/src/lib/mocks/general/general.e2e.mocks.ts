@@ -10,7 +10,7 @@ export const HEADER_PHONE_MOCK = '844-242-3555';
 export const BREADCRUMBS_MOCK = [
 	{ label: 'Home', href: '/', current: false },
 	{ label: 'Insurance', href: '/', current: false },
-	{ label: 'New Jersey Motor Home Insurance Coverage', href: '/insurance/auto', current: true },
+	{ label: 'New Jersey Motor Home Insurance Coverage', href: '/insurance/auto', current: true }
 ];
 export const CONTENT_PARAGRAPHS_MOCK = [
 	'Think about all of the valuables that are stored within your motorhome',
@@ -26,7 +26,7 @@ export const QUOTE_FORM_MOCK = {
 	address: '123 Main St',
 	city: 'Boston',
 	zip: '02118',
-	state: 'MA',
+	state: 'MA'
 };
 
 // Footer
