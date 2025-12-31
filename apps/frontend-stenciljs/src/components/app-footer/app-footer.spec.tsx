@@ -16,8 +16,7 @@ import {
 } from '@apps-shared/lib/mocks';
 
 describe('app-footer', () => {
-
-  it('renders company name in footer', async () => {
+  it('renders company name in footer', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -27,14 +26,14 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const footerDisclaimer = page.root.shadowRoot.querySelector('.footer-disclaimer');
     expect(footerDisclaimer.textContent).toContain(COMPANY_NAME_MOCK);
   });
 
-  it('renders phone number with correct format', async () => {
+  it('renders phone number with correct format', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -44,7 +43,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const phoneLink = page.root.shadowRoot.querySelector('.footer-phone') as HTMLAnchorElement;
@@ -52,7 +51,7 @@ describe('app-footer', () => {
     expect(phoneLink.href).toContain(`tel:${PHONE_MOCK}`);
   });
 
-  it('renders all footer links', async () => {
+  it('renders all footer links', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -62,7 +61,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const footerTopLinks = page.root.shadowRoot.querySelector('.footer-top-links');
@@ -70,7 +69,7 @@ describe('app-footer', () => {
     expect(customLinks.length).toBe(FOOTER_LINKS_MOCK.length);
   });
 
-  it('renders all social links', async () => {
+  it('renders all social links', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -80,7 +79,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const socialLinksContainer = page.root.shadowRoot.querySelector('.social-links');
@@ -88,7 +87,7 @@ describe('app-footer', () => {
     expect(socialLinkElements.length).toBe(SOCIAL_LINKS_MOCK.length);
   });
 
-  it('renders copyright with correct year and company name', async () => {
+  it('renders copyright with correct year and company name', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -98,7 +97,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const copyright = page.root.shadowRoot.querySelector('.footer-copyright');
@@ -106,7 +105,7 @@ describe('app-footer', () => {
     expect(copyright.textContent).toContain(COPYRIGHT_NOTICE_MOCK);
   });
 
-  it('renders brand logo component', async () => {
+  it('renders brand logo component', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -116,7 +115,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const brandLogo = page.root.shadowRoot.querySelector('brand-logo');
@@ -124,7 +123,7 @@ describe('app-footer', () => {
     expect(brandLogo.getAttribute('type')).toBe(FULL_SLOGAN_TYPE_MOCK);
   });
 
-  it('handles empty links array gracefully', async () => {
+  it('handles empty links array gracefully', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -134,7 +133,7 @@ describe('app-footer', () => {
           links={[]}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const footerTopLinks = page.root.shadowRoot.querySelector('.footer-top-links');
@@ -142,7 +141,7 @@ describe('app-footer', () => {
     expect(customLinks.length).toBe(0);
   });
 
-  it('handles empty social links array gracefully', async () => {
+  it('handles empty social links array gracefully', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -152,7 +151,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={[]}
         />
-      ),
+      )
     });
 
     const socialLinksContainer = page.root.shadowRoot.querySelector('.social-links');
@@ -160,7 +159,7 @@ describe('app-footer', () => {
     expect(socialLinkElements.length).toBe(0);
   });
 
-  it('renders correct social icons for each platform', async () => {
+  it('renders correct social icons for each platform', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -170,7 +169,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const socialLinksContainer = page.root.shadowRoot.querySelector('.social-links');
@@ -184,7 +183,7 @@ describe('app-footer', () => {
     });
   });
 
-  it('renders correct social icon SVGs', async () => {
+  it('renders correct social icon SVGs', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -194,7 +193,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const socialLinksContainer = page.root.shadowRoot.querySelector('.social-links');
@@ -206,7 +205,7 @@ describe('app-footer', () => {
     });
   });
 
-  it('renders footer disclaimer text', async () => {
+  it('renders footer disclaimer text', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -216,7 +215,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const disclaimer = page.root.shadowRoot.querySelector('.footer-disclaimer');
@@ -225,7 +224,7 @@ describe('app-footer', () => {
     expect(disclaimer.textContent).toContain(FOOTER_DISCLAIMER_PA_MOCK);
   });
 
-  it('renders phone icon SVG', async () => {
+  it('renders phone icon SVG', async() => {
     const page = await newSpecPage({
       components: [AppFooter],
       template: () => (
@@ -235,7 +234,7 @@ describe('app-footer', () => {
           links={FOOTER_LINKS_MOCK}
           socialLinks={SOCIAL_LINKS_MOCK}
         />
-      ),
+      )
     });
 
     const phoneIcon = page.root.shadowRoot.querySelector('.footer-cta-icon');

@@ -4,7 +4,7 @@ import { getNavLogo, getFullSloganLogo } from '../../utils/header.utils';
 @Component({
     tag: 'brand-logo',
     styleUrl: 'brand-logo.scss',
-    shadow: true,
+    shadow: true
 })
 export class BrandLogo {
     /**

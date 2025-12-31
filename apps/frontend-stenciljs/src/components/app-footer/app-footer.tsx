@@ -1,11 +1,10 @@
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import { Component, Prop, h } from '@stencil/core';
 import { FooterLink, SocialLink } from '@apps-shared';
 
 @Component({
   tag: 'app-footer',
   styleUrl: 'app-footer.scss',
-  shadow: true,
+  shadow: true
 })
 export class AppFooter {
   /**
@@ -56,7 +55,7 @@ export class AppFooter {
             stroke-linejoin="round"
           />
         </svg>
-      ),
+      )
     };
 
     return iconMap[platform] || <span>{platform}</span>;

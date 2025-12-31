@@ -3,7 +3,7 @@ import { Component, Prop, h } from '@stencil/core';
 @Component({
   tag: 'custom-link',
   styleUrl: 'custom-link.scss',
-  shadow: true,
+  shadow: true
 })
 export class CustomLink {
   /**

@@ -3,12 +3,12 @@ import { newSpecPage } from '@stencil/core/testing';
 import { InputField } from './input-field';
 
 describe('input-field', () => {
-  it('renders input with label and required asterisk', async () => {
+  it('renders input with label and required asterisk', async() => {
     const page = await newSpecPage({
       components: [InputField],
       template: () => (
         <input-field label="First Name" fieldId="first-name" name="firstName" required placeholder="First Name" />
-      ),
+      )
     });
 
     expect(page.root).toBeTruthy();
@@ -24,12 +24,12 @@ describe('input-field', () => {
     expect(input.getAttribute('placeholder')).toBe('First Name');
   });
 
-  it('emits valueChange on input', async () => {
+  it('emits valueChange on input', async() => {
     const page = await newSpecPage({
       components: [InputField],
       template: () => (
         <input-field label="Email" name="email" type="email" fieldId="email" />
-      ),
+      )
     });
 
     const el = page.root as HTMLElement;
@@ -54,16 +54,16 @@ describe('input-field', () => {
     expect(typeof evt.detail.valid).toBe('boolean');
   });
 
-  it('renders select field with options', async () => {
+  it('renders select field with options', async() => {
     const options: Array<{ label: string; value: string; disabled?: boolean }> = [
       { label: 'New Jersey', value: 'NJ' },
-      { label: 'New York', value: 'NY', disabled: true },
+      { label: 'New York', value: 'NY', disabled: true }
     ];
     const page = await newSpecPage({
       components: [InputField],
       template: () => (
         <input-field label="State" name="state" field="select" options={options} />
-      ),
+      )
     });
 
     const select = page.root.shadowRoot.querySelector('select') as HTMLSelectElement;
@@ -74,12 +74,12 @@ describe('input-field', () => {
     expect(opts[1].hasAttribute('disabled')).toBe(true);
   });
 
-  it('renders textarea field', async () => {
+  it('renders textarea field', async() => {
     const page = await newSpecPage({
       components: [InputField],
       template: () => (
         <input-field label="Notes" name="notes" field="textarea" placeholder="Type here" />
-      ),
+      )
     });
 
     const textarea = page.root.shadowRoot.querySelector('textarea') as HTMLTextAreaElement;
@@ -87,12 +87,12 @@ describe('input-field', () => {
     expect(textarea.getAttribute('placeholder')).toBe('Type here');
   });
 
-  it('shows error text and sets aria-invalid', async () => {
+  it('shows error text and sets aria-invalid', async() => {
     const page = await newSpecPage({
       components: [InputField],
       template: () => (
         <input-field label="Email" name="email" type="email" errorText="Email is required" />
-      ),
+      )
     });
 
     const desc = page.root.shadowRoot.querySelector('.if-desc');
@@ -102,12 +102,12 @@ describe('input-field', () => {
     expect(control.getAttribute('aria-invalid')).toBe('true');
   });
 
-  it('updates placeholder via attribute without mutating props directly', async () => {
+  it('updates placeholder via attribute without mutating props directly', async() => {
     const page = await newSpecPage({
       components: [InputField],
       template: () => (
         <input-field label="City" name="city" placeholder="City" />
-      ),
+      )
     });
 
     let control = page.root.shadowRoot.querySelector('input') as HTMLInputElement;

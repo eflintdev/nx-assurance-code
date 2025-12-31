@@ -9,7 +9,7 @@ import { BreadcrumbItem } from '@apps-shared/lib/types';
 @Component({
   tag: 'site-content',
   styleUrl: 'content.scss',
-  shadow: true,
+  shadow: true
 })
 export class SiteContent {
   /**

@@ -2,7 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { SearchBar } from './search-bar';
 
 describe('search-bar', () => {
-  it('renders input and button', async () => {
+  it('renders input and button', async() => {
     const page = await newSpecPage({
       components: [SearchBar],
       html: `<search-bar></search-bar>`
@@ -13,7 +13,7 @@ describe('search-bar', () => {
     expect(button).toBeTruthy();
   });
 
-  it('updates searchValue on input', async () => {
+  it('updates searchValue on input', async() => {
     const page = await newSpecPage({
       components: [SearchBar],
       html: `<search-bar></search-bar>`

@@ -5,7 +5,7 @@ import { SideDrawerSection } from '@apps-shared/lib/types';
 @Component({
   tag: 'side-drawer',
   styleUrl: 'side-drawer.scss',
-  shadow: true,
+  shadow: true
 })
 export class SideDrawer {
   /**
@@ -75,13 +75,13 @@ export class SideDrawer {
   render() {
     return (
       <Fragment>
-        <div 
+        <div
           class={`drawer-backdrop ${this.isOpen ? 'open' : ''}`}
           onClick={this.handleBackdropClick}
         ></div>
         <aside class={`side-drawer ${this.isOpen ? 'open' : ''}`}>
-          <button 
-            class="close-btn" 
+          <button
+            class="close-btn"
             onClick={this.handleCloseClick}
             aria-label="Close menu"
           >
@@ -97,7 +97,7 @@ export class SideDrawer {
                   <div class={`accordion-trigger ${this.expandedSections[section.key] ? 'expanded' : ''}`}>
                     {section.icon && <span class="accordion-icon-prefix">{section.icon}</span>}
                     <a href={section.href || `#${section.key}`} class="accordion-label">{section.label}</a>
-                    { section.listBlocks.length > 0 ? 
+                    { section.listBlocks.length > 0 ?
                     <button
                       class="accordion-toggle-btn"
                       onClick={() => this.toggleAccordion(section.key)}
@@ -111,16 +111,16 @@ export class SideDrawer {
                           <line x1="4" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                         </svg>
                       </span>
-                    </button>
-                     : '' }
+                    </button> :
+                     '' }
                   </div>
 
                   {/* Accordion Content - delegates to custom-list */}
-                  <div 
+                  <div
                     id={`${section.key}-submenu`}
                     class={`accordion-menu ${this.expandedSections[section.key] ? 'open' : ''}`}
                   >
-                    <custom-list 
+                    <custom-list
                       listBlocks={section.listBlocks}
                     ></custom-list>
                   </div>
@@ -133,4 +133,3 @@ export class SideDrawer {
     );
   }
 }
-

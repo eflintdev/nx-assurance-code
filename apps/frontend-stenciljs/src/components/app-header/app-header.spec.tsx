@@ -14,7 +14,7 @@ import {
 } from '@apps-shared/lib/mocks';
 
 describe('app-header', () => {
-  it('renders with required props', async () => {
+  it('renders with required props', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -22,13 +22,13 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     expect(page.root).toBeTruthy();
   });
 
-  it('renders brand logo with correct aria-label', async () => {
+  it('renders brand logo with correct aria-label', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -36,7 +36,7 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const brandLogoLink = page.root.shadowRoot.querySelector('.brand-logo') as HTMLAnchorElement;
@@ -44,7 +44,7 @@ describe('app-header', () => {
     expect(brandLogoLink.getAttribute('aria-label')).toBe(BRAND_LOGO_ARIA_LABEL_MOCK);
   });
 
-  it('renders phone number with correct format and tel link', async () => {
+  it('renders phone number with correct format and tel link', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -52,7 +52,7 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const phoneLink = page.root.shadowRoot.querySelector('.phone-link') as HTMLAnchorElement;
@@ -61,7 +61,7 @@ describe('app-header', () => {
     expect(phoneLink.href).toContain(PHONE_LINK_MOCK);
   });
 
-  it('renders menu toggle button with correct aria-label', async () => {
+  it('renders menu toggle button with correct aria-label', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -69,7 +69,7 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const menuButton = page.root.shadowRoot.querySelector('.menu-toggle') as HTMLButtonElement;
@@ -77,7 +77,7 @@ describe('app-header', () => {
     expect(menuButton.getAttribute('aria-label')).toBe(MENU_TOGGLE_ARIA_LABEL_MOCK);
   });
 
-  it('renders search button with correct aria-label', async () => {
+  it('renders search button with correct aria-label', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -85,7 +85,7 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const searchButton = page.root.shadowRoot.querySelector('.search-btn') as HTMLButtonElement;
@@ -93,7 +93,7 @@ describe('app-header', () => {
     expect(searchButton.getAttribute('aria-label')).toBe(SEARCH_BUTTON_ARIA_LABEL_MOCK);
   });
 
-  it('renders login link with correct text', async () => {
+  it('renders login link with correct text', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -101,7 +101,7 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const loginLink = page.root.shadowRoot.querySelector('.login-link') as HTMLAnchorElement;
@@ -109,7 +109,7 @@ describe('app-header', () => {
     expect(loginLink.textContent.trim()).toContain(LOGIN_LINK_TEXT_MOCK);
   });
 
-  it('dispatches toggleDrawer event when menu button is clicked', async () => {
+  it('dispatches toggleDrawer event when menu button is clicked', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -117,7 +117,7 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const eventSpy = jest.fn();
@@ -132,7 +132,7 @@ describe('app-header', () => {
     window.removeEventListener('toggleDrawer', eventSpy);
   });
 
-  it('dispatches toggleSearchModal event when search button is clicked', async () => {
+  it('dispatches toggleSearchModal event when search button is clicked', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -140,7 +140,7 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const eventSpy = jest.fn();
@@ -155,7 +155,7 @@ describe('app-header', () => {
     window.removeEventListener('toggleSearchModal', eventSpy);
   });
 
-  it('renders all required sections: header-left and header-right', async () => {
+  it('renders all required sections: header-left and header-right', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -163,7 +163,7 @@ describe('app-header', () => {
           brandName={TEST_COMPANY_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const headerLeft = page.root.shadowRoot.querySelector('.header-left');
@@ -173,7 +173,7 @@ describe('app-header', () => {
     expect(headerRight).toBeTruthy();
   });
 
-  it('renders with different phone number', async () => {
+  it('renders with different phone number', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -181,7 +181,7 @@ describe('app-header', () => {
           brandName={TEST_COMPANY_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const phoneLink = page.root.shadowRoot.querySelector('.phone-link') as HTMLAnchorElement;
@@ -189,7 +189,7 @@ describe('app-header', () => {
     expect(phoneLink.href).toContain(`tel:${TEST_PHONE_MOCK}`);
   });
 
-  it('renders brand-logo component', async () => {
+  it('renders brand-logo component', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -197,7 +197,7 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const brandLogo = page.root.shadowRoot.querySelector('brand-logo');
@@ -205,7 +205,7 @@ describe('app-header', () => {
     expect(brandLogo.getAttribute('type')).toBe(NAV_LOGO_TYPE_MOCK);
   });
 
-  it('contains menu toggle icon SVG', async () => {
+  it('contains menu toggle icon SVG', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -213,14 +213,14 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const menuIcon = page.root.shadowRoot.querySelector('.menu-toggle-icon svg');
     expect(menuIcon).toBeTruthy();
   });
 
-  it('contains search icon SVG', async () => {
+  it('contains search icon SVG', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -228,14 +228,14 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const searchIcon = page.root.shadowRoot.querySelector('.search-icon svg');
     expect(searchIcon).toBeTruthy();
   });
 
-  it('contains login icon SVG', async () => {
+  it('contains login icon SVG', async() => {
     const page = await newSpecPage({
       components: [AppHeader],
       template: () => (
@@ -243,7 +243,7 @@ describe('app-header', () => {
           brandName={BRAND_NAME_MOCK}
           phone={TEST_PHONE_MOCK}
         />
-      ),
+      )
     });
 
     const loginIcon = page.root.shadowRoot.querySelector('.login-icon');

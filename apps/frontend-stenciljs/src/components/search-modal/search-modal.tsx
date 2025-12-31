@@ -3,7 +3,7 @@ import { Component, State, h } from '@stencil/core';
 @Component({
   tag: 'search-modal',
   styleUrl: 'search-modal.scss',
-  shadow: true,
+  shadow: true
 })
 export class SearchModal {
   /**
@@ -58,22 +58,22 @@ export class SearchModal {
 
   render() {
     return (
-      <div 
+      <div
         class={`modal-backdrop ${this.isOpen ? 'open' : ''}`}
         onClick={this.handleBackdropClick}
       >
-        <button 
-            class="close-btn" 
+        <button
+            class="close-btn"
             onClick={this.handleClose}
             aria-label="Close search modal"
           >
             &times;
           </button>
-        <div 
+        <div
           class="modal-content"
           onClick={this.handleModalClick}
         >
-          
+
           <div class="modal-body">
             <div class="modal-search__info">
               <h2 class="modal-search__title">Search</h2>

@@ -9,7 +9,7 @@ import { QuoteFormType, StateOptionType  } from '../../types/types.ts';
 @Component({
   tag: 'quote-form',
   styleUrl: 'quote-form.scss',
-  shadow: true,
+  shadow: true
 })
 export class QuoteForm {
   @State() values: QuoteFormType = {
@@ -20,7 +20,7 @@ export class QuoteForm {
     address: '',
     city: '',
     zip: '',
-    state: '',
+    state: ''
   };
 
   @State() errors: Record<string, string> = {};

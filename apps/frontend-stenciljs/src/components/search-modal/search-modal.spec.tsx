@@ -2,7 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { SearchModal } from './search-modal';
 
 describe('search-modal', () => {
-  it('renders closed by default', async () => {
+  it('renders closed by default', async() => {
     const page = await newSpecPage({
       components: [SearchModal],
       html: `<search-modal></search-modal>`
@@ -10,7 +10,7 @@ describe('search-modal', () => {
     expect(page.root.shadowRoot.querySelector('.modal-backdrop').classList.contains('open')).toBe(false);
   });
 
-  it('opens and closes with handleToggle', async () => {
+  it('opens and closes with handleToggle', async() => {
     const page = await newSpecPage({
       components: [SearchModal],
       html: `<search-modal></search-modal>`
@@ -24,7 +24,7 @@ describe('search-modal', () => {
     expect(page.root.shadowRoot.querySelector('.modal-backdrop').classList.contains('open')).toBe(false);
   });
 
-  it('closes when backdrop is clicked', async () => {
+  it('closes when backdrop is clicked', async() => {
     const page = await newSpecPage({
       components: [SearchModal],
       html: `<search-modal></search-modal>`
@@ -38,7 +38,7 @@ describe('search-modal', () => {
     expect(instance.isOpen).toBe(false);
   });
 
-  it('closes when close button is clicked', async () => {
+  it('closes when close button is clicked', async() => {
     const page = await newSpecPage({
       components: [SearchModal],
       html: `<search-modal></search-modal>`
@@ -52,7 +52,7 @@ describe('search-modal', () => {
     expect(instance.isOpen).toBe(false);
   });
 
-  it('does not close when modal content is clicked', async () => {
+  it('does not close when modal content is clicked', async() => {
     const page = await newSpecPage({
       components: [SearchModal],
       html: `<search-modal></search-modal>`

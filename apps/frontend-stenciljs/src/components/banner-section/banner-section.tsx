@@ -3,7 +3,7 @@ import { Component, Prop, h } from '@stencil/core';
 @Component({
   tag: 'banner-section',
   styleUrl: 'banner-section.scss',
-  shadow: true,
+  shadow: true
 })
 export class BannerSection {
   /**

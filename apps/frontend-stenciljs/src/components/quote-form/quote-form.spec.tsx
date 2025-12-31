@@ -11,18 +11,18 @@ describe('quote-form', () => {
     consentParagraphs: ['By submitting, you agree to be contacted.'],
     states: [
       { label: 'New Jersey', value: 'NJ' },
-      { label: 'New York', value: 'NY' },
+      { label: 'New York', value: 'NY' }
     ],
     zipPattern: '^\\d{5}$',
     phonePattern: '^[0-9\\-()\\s]+$'
   };
 
-  it('renders title, intro, consent, fields and submit button', async () => {
+  it('renders title, intro, consent, fields and submit button', async() => {
     const page = await newSpecPage({
       components: [QuoteForm, InputField],
       template: () => (
         <quote-form {...props} />
-      ),
+      )
     });
 
     const title = page.root.shadowRoot.querySelector('.qf-title');
@@ -42,12 +42,12 @@ describe('quote-form', () => {
     expect(submit.textContent.trim()).toBe('Submit');
   });
 
-  it('populates state select options', async () => {
+  it('populates state select options', async() => {
     const page = await newSpecPage({
       components: [QuoteForm, InputField],
       template: () => (
         <quote-form {...props} />
-      ),
+      )
     });
 
     const fields = Array.from(page.root.shadowRoot.querySelectorAll('input-field')) as HTMLElement[];
@@ -58,12 +58,12 @@ describe('quote-form', () => {
     expect(options.length).toBe(props.states.length);
   });
 
-  it('emits formSubmit when valid data provided', async () => {
+  it('emits formSubmit when valid data provided', async() => {
     const page = await newSpecPage({
       components: [QuoteForm, InputField],
       template: () => (
         <quote-form {...props} />
-      ),
+      )
     });
 
     const spy = jest.fn();
@@ -71,7 +71,7 @@ describe('quote-form', () => {
 
     type ControlEl = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
     type InputFieldEl = HTMLElement & { name?: string; shadowRoot: ShadowRoot };
-    const setInput = async (name: string, value: string) => {
+    const setInput = async(name: string, value: string) => {
       const fields = Array.from(page.root.shadowRoot.querySelectorAll('input-field')) as InputFieldEl[];
       const field = fields.find((f) => f.name === name);
       expect(field).toBeTruthy();
@@ -109,12 +109,12 @@ describe('quote-form', () => {
     expect(evt.detail.state).toBe('NJ');
   });
 
-  it('does not emit formSubmit when invalid', async () => {
+  it('does not emit formSubmit when invalid', async() => {
     const page = await newSpecPage({
       components: [QuoteForm, InputField],
       template: () => (
         <quote-form {...props} />
-      ),
+      )
     });
 
     const spy = jest.fn();
@@ -123,7 +123,7 @@ describe('quote-form', () => {
     // Only fill some fields, leaving required ones blank
     type ControlEl = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
     type InputFieldEl = HTMLElement & { name?: string; shadowRoot: ShadowRoot };
-    const setInput = async (name: string, value: string) => {
+    const setInput = async(name: string, value: string) => {
       const fields = Array.from(page.root.shadowRoot.querySelectorAll('input-field')) as InputFieldEl[];
       const field = fields.find((f) => f.name === name);
       expect(field).toBeTruthy();

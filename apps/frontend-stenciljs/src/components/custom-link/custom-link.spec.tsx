@@ -22,23 +22,23 @@ import {
 } from '@apps-shared/lib/mocks/custom-link.mock';
 
 describe('custom-link', () => {
-  it('renders with label and href', async () => {
+  it('renders with label and href', async() => {
     const page = await newSpecPage({
       components: [CustomLink],
       template: () => (
         <custom-link label={CUSTOM_LINK_LABEL} href={CUSTOM_LINK_HREF} />
-      ),
+      )
     });
 
     expect(page.root).toBeTruthy();
   });
 
-  it('renders anchor with correct text and href', async () => {
+  it('renders anchor with correct text and href', async() => {
     const page = await newSpecPage({
       components: [CustomLink],
       template: () => (
         <custom-link label={CUSTOM_LINK_LABEL} href={CUSTOM_LINK_HREF} />
-      ),
+      )
     });
 
     const anchor = page.root.shadowRoot.querySelector('a') as HTMLAnchorElement;
@@ -47,12 +47,12 @@ describe('custom-link', () => {
     expect(anchor.href).toContain(CUSTOM_LINK_HREF);
   });
 
-  it('applies default variant class footer-top', async () => {
+  it('applies default variant class footer-top', async() => {
     const page = await newSpecPage({
       components: [CustomLink],
       template: () => (
         <custom-link label={CUSTOM_LINK_LABEL_DEFAULT} href={CUSTOM_LINK_HREF_DEFAULT} />
-      ),
+      )
     });
 
     const anchor = page.root.shadowRoot.querySelector('a');
@@ -60,24 +60,24 @@ describe('custom-link', () => {
     expect(anchor.className).toContain(CUSTOM_LINK_CLASS_FOOTER_TOP);
   });
 
-  it('applies footer-bottom variant class when specified', async () => {
+  it('applies footer-bottom variant class when specified', async() => {
     const page = await newSpecPage({
       components: [CustomLink],
       template: () => (
         <custom-link label={CUSTOM_LINK_LABEL_BOTTOM} href={CUSTOM_LINK_HREF_BOTTOM} variant={CUSTOM_LINK_VARIANT_FOOTER_BOTTOM} />
-      ),
+      )
     });
 
     const anchor = page.root.shadowRoot.querySelector('a');
     expect(anchor.className).toContain(CUSTOM_LINK_CLASS_FOOTER_BOTTOM);
   });
 
-  it('updates label and href via attributes', async () => {
+  it('updates label and href via attributes', async() => {
     const page = await newSpecPage({
       components: [CustomLink],
       template: () => (
         <custom-link label={CUSTOM_LINK_LABEL_START} href={CUSTOM_LINK_HREF_START} />
-      ),
+      )
     });
 
     let anchor = page.root.shadowRoot.querySelector('a') as HTMLAnchorElement;
@@ -94,36 +94,36 @@ describe('custom-link', () => {
     expect(anchor.href).toContain(CUSTOM_LINK_HREF_UPDATED);
   });
 
-  it('renders with empty label string', async () => {
+  it('renders with empty label string', async() => {
     const page = await newSpecPage({
       components: [CustomLink],
       template: () => (
         <custom-link label={CUSTOM_LINK_LABEL_EMPTY} href={CUSTOM_LINK_HREF_DEFAULT} />
-      ),
+      )
     });
 
     const anchor = page.root.shadowRoot.querySelector('a');
     expect(anchor.textContent).toBe(CUSTOM_LINK_LABEL_EMPTY);
   });
 
-  it('renders special characters in label', async () => {
+  it('renders special characters in label', async() => {
     const page = await newSpecPage({
       components: [CustomLink],
       template: () => (
         <custom-link label={CUSTOM_LINK_LABEL_SPECIAL} href={CUSTOM_LINK_HREF_DEFAULT} />
-      ),
+      )
     });
 
     const anchor = page.root.shadowRoot.querySelector('a');
     expect(anchor.textContent).toBe(CUSTOM_LINK_LABEL_SPECIAL);
   });
 
-  it('has proper shadow DOM structure', async () => {
+  it('has proper shadow DOM structure', async() => {
     const page = await newSpecPage({
       components: [CustomLink],
       template: () => (
         <custom-link label={CUSTOM_LINK_LABEL_TEST} href={CUSTOM_LINK_HREF_DEFAULT} />
-      ),
+      )
     });
 
     expect(page.root.shadowRoot).toBeTruthy();

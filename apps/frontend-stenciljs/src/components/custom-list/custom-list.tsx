@@ -3,7 +3,7 @@ import { Component, Prop, h, Fragment } from '@stencil/core';
 @Component({
   tag: 'custom-list',
   styleUrl: 'custom-list.scss',
-  shadow: true,
+  shadow: true
 })
 export class CustomList {
   /**

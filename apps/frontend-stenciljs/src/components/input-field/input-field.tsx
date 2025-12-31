@@ -20,7 +20,7 @@ import { Component, h, Prop, Event, EventEmitter, State, Element } from '@stenci
 @Component({
   tag: 'input-field',
   styleUrl: 'input-field.scss',
-  shadow: true,
+  shadow: true
 })
 export class InputField {
   @Element() hostEl!: HTMLElement;
@@ -92,9 +92,9 @@ export class InputField {
    */
   private onInput = (ev: Event) => {
     const target = ev.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
-    const newValue: string | number | undefined = this.type === 'number' && this.field === 'input'
-      ? (target as HTMLInputElement).valueAsNumber
-      : target.value;
+    const newValue: string | number | undefined = this.type === 'number' && this.field === 'input' ?
+      (target as HTMLInputElement).valueAsNumber :
+      target.value;
     this.value = newValue;
     const valid = (target as HTMLInputElement).checkValidity ? (target as HTMLInputElement).checkValidity() : true;
     this.valueChange.emit({ value: this.value, id: this.getId(), name: this.name, valid });
@@ -137,7 +137,7 @@ export class InputField {
       onFocus: this.onFocus,
       onBlur: this.onBlur,
       'aria-invalid': this.errorText ? 'true' : 'false',
-      'aria-describedby': this.helpText || this.errorText ? `${this.getId()}-desc` : undefined,
+      'aria-describedby': this.helpText || this.errorText ? `${this.getId()}-desc` : undefined
     };
 
     // For providing selection field option attributes
@@ -148,14 +148,14 @@ export class InputField {
       step: this.step,
       minLength: this.minlength,
       maxLength: this.maxlength,
-      value: this.value,
+      value: this.value
     };
 
     // Setup the selection field's options
     if (this.field === 'select') {
       return (
         <select {...common} {...inputAttributes}>
-          {(this.options || []).map(opt => (
+          {(this.options || []).map((opt) => (
             <option value={opt.value} disabled={!!opt.disabled}>
               {opt.label}
             </option>

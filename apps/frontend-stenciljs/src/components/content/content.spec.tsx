@@ -25,8 +25,7 @@ import {
 } from '@apps-shared/lib/mocks/content.mock';
 
 describe('site-content', () => {
-
-  it('renders with breadcrumbs and paragraphs props', async () => {
+  it('renders with breadcrumbs and paragraphs props', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -34,13 +33,13 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     expect(page.root).toBeTruthy();
   });
 
-  it('renders breadcrumb navigation with aria-label', async () => {
+  it('renders breadcrumb navigation with aria-label', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -48,7 +47,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
@@ -56,7 +55,7 @@ describe('site-content', () => {
     expect(nav.getAttribute('aria-label')).toBe(CONTENT_BREADCRUMB_ARIA_LABEL);
   });
 
-  it('renders all breadcrumb items', async () => {
+  it('renders all breadcrumb items', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -64,7 +63,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
@@ -72,8 +71,7 @@ describe('site-content', () => {
     expect(links.length).toBe(CONTENT_BREADCRUMB_LINKS_LENGTH); // Home and Insurance are links
   });
 
-  it('renders current breadcrumb as span not link', async () => {
-    
+  it('renders current breadcrumb as span not link', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -81,7 +79,7 @@ describe('site-content', () => {
           breadcrumbs={[...CONTENT_BREADCRUMBS, CONTENT_BREADCRUMBS_LAST_ITEM]}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
@@ -92,7 +90,7 @@ describe('site-content', () => {
     expect(currentBreadcrumb).toBeTruthy();
   });
 
-  it('renders breadcrumb separators', async () => {
+  it('renders breadcrumb separators', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -100,7 +98,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
@@ -108,7 +106,7 @@ describe('site-content', () => {
     expect(separators.length).toBe(CONTENT_BREADCRUMBS.length - 1);
   });
 
-  it('renders all content paragraphs', async () => {
+  it('renders all content paragraphs', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -116,7 +114,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
@@ -124,7 +122,7 @@ describe('site-content', () => {
     expect(paragraphs.length).toBe(CONTENT_PARAGRAPHS.length);
   });
 
-  it('renders correct paragraph text', async () => {
+  it('renders correct paragraph text', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -132,7 +130,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
@@ -143,7 +141,7 @@ describe('site-content', () => {
     });
   });
 
-  it('renders content-section for paragraphs', async () => {
+  it('renders content-section for paragraphs', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -151,7 +149,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const contentSection = page.root.shadowRoot.querySelector(`.${CONTENT_SECTION_CLASS}`);
@@ -159,7 +157,7 @@ describe('site-content', () => {
     expect(contentSection.tagName).toBe(CONTENT_SECTION_TAG);
   });
 
-  it('renders quote-section with slot', async () => {
+  it('renders quote-section with slot', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -167,7 +165,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const quoteSection = page.root.shadowRoot.querySelector(`.${CONTENT_QUOTE_SECTION_CLASS}`);
@@ -176,7 +174,7 @@ describe('site-content', () => {
     expect(slot).toBeTruthy();
   });
 
-  it('handles empty breadcrumbs array', async () => {
+  it('handles empty breadcrumbs array', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -184,7 +182,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_EMPTY_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
@@ -192,7 +190,7 @@ describe('site-content', () => {
     expect(links.length).toBe(0);
   });
 
-  it('handles empty paragraphs array', async () => {
+  it('handles empty paragraphs array', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -200,7 +198,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_EMPTY_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
@@ -208,7 +206,7 @@ describe('site-content', () => {
     expect(paragraphs.length).toBe(0);
   });
 
-  it('renders main container div', async () => {
+  it('renders main container div', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -216,7 +214,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const main = page.root.shadowRoot.querySelector(`.${CONTENT_MAIN_CLASS}`);
@@ -224,7 +222,7 @@ describe('site-content', () => {
     expect(main.tagName).toBe(CONTENT_MAIN_TAG);
   });
 
-  it('breadcrumb links have correct href attributes', async () => {
+  it('breadcrumb links have correct href attributes', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -232,7 +230,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
@@ -241,7 +239,7 @@ describe('site-content', () => {
     expect(links[1].getAttribute('href')).toBe(CONTENT_BREADCRUMBS[1].href);
   });
 
-  it('renders with single breadcrumb item', async () => {
+  it('renders with single breadcrumb item', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -249,7 +247,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_SINGLE_BREADCRUMB}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     const nav = page.root.shadowRoot.querySelector(`nav.${CONTENT_BREADCRUMB_NAV_CLASS}`);
@@ -257,7 +255,7 @@ describe('site-content', () => {
     expect(separators.length).toBe(0);
   });
 
-  it('renders with single paragraph', async () => {
+  it('renders with single paragraph', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -265,7 +263,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_SINGLE_PARAGRAPH}
         />
-      ),
+      )
     });
 
     const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
@@ -274,7 +272,7 @@ describe('site-content', () => {
     expect(paragraphs[0].textContent).toBe(CONTENT_SINGLE_PARAGRAPH[0]);
   });
 
-  it('has proper shadow DOM structure', async () => {
+  it('has proper shadow DOM structure', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -282,7 +280,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     expect(page.root.shadowRoot).toBeTruthy();
@@ -290,7 +288,7 @@ describe('site-content', () => {
     expect(main).toBeTruthy();
   });
 
-  it('updates content when breadcrumbs prop changes', async () => {
+  it('updates content when breadcrumbs prop changes', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -298,7 +296,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     // Update via host element property to respect Stencil immutability
@@ -310,7 +308,7 @@ describe('site-content', () => {
     expect(links.length).toBe(0);
   });
 
-  it('updates content when paragraphs prop changes', async () => {
+  it('updates content when paragraphs prop changes', async() => {
     const page = await newSpecPage({
       components: [SiteContent],
       template: () => (
@@ -318,7 +316,7 @@ describe('site-content', () => {
           breadcrumbs={CONTENT_BREADCRUMBS}
           paragraphs={CONTENT_PARAGRAPHS}
         />
-      ),
+      )
     });
 
     // Update via host element property to respect Stencil immutability
