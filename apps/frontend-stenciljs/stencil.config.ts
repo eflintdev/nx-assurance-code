@@ -53,6 +53,7 @@ export const config: Config = {
   plugins: [
     sass()
   ],
+  transformAliasedImportPaths: false,
   outputTargets,
   testing: {
     testRunner: 'jest-circus/runner',
@@ -68,6 +69,6 @@ export const config: Config = {
       'src/**/*.{ts,tsx}',
       '!src/**/*.d.ts',
       '!src/components.d.ts'
-    ]
+    ],
   }
 };

@@ -1,8 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "rootDir": "./",
-    "composite": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": false,
     "noPropertyAccessFromIndexSignature": true,
@@ -21,7 +19,7 @@
     "strictTemplates": true
   },
   "files": [],
-  "include": ["./src/*.ts", "./src/**/*.ts", "../../apps-shared/src/lib/**/**.ts", "./src/app/*.ts"],
+  "include": [],
   "references": [
     {
       "path": "./tsconfig.app.json"
