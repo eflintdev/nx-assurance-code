@@ -15,7 +15,7 @@
   margin: 0;
   @include font-heading(2rem, $font-weight-semibold);
   color: $color-black;
-  letter-spacing: 0.03125rem;
+  letter-spacing: 0.65px;
   line-height: 1.6875rem;
 
   @include mobile {
@@ -93,6 +93,7 @@
 
   .qf-submit {
     padding: 1.5rem 3.75rem;
-    margin-right: 1.2rem;
+    margin-right: 1.0rem;
+    letter-spacing: 0.5px;
   }
 }

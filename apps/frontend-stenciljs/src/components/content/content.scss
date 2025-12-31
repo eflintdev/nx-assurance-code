@@ -54,7 +54,7 @@
 
 .breadcrumbs-separator {
   color: $color-gray-medium-2;
-  padding: 0 0.35rem;
+  padding: 0 0.29rem;
 }
 
 .quote-section {
@@ -65,10 +65,11 @@
   padding-left: 0.6rem;
   p:first-of-type {
   font-family: $font-family-secondary;
+    font-weight: $font-weight-regular;
     font-size: 0.75rem;
     margin-top: 2.875rem;
     margin-bottom: 2.25rem;
-    letter-spacing: 1.8125rem;
+    letter-spacing: 0.01875rem;
     text-transform: uppercase;
 
   }
