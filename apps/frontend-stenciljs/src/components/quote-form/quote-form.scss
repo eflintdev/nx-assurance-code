@@ -8,14 +8,14 @@
 .qf-form {
   background: $color-white;
   border-radius: $border-radius-md;
-
   padding-top: 0;
 }
 
 .qf-title {
-  margin: 0.5rem 0 0;
-  @include font-heading(2rem, $font-weight-regular);
-  color: $color-navy;
+  margin: 0;
+  @include font-heading(2rem, $font-weight-semibold);
+  color: $color-black;
+  letter-spacing: 0.03125rem;
   line-height: 1.6875rem;
 
   @include mobile {
@@ -24,7 +24,7 @@
 }
 
 .qf-intro {
-  margin: 0 0 $spacing-md;
+  margin: 0 0 $spacing-xl;
   color: $color-gray-dark;
   font-size: 1.125rem;
   font-weight: 500;
@@ -54,7 +54,7 @@
 }
 
 .qf-consent {
-  margin: $spacing-md 0;
+  margin: 0.6rem 0 1rem;
   font-size: 0.625rem;
   line-height: 0.75rem;
   color: $color-black;
@@ -87,10 +87,12 @@
   .qf-form {
     max-width: 45rem;
     margin: 0 auto;
-    padding: $spacing-md;
+    padding: 0.6rem;
+    padding-top: 0.4rem;
   }
 
   .qf-submit {
     padding: 1.5rem 3.75rem;
+    margin-right: 1.2rem;
   }
 }

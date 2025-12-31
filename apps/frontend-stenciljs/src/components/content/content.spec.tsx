@@ -119,7 +119,7 @@ describe('site-content', () => {
 
     const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
     const paragraphs = contentBody.querySelectorAll('p');
-    expect(paragraphs.length).toBe(CONTENT_PARAGRAPHS.length);
+    expect(paragraphs.length).toBe(CONTENT_PARAGRAPHS.main.length);
   });
 
   it('renders correct paragraph text', async() => {
@@ -136,7 +136,7 @@ describe('site-content', () => {
     const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
     const paragraphs = contentBody.querySelectorAll('p');
 
-    CONTENT_PARAGRAPHS.forEach((text, index) => {
+    CONTENT_PARAGRAPHS.main.forEach((text, index) => {
       expect(paragraphs[index].textContent).toBe(text);
     });
   });
@@ -269,7 +269,7 @@ describe('site-content', () => {
     const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
     const paragraphs = contentBody.querySelectorAll('p');
     expect(paragraphs.length).toBe(1);
-    expect(paragraphs[0].textContent).toBe(CONTENT_SINGLE_PARAGRAPH[0]);
+    expect(paragraphs[0].textContent).toBe(CONTENT_SINGLE_PARAGRAPH.main[0]);
   });
 
   it('has proper shadow DOM structure', async() => {
@@ -326,6 +326,6 @@ describe('site-content', () => {
     const contentBody = page.root.shadowRoot.querySelector(`.${CONTENT_BODY_CLASS}`);
     const paragraphs = contentBody.querySelectorAll('p');
     expect(paragraphs.length).toBe(1);
-    expect(paragraphs[0].textContent).toBe(CONTENT_UPDATED_PARAGRAPHS[0]);
+    expect(paragraphs[0].textContent).toBe(CONTENT_UPDATED_PARAGRAPHS.main[0]);
   });
 });

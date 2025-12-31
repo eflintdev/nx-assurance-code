@@ -14,7 +14,7 @@
   width: 100%;
   max-width: $max-width-container;
   margin: 0 auto;
-  padding: 0 0.65rem 2rem;
+  padding: 0 0.65rem 1.9rem;
   font-family: $font-family-primary;
 
   @include tablet {
@@ -24,17 +24,21 @@
 .content{
   &-body {
     padding: 0.625rem;
+    padding-top: 0.25rem;
     & p{
       margin-top: 0;
     }
+  }
+  &-section {
+    line-height: 1.625rem;
   }
 }
 
 .breadcrumbs {
   font-size: 1rem;
   color: $color-black;
-  margin: 1.5rem 0 $spacing-md;
-  padding-bottom: 0.75rem;
+  margin: 1.6rem 0 $spacing-md;
+  padding-bottom: 1.0rem;
   border-bottom: 1px solid $color-gray-medium-1;
 
   a {
@@ -55,4 +59,18 @@
 
 .quote-section {
   margin-top: 0;
+}
+
+.subnotes-section {
+  padding-left: 0.6rem;
+  p:first-of-type {
+  font-family: $font-family-secondary;
+    font-size: 0.75rem;
+    margin-top: 2.875rem;
+    margin-bottom: 2.25rem;
+    letter-spacing: 1.8125rem;
+    text-transform: uppercase;
+
+  }
+
 }

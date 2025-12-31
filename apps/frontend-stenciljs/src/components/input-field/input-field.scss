@@ -12,13 +12,15 @@
 .if-root {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.5rem;
+  
 }
 
 .if-label {
   font-size: 1.125rem;
   font-weight: $font-weight-semibold;
   color: $color-black;
+  letter-spacing: 0.03125rem;
 }
 
 .if-req {

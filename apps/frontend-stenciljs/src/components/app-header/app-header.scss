@@ -29,14 +29,14 @@
 .header-left {
   display: flex;
   align-items: center;
-  gap: $spacing-sm;
+  gap: 0.65rem;
 }
 
 .menu-toggle {
   background: none;
   border: none;
   cursor: pointer;
-  padding: $spacing-sm;
+  padding: 0.5rem 0.5rem 0.5rem 0.4rem;
   @include flex-center;
 }
 
@@ -84,7 +84,7 @@
     width: 21px;
     height: 21px;
     display: block;
-    transform: scale(1.4);
+    transform: scale(1.4) translate(0.1875rem, 0.0625rem);
     transform-origin: center;
   }
 }
@@ -102,6 +102,7 @@
   gap: $spacing-sm;
   height: 2.25rem;
   @include shadow-sm;
+  margin-right: 0.325rem;
 
   &:hover {
     background-color: $color-orange-dark;

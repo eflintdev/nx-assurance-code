@@ -20,7 +20,7 @@ export class SiteContent {
   /**
    * Content paragraphs
    */
-  @Prop() paragraphs!: string[];
+  @Prop() paragraphs!: { main: string[], bottom: string[] };
 
   render() {
     return (
@@ -41,11 +41,14 @@ export class SiteContent {
         </nav>
         <section class="content-section">
           <div class="content-body">
-            {this.paragraphs?.length ? this.paragraphs.map((p) => <p>{p}</p>) : ''}
+            {this.paragraphs?.main?.length ? this.paragraphs.main.map((p) => <p>{p}</p>) : ''}
           </div>
         </section>
         <section class="quote-section">
           <slot></slot>
+        </section>
+        <section class="subnotes-section">
+          {this.paragraphs?.bottom?.length ? this.paragraphs.bottom.map((p) => <p>{p}</p>) : ''}
         </section>
       </div>
     );

@@ -166,7 +166,7 @@ export namespace Components {
         /**
           * Content paragraphs
          */
-        "paragraphs": string[];
+        "paragraphs": { main: string[], bottom: string[] };
     }
 }
 export interface InputFieldCustomEvent<T> extends CustomEvent<T> {
@@ -474,7 +474,7 @@ declare namespace LocalJSX {
         /**
           * Content paragraphs
          */
-        "paragraphs": string[];
+        "paragraphs": { main: string[], bottom: string[] };
     }
     interface IntrinsicElements {
         "app-footer": AppFooter;
