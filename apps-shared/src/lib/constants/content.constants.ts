@@ -1,4 +1,4 @@
-import { BreadcrumbItem } from "../types";
+import { BreadcrumbItem } from '../types';
 
 export const BREADCRUMBS: BreadcrumbItem[] = [
   { label: 'Home', href: '/' },

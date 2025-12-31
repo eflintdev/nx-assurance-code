@@ -1,4 +1,4 @@
-import { FooterLink, SocialLink } from "../types";
+import { FooterLink, SocialLink } from '../types';
 
 export const COMPANY_NAME = 'Plymouth Rock Assurance';
 
