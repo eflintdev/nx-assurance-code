@@ -7,76 +7,10 @@
     "scope:root"
   ],
   "targets": {
-    "graph": {
-      "executor": "@nx/workspace:run-commands",
-      "options": {
-        "command": "nx graph"
-      }
-    },
-    "format": {
-      "executor": "@nx/workspace:run-commands",
-      "options": {
-        "command": "nx format:write"
-      }
-    },
-    "format:check": {
-      "executor": "@nx/workspace:run-commands",
-      "options": {
-        "command": "nx format:check"
-      }
-    },
-    "clean": {
-      "executor": "@nx/workspace:run-commands",
-      "options": {
-        "commands": [
-          "rm -rf dist .nx/cache"
-        ],
-        "parallel": false
-      }
-    },
-    "build": {
-      "executor": "@nx/workspace:run-commands",
-      "outputs": [
-        "{workspaceRoot}/dist"
-      ],
-      "options": {
-        "command": "nx run-many -t build --all"
-      }
-    },
-    "build:prod": {
-      "executor": "@nx/workspace:run-commands",
-      "outputs": [
-        "{workspaceRoot}/dist"
-      ],
-      "options": {
-        "command": "nx run-many -t build --all --configuration=production"
-      }
-    },
-    "build:development": {
-      "executor": "@nx/workspace:run-commands",
-      "outputs": [
-        "{workspaceRoot}/dist"
-      ],
-      "options": {
-        "command": "nx run-many -t build --all --configuration=development"
-      }
-    },
-    "test": {
-      "executor": "@nx/workspace:run-commands",
-      "options": {
-        "command": "nx run-many -t test --all"
-      }
-    },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
         "commands": ["npx eslint ."]
-      }
-    },
-    "e2e": {
-      "executor": "@nx/workspace:run-commands",
-      "options": {
-        "command": "nx run-many -t e2e --all"
       }
     },
     "create-custom-build-folders": {

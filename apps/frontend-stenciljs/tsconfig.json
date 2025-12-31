@@ -20,14 +20,11 @@
     "jsxFactory": "h",
     "jsxFragmentFactory": "h.Fragment",
     "paths": {
-      "@/*": ["./src/*"],
       "@apps-shared": ["../../apps-shared/src/index.ts"],
       "@apps-shared/*": ["../../apps-shared/src/*"],
-      "@apps-shared/lib/types": ["../../apps-shared/src/lib/types/index.ts"],
+      "@apps-shared/lib/types": ["../../apps-shared/dist/apps-shared/src/lib/types/index.js"],
       "@apps-shared/lib/constants": ["../../apps-shared/dist/apps-shared/src/lib/constants/index.js"],
-      "@apps-shared/lib/mocks": ["../../apps-shared/dist/apps-shared/src/lib/mocks/index.js"],
-      "@apps-shared/lib/mocks/header.mocks": ["../../apps-shared/dist/apps-shared/src/lib/mocks/header.mocks.js"],
-      "@apps-shared/lib/mocks/footer.mocks": ["../../apps-shared/dist/apps-shared/src/lib/mocks/footer.mocks.js"]
+      "@apps-shared/lib/mocks": ["../../apps-shared/dist/apps-shared/src/lib/mocks/index.js"]
     }
   },
   "include": ["src"],

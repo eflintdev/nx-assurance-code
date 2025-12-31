@@ -8,3 +8,4 @@ export * from './header.mock';
 export * from './input-field.mock';
 export * from './quote-form.mock';
 export * from './search-bar.mock';
+export * from './side-drawer.mocks';

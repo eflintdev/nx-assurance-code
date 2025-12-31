@@ -7,10 +7,10 @@ import { sass } from '@stencil/sass';
 const outputTargets: OutputTarget[] | undefined = [];
 
 outputTargets.push({
-    type: 'dist',
-    esmLoaderPath: '../dist/loader',
-    empty: true
-  },
+  type: 'dist',
+  esmLoaderPath: '../dist/loader',
+  empty: true
+},
   {
     type: 'dist-custom-elements',
     customElementsExportBehavior: 'auto-define-custom-elements',
@@ -61,7 +61,15 @@ export const config: Config = {
     transform: {
       '^.+\\.(ts|tsx|js|jsx|css)$': './jest-transformer.js'
     },
-    testPathIgnorePatterns: ['./src/e2e-playwright','./src/e2e-playwright/src/lib/tests/home.spec.ts'],
+    moduleNameMapper: {
+      '^@/(.*)$': '<rootDir>/src/$1',
+      '^@apps-shared$': '<rootDir>/../../apps-shared/src/index.ts',
+      '^@apps-shared/(.*)$': '<rootDir>/../../apps-shared/src/$1',
+      '^@apps-shared/lib/types$': '<rootDir>/../../apps-shared/dist/apps-shared/src/lib/types/index.js',
+      '^@apps-shared/lib/constants$': '<rootDir>/../../apps-shared/dist/apps-shared/src/lib/constants/index.js',
+      '^@apps-shared/lib/mocks$': '<rootDir>/../../apps-shared/dist/apps-shared/src/lib/mocks/index.js'
+    },
+    testPathIgnorePatterns: ['./src/e2e-playwright', './src/e2e-playwright/src/lib/tests/home.spec.ts'],
     coveragePathIgnorePatterns: ['./src/e2e-playwright'],
     transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'json', 'jsx', 'map'],

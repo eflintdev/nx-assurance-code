@@ -7,10 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { FooterLink, SocialLink } from "@apps-shared";
 import { QuoteFormType, StateOptionType } from "./types/types";
-import { BreadcrumbItem, SideDrawerSection } from "@apps-shared/lib/types";
 export { FooterLink, SocialLink } from "@apps-shared";
 export { QuoteFormType, StateOptionType } from "./types/types";
-export { BreadcrumbItem, SideDrawerSection } from "@apps-shared/lib/types";
 export namespace Components {
     interface AppFooter {
         /**
