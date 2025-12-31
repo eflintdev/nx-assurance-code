@@ -11,7 +11,7 @@ export default createConfig({
   testMatch: '**/*.spec.ts',
   timeout: 30 * 1000,
   expect: {
-    timeout: 5000,
+    timeout: 5000
   },
   retries: process.env.CI ? 2 : 0,
   reporter: 'html',
@@ -19,17 +19,17 @@ export default createConfig({
     baseURL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    video: 'retain-on-failure'
   },
   projects: [
   { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-  { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
+  { name: 'firefox', use: { ...devices['Desktop Firefox'] } }
   // { name: 'webkit', use: { ...devices['Desktop Safari'] } }, // uncomment for Safari e2e tests
 ],
   webServer: {
     command: 'npm run start',
     url: 'http://localhost:3333',
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000, // 2 minutes
-  },
+    timeout: 120 * 1000 // 2 minutes
+  }
 });

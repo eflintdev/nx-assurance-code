@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "rootDir": "./",
     "composite": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": false,
@@ -20,8 +21,11 @@
     "strictTemplates": true
   },
   "files": [],
-  "include": [],
+  "include": ["./src/*.ts","./src/**/*.ts","../../apps-shared/src/lib/**/**.ts", "./src/app/*.ts"],
   "references": [
+    {
+      "path": "../../apps-shared"
+    },
     {
       "path": "./tsconfig.app.json"
     },
@@ -29,7 +33,7 @@
       "path": "./tsconfig.spec.json"
     },
     {
-      "path": "apps/angular-app/tsconfig.server.json"
+      "path": "./tsconfig.server.json"
     }
   ]
 }

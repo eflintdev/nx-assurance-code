@@ -68,9 +68,9 @@
       }
     },
     "lint": {
-      "executor": "@nx/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
-        "command": "nx run-many -t lint --all"
+        "commands": ["npx eslint ."]
       }
     },
     "e2e": {

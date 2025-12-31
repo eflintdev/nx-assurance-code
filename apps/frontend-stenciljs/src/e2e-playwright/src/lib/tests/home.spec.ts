@@ -6,7 +6,7 @@ import {
   BREADCRUMBS_MOCK,
   CONTENT_PARAGRAPHS_MOCK,
   QUOTE_FORM_MOCK,
-  FOOTER_LINKS_MOCK,
+  FOOTER_LINKS_MOCK
 } from '../mocks/general/general.e2e.mocks';
 
 const SELECTORS = {
@@ -19,34 +19,34 @@ const SELECTORS = {
   city: 'input[name="city"]',
   zip: 'input[name="zip"]',
   state: 'select[name="state"]',
-  submit: 'button[type="submit"]',
+  submit: 'button[type="submit"]'
 };
 
 test.describe('Home Page', () => {
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async({ page }) => {
     await page.goto('/');
     await page.waitForURL('/');
     await page.waitForLoadState('domcontentloaded');
   });
 
-  test('should load the home page', async ({ page }) => {
+  test('should load the home page', async({ page }) => {
     await expect(page).toHaveURL('/');
     await expect(page.locator('body')).toBeVisible();
   });
 
-  test('should display the correct banner heading', async ({ page }) => {
+  test('should display the correct banner heading', async({ page }) => {
     const banner = page.locator('.banner-section h1');
     await expect(banner).toHaveText(BANNER_HEADING_MOCK);
   });
 
-  test('should display the header and navigation', async ({ page }) => {
+  test('should display the header and navigation', async({ page }) => {
     const header = page.locator('app-header');
     await expect(header).toBeVisible();
     await expect(header.locator('.brand-logo')).toBeVisible();
     await expect(header.locator('.phone-link')).toContainText(HEADER_PHONE_MOCK);
   });
 
-  test('should render main content and paragraphs', async ({ page }) => {
+  test('should render main content and paragraphs', async({ page }) => {
     const main = page.locator('site-content');
     await expect(main).toBeVisible();
     for (const paragraph of CONTENT_PARAGRAPHS_MOCK) {
@@ -54,7 +54,7 @@ test.describe('Home Page', () => {
     }
   });
 
-  test('should show breadcrumbs with correct links', async ({ page }) => {
+  test('should show breadcrumbs with correct links', async({ page }) => {
     const breadcrumbs = page.locator('site-content .breadcrumbs a');
     for (let i = 0; i < BREADCRUMBS_MOCK.length - 1; i++) {
       await expect(breadcrumbs.nth(i)).toHaveText(BREADCRUMBS_MOCK[i].label);
@@ -65,7 +65,7 @@ test.describe('Home Page', () => {
     await expect(currentCrumb).toHaveText(BREADCRUMBS_MOCK[BREADCRUMBS_MOCK.length - 1].label);
   });
 
-  test('should display and validate the quote form', async ({ page }) => {
+  test('should display and validate the quote form', async({ page }) => {
     const form = page.locator(SELECTORS.form);
     await expect(form).toBeVisible();
     await expect(form.locator(SELECTORS.firstName)).toBeVisible();
@@ -95,7 +95,7 @@ test.describe('Home Page', () => {
     await form.locator(SELECTORS.submit).click();
   });
 
-  test('should display the footer with links', async ({ page }) => {
+  test('should display the footer with links', async({ page }) => {
     const footer = page.locator('app-footer');
     await expect(footer).toBeVisible();
     for (const link of FOOTER_LINKS_MOCK) {
@@ -103,13 +103,13 @@ test.describe('Home Page', () => {
     }
   });
 
-  test('should be responsive on mobile', async ({ page }) => {
+  test('should be responsive on mobile', async({ page }) => {
     await page.locator('button.menu-toggle').click();
     await page.setViewportSize({ width: 375, height: 667 });
     await expect(page.locator('.side-drawer')).toBeVisible();
   });
 
-  test('should have accessible ARIA attributes', async ({ page }) => {
+  test('should have accessible ARIA attributes', async({ page }) => {
     await expect(page.locator('site-content .breadcrumbs[aria-label="Breadcrumb"]')).toBeVisible();
     await expect(page.locator('app-footer .footer-top-links[aria-label="Footer"]')).toBeVisible();
   });

@@ -9,19 +9,19 @@ const outputTargets: OutputTarget[] | undefined = [];
 outputTargets.push({
     type: 'dist',
     esmLoaderPath: '../dist/loader',
-    empty: true,
+    empty: true
   },
   {
     type: 'dist-custom-elements',
     customElementsExportBehavior: 'auto-define-custom-elements',
-    externalRuntime: false,
+    externalRuntime: false
   },
   {
-    type: 'docs-readme',
+    type: 'docs-readme'
   },
   {
     type: 'www',
-    serviceWorker: null, // disable service workers
+    serviceWorker: null // disable service workers
   });
 
 if (process.env.NX_BUILD_ENV === 'react') {
@@ -32,15 +32,15 @@ if (process.env.NX_BUILD_ENV === 'react') {
       customElementsDir: 'components'
       // Optionally include defineCustomElements if not using lazy-loading
       // includeDefineCustomElements: true,
-    }))
+    }));
 } else if (process.env.NX_BUILD_ENV == 'angular') {
   outputTargets.push(
     angularOutputTarget({
       componentCorePackage: 'frontend-stenciljs',
       outputType: 'component',
       directivesProxyFile: 'dist/angular-components.ts',
-      directivesArrayFile: 'dist/angular-directives/index.ts',
-    }),)
+      directivesArrayFile: 'dist/angular-directives/index.ts'
+    }));
 }
 
 // Can simply extend the list if you ever consume more esModules

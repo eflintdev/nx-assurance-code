@@ -10,15 +10,14 @@ export const CONTENT_BREADCRUMBS: BreadcrumbItem[] = [
 
 export const CONTENT_BREADCRUMBS_LAST_ITEM: BreadcrumbItem = { label: 'Auto Insurance', href: '/insurance/auto', current: true };
 
-
 export const CONTENT_PARAGRAPHS: string[] = [
   'Welcome to our insurance services.',
   'We provide comprehensive coverage options.',
-  'Get your quote today and save on premiums.',
+  'Get your quote today and save on premiums.'
 ];
 
 export const CONTENT_SINGLE_BREADCRUMB: BreadcrumbItem[] = [
-  { label: 'Home', href: '/', current: true },
+  { label: 'Home', href: '/', current: true }
 ];
 
 export const CONTENT_SINGLE_PARAGRAPH: string[] = ['Single paragraph text'];
@@ -38,6 +37,6 @@ export const CONTENT_MAIN_CLASS = 'main';
 export const CONTENT_MAIN_TAG = 'DIV';
 export const CONTENT_QUOTE_SECTION_CLASS = 'quote-section';
 export const CONTENT_UPDATED_BREADCRUMBS: BreadcrumbItem[] = [
-  { label: 'New', href: '/new', current: true },
+  { label: 'New', href: '/new', current: true }
 ];
 export const CONTENT_UPDATED_PARAGRAPHS: string[] = ['Updated paragraph'];
