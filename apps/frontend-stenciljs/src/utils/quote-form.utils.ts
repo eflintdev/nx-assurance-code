@@ -1,7 +1,7 @@
 export function validateQuoteForm(
-  values: Record<string, any>,
+  values: Record<string, string|number|boolean>,
   zipRegex?: RegExp,
-  phoneRegex?: RegExp,
+  phoneRegex?: RegExp
 ): Record<string, string> {
   const errs: Record<string, string> = {};
   const v = values || {};

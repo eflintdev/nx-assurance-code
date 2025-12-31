@@ -54,3 +54,4 @@ apps/react-app/src/app/components/custom/*
 coverage
 apps/frontend-stenciljs/playwright-report
 test-results
+.vscode/settings.json

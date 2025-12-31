@@ -22,8 +22,8 @@ export function app(): express.Express {
   server.get(
     '*.*',
     express.static(distFolder, {
-      maxAge: '1y'
-    })
+      maxAge: '1y',
+    }),
   );
 
   // All regular routes use the Angular engine
@@ -36,10 +36,10 @@ export function app(): express.Express {
         documentFilePath: indexHtml,
         url: `${protocol}://${headers.host}${originalUrl}`,
         publicPath: distFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }]
+        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
       })
-      .then(html => res.send(html))
-      .catch(err => next(err));
+      .then((html) => res.send(html))
+      .catch((err) => next(err));
   });
 
   return server;

@@ -19,18 +19,17 @@ import {
   PHONE_PATTERN,
   BREADCRUMBS,
   CONTENT_PARAGRAPHS_DATA,
-  BANNER_HEADING
-} from '../../../../apps-shared/src/lib/constants/index';
-// } from '@apps-shared/lib/constants';
+  BANNER_HEADING,
+} from '@apps-shared/lib/constants';
 
 @Component({
   standalone: true,
-  imports: [/*NxWelcome,*/ RouterModule, CustomComponentsModule],
+  imports: [RouterModule, CustomComponentsModule],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class App {
   protected title = 'angular-app';

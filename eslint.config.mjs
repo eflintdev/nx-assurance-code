@@ -36,7 +36,7 @@ export default [
       'semi': ['error', 'always'],
       'no-extra-semi': 'error',
       'no-unexpected-multiline': 'error',
-      'comma-dangle': ['error', 'never'],
+      'comma-dangle': 'off',
       'quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
       'object-curly-spacing': ['error', 'always'],
       'array-bracket-spacing': ['error', 'never'],
@@ -63,7 +63,6 @@ export default [
       'no-var': 'error',
       'prefer-arrow-callback': 'error',
       'no-const-assign': 'error',
-      'no-unused-vars': ['warn', { 'args': 'none', 'ignoreRestSiblings': true }],
       'no-use-before-define': ['error', { 'functions': false, 'classes': true, 'variables': true }]
     }
   }

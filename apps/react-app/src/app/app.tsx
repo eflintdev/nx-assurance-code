@@ -1,5 +1,4 @@
 import './app.module.scss';
-import { Route, Routes, Link } from 'react-router-dom';
 import { AppHeader, AppFooter, BannerSection, SiteContent, QuoteForm, SideDrawer, SearchModal } from '../app/components/custom/components';
 import {
   BRAND_NAME,

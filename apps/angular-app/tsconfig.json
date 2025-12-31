@@ -21,11 +21,8 @@
     "strictTemplates": true
   },
   "files": [],
-  "include": ["./src/*.ts","./src/**/*.ts","../../apps-shared/src/lib/**/**.ts", "./src/app/*.ts"],
+  "include": ["./src/*.ts", "./src/**/*.ts", "../../apps-shared/src/lib/**/**.ts", "./src/app/*.ts"],
   "references": [
-    {
-      "path": "../../apps-shared"
-    },
     {
       "path": "./tsconfig.app.json"
     },
