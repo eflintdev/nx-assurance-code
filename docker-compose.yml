@@ -1,7 +1,21 @@
+# Docker Compose file for Nx Assurance Code React/Angular Monorepo
+#
+# This file defines the services, networks, and volumes for running React-App and Angular-App
+# in a containerized environment. There is also a base service for shared dependencies.
+#
+# Execution:
+#   docker-compose up --build
+#
+# Services:
+#   - base_service: Installs and shares node_modules for all apps
+#   - react-app: Runs the React application (port 3000)
+#   - angular-app: Runs the Angular application (port 4200)
+# 
 # version: '3.8'
 
 services:
   base_service:
+  # Base service to install dependencies and share node_modules
     build:
       context: .
       dockerfile: Dockerfile.base
@@ -10,6 +24,7 @@ services:
       - base_service_node_modules:/apps/node_modules
   react-app:
     build:
+  # React app  service
       context: .
       dockerfile: apps/react-app/Dockerfile
     volumes:
@@ -25,6 +40,7 @@ services:
 
   angular-app:
     build:
+  # Angular app service
       context: .
       dockerfile: apps/angular-app/Dockerfile
     volumes:
@@ -41,6 +57,9 @@ services:
 networks:
   nx-network:
     driver: bridge
+  # Custom bridge network for inter-service communication
 
 volumes:
   base_service_node_modules:
+
+  # A shared volume for node_modules to avoid re-installing dependencies in each container
