@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Fragment, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'banner-section',
@@ -13,11 +13,18 @@ export class BannerSection {
 
   render() {
     return (
-      <section class="banner-section">
-        <div class="banner-container">
-          <h1>{this.heading}</h1>
-        </div>
-      </section>
+      <Fragment>
+        <section class="banner-section">
+          <div class="banner-container">
+            <h1>{this.heading}</h1>
+          </div>
+        </section>
+        <section class="banner-section__mobile">
+          <div class="banner-container__mobile">
+            <h1>{this.heading}</h1>
+          </div>
+        </section>
+      </Fragment>
     );
   }
 }

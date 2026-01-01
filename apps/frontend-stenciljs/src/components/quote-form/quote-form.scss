@@ -8,8 +8,11 @@
 .qf-form {
   background: $color-white;
   border-radius: $border-radius-md;
+      margin: 0 auto;
   padding-top: 0;
 }
+
+
 
 .qf-title {
   margin: 0;
@@ -76,24 +79,42 @@
 
 }
 
-@media(max-width: 47.9375rem) {
+
+@include mobile {
   .qf-submit {
     padding: 1.75rem 3.75rem;
     width: 100%;
   }
 }
 
-@media(min-width: 48rem) {
+@include tablet {
   .qf-form {
-    max-width: 45rem;
-    margin: 0 auto;
+    max-width: 44rem;
     padding: 0.6rem;
-    padding-top: 0.4rem;
+    padding-top: 0.3rem;
   }
 
+  .qf-submit {
+    padding: 1.5rem 3.75rem;
+    margin-right: 0;
+    letter-spacing: 1.1px;
+  }
+}
+
+@media(min-width: 64rem) {
   .qf-submit {
     padding: 1.5rem 3.75rem;
     margin-right: 1.0rem;
     letter-spacing: 0.5px;
   }
 }
+
+@include desktop {
+  .qf-form {
+    max-width: 45rem;
+    margin: 0 auto;
+    padding: 0.6rem;
+    padding-top: 0.4rem;
+  }
+}
+

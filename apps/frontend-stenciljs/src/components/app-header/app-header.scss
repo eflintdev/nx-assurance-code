@@ -133,6 +133,28 @@
   }
 }
 
+@include tablet {
+
+  .menu-toggle {
+    padding: 0.5rem 0rem 0.5rem 0.4rem;
+  }
+  .header-container{
+    padding: 0.3rem 0rem 0rem 1rem;
+  }
+  .brand-logo{
+    padding-top: 0.48rem;
+  }
+  .header-left {
+    gap: 0;
+  }
+  .login-link{
+    gap: 0.8rem;
+  }
+  .phone-link{
+    padding: 0.5rem 0;
+  }
+}
+
 @include mobile {
   .header-container {
     padding: 0 0.75rem;
