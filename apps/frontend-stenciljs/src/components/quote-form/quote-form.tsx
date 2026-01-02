@@ -190,7 +190,7 @@ export class QuoteForm {
         </div>
 
         <div class="qf-consent">
-          {this.consentParagraphs?.length > 0 ? this.consentParagraphs.map((text) => <p>{text}</p>) : '' }
+          {this.consentParagraphs?.length > 0 ? this.consentParagraphs.map((text) => <p innerHTML={text}></p>) : '' }
         </div>
 
         <div class="qf-actions">

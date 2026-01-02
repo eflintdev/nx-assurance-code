@@ -1,4 +1,5 @@
 import { Component, Fragment, Prop, h } from '@stencil/core';
+import { getBannerMobileWedgeOverlay } from '../../utils/header.utils';
 
 @Component({
   tag: 'banner-section',
@@ -18,6 +19,7 @@ export class BannerSection {
           <div class="banner-container">
             <h1>{this.heading}</h1>
           </div>
+        { getBannerMobileWedgeOverlay() }
         </section>
         <section class="banner-section__mobile">
           <div class="banner-container__mobile">

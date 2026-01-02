@@ -42,3 +42,9 @@
     color: $color-error;
   }
 }
+
+@include small {
+  .if-control{
+    min-height: 3.25rem;
+  }
+}

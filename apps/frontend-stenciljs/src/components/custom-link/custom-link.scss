@@ -4,33 +4,3 @@
 :host {
   display: inline-block;
 }
-
-.custom-link {
-  color: $color-secondary-blue;
-  text-decoration: underline;
-  font-size: 0.875rem;
-  font-weight: $font-weight-regular;
-  transition: text-decoration $transition-base;
-  white-space: nowrap;
-
-  &:hover {
-    text-decoration: none;
-  }
-
-  @include mobile {
-    font-size: 0.875rem;
-    min-width: 5rem;
-    text-align: center;
-  }
-}
-
-.custom-link--footer-bottom {
-  color: $color-white;
-  text-decoration: underline;
-  font-size: 0.8rem;
-  font-weight: $font-weight-bold;
-
-  &:hover {
-    text-decoration: none;
-  }
-}

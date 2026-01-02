@@ -41,14 +41,14 @@ export class SiteContent {
         </nav>
         <section class="content-section">
           <div class="content-body">
-            {this.paragraphs?.main?.length ? this.paragraphs.main.map((p) => <p>{p}</p>) : ''}
+            {this.paragraphs?.main?.length ? this.paragraphs.main.map((p) => <p innerHTML={p}></p>) : ''}
           </div>
         </section>
         <section class="quote-section">
           <slot></slot>
         </section>
         <section class="subnotes-section">
-          {this.paragraphs?.bottom?.length ? this.paragraphs.bottom.map((p) => <p>{p}</p>) : ''}
+          {this.paragraphs?.bottom?.length ? this.paragraphs.bottom.map((p) => <p innerHTML={p}></p>) : ''}
         </section>
       </div>
     );

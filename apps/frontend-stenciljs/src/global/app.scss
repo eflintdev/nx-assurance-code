@@ -1,1 +1,43 @@
+@use'../styles/mixins' as *;
+@use'../styles/variables' as *;
+
 // Add your global styles here if needed...
+
+.custom-link {
+  color: $color-secondary-blue;
+  text-decoration: underline;
+  font-size: 0.875rem;
+  font-weight: $font-weight-regular;
+  transition: text-decoration $transition-base;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  @include mobile {
+    font-size: 0.875rem;
+    min-width: 5rem;
+    text-align: center;
+  }
+}
+
+.custom-link--footer-bottom {
+  color: $color-white;
+  text-decoration: underline;
+  font-size: 0.8rem;
+  font-weight: $font-weight-bold;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+p {
+  display: block;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  unicode-bidi: isolate;
+}

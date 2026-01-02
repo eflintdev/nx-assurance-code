@@ -16,11 +16,21 @@
   top: 0;
   z-index: 100;
   font-family: $font-family-primary;
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: '';
+    bottom: 0;
+    height: 0.0625rem;
+    background-color: white;
+    left: 0;
+    width: 100%
+  }
 }
 
 .header-container {
   @include flex-between;
-  min-height: $header-min-height;
   padding: 0 $spacing-md;
   max-width: $max-width-container-header;
   margin: 0 auto;
@@ -138,33 +148,63 @@
   .menu-toggle {
     padding: 0.5rem 0rem 0.5rem 0.4rem;
   }
-  .header-container{
+
+  .header-container {
+    min-height: $header-min-height;
     padding: 0.3rem 0rem 0rem 1rem;
   }
-  .brand-logo{
+
+  .brand-logo {
     padding-top: 0.48rem;
   }
+
   .header-left {
     gap: 0;
   }
-  .login-link{
+
+  .login-link {
     gap: 0.8rem;
   }
-  .phone-link{
+
+  .phone-link {
     padding: 0.5rem 0;
   }
 }
 
 @include mobile {
+  .app-header {
+    &::after {
+      height: 0.125rem;
+      bottom: -0.125rem;
+    }
+  }
+
   .header-container {
+    position: relative;
+    height: 65px;
     padding: 0 0.75rem;
   }
 
   .header-right {
-    gap: $spacing-md;
+    padding-top: 0.4rem;
+    gap: 1.8rem;
+  }
+
+  .header-left {
+    gap: 0.7rem;
+  }
+
+  .brand-logo {
+    padding-top: 0.3rem;
   }
 
   .phone-link {
     display: none;
+  }
+}
+
+@include desktop {
+  .header-container {
+    min-height: $header-min-height;
   }
 }

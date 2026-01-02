@@ -8,7 +8,7 @@
 }
 
 @mixin tablet {
-  @media (max-width: $breakpoint-tablet) {
+  @media (min-width: #{$breakpoint-mobile + 0.0625rem}) and (max-width: $breakpoint-tablet) {
     @content;
   }
 }
@@ -30,6 +30,12 @@
   max-width: $max-width-container;
   margin: 0 auto;
   padding: 0 $spacing-md;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
 
 @mixin flex-center {

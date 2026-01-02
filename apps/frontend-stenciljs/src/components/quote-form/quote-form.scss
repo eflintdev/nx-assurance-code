@@ -8,7 +8,7 @@
 .qf-form {
   background: $color-white;
   border-radius: $border-radius-md;
-      margin: 0 auto;
+  margin: 0 auto;
   padding-top: 0;
 }
 
@@ -65,6 +65,11 @@
   p {
     margin: 0 0 0.9375rem;
   }
+
+  a {
+    color: $color-primary-blue;
+    font-size: 0.625rem;
+  }
 }
 
 .qf-actions {
@@ -76,14 +81,44 @@
 .qf-submit {
   @include button-primary;
   font-size: 1rem;
-
 }
 
+@include small {
+  .qf-grid {
+    grid-template-columns: 1fr;
+  }
 
-@include mobile {
   .qf-submit {
     padding: 1.75rem 3.75rem;
     width: 100%;
+  }
+}
+
+@media (min-width: 40rem) and (max-width: 47.9375rem) {
+  .qf-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .qf-submit {
+    padding: 1.35rem 3.5rem;
+    margin-right: 1rem;
+    letter-spacing: 1.1px;
+  }
+}
+
+@include mobile {
+  .qf-grid {
+    row-gap: 0.85rem;
+  }
+
+  .qf-intro {
+    line-height: 1.55rem;
+    margin-bottom: 2.1rem;
+  }
+
+
+  .qf-title {
+    letter-spacing: 0.2px;
   }
 }
 

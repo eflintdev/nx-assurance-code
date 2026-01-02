@@ -10,7 +10,11 @@ svg {
   height: 3.625rem;
   display: block;
 
-  @include small {
+}
+
+
+@include mobile {
+  svg {
     &.logo--nav {
       width: 9.0625rem;
       height: 2.5rem;

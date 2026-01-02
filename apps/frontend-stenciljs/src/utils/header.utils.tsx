@@ -99,3 +99,16 @@ export const getFullSloganLogo = () => (
     </defs>
   </svg>
 );
+
+export const getBannerMobileWedgeOverlay = () => {
+  return (<svg class="background-overlay__mobile" width="1000" height="100" viewBox="0 0 1000 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <g clip-path="url(#clip0_1_2)">
+      <path d="M0 97.5V100H1000V0L0 97.5Z" fill="#ffffff" />
+    </g>
+    <defs>
+      <clipPath id="clip0_1_2">
+        <rect width="1000" height="100" fill="white" transform="matrix(1 0 0 -1 0 100)" />
+      </clipPath>
+    </defs>
+  </svg>);
+};
