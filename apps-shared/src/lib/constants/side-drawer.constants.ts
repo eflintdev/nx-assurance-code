@@ -140,8 +140,14 @@ export const SIDE_DRAWER_SECTIONS: SideDrawerSection[] = [
     ],
   },
   {
+    key: 'careers',
+    label: 'Careers',
+    href: '#careers',
+    listBlocks: [],
+  },
+  {
     key: 'agent',
-    label: 'Agent',
+    label: 'Agents',
     href: '#agent',
     listBlocks: [
       {
@@ -152,11 +158,5 @@ export const SIDE_DRAWER_SECTIONS: SideDrawerSection[] = [
         ],
       },
     ],
-  },
-  {
-    key: 'careers',
-    label: 'Careers',
-    href: '#careers',
-    listBlocks: [],
-  },
+  }
 ];

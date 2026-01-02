@@ -120,7 +120,7 @@ export class SideDrawer {
                     id={`${section.key}-submenu`}
                     class={`accordion-menu ${this.expandedSections[section.key] ? 'open' : ''}`}
                   >
-                    <custom-list
+                    <custom-list class="side-drawer__menu__list"
                       listBlocks={section.listBlocks}
                     ></custom-list>
                   </div>

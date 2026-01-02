@@ -30,7 +30,7 @@
   height: 100vh;
   max-width: 375px;
   width: 100%;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-right: 1px solid $color-hover-gray;
   font-family: $font-family-primary;
   transform: translateX(-100%);
@@ -40,10 +40,6 @@
 
   &.open {
     transform: translateX(0);
-  }
-
-  @include mobile {
-    max-width: 300px;
   }
 
   @media (max-width: 480px) {
@@ -97,13 +93,13 @@
   right: 1rem;
   background: none;
   border: none;
-  padding: 0.5rem 0.5rem 0.5rem 0.3rem;
+  padding: 0rem 0.1rem 0.5rem 0.3rem;
   cursor: pointer;
   color: $color-gray-dark;
   transition: color $transition-base;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -124,17 +120,14 @@
 }
 
 .drawer-nav {
-  padding: 3.125rem 1.25rem 0 1.25rem; /* 50px top padding */
+  padding: 3.125rem 1.25rem 0 1.25rem;
+  /* 50px top padding */
 }
 
 .drawer-menu {
   list-style: none;
   padding: 0;
   margin: 0;
-
-  li {
-    border-bottom: 1px solid $color-hover-gray;
-  }
 }
 
 .drawer-link {
@@ -172,20 +165,21 @@
   align-items: center;
   gap: $spacing-md;
   width: auto;
-  padding: 1.125rem 1rem 1.125rem 1.25rem;
+  padding: 0.625rem 0 0.625rem 0;
   background: none;
-  color: $color-gray-dark;
+  color: #757575;
   font-family: $font-family-primary;
   font-size: 1rem;
+     border-bottom: 1px solid #757575;
+
 
   &:hover {
-    background-color: $color-gray-light-1;
-    color: $color-secondary-blue;
+    color: $color-black;
   }
 
   &.expanded {
-    color: $color-secondary-blue;
-    background-color: $color-gray-light-1;
+    background-color: $color-white;
+    border-bottom: 1px solid #757575;
   }
 }
 
@@ -202,7 +196,7 @@
   cursor: pointer;
 
   &:hover {
-    color: $color-hover-blue;
+    color: $color-black;
   }
 }
 
@@ -212,7 +206,7 @@
   justify-content: center;
   background: none;
   border: none;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 0 0.25rem 1rem;
   margin: -0.25rem 0;
   cursor: pointer;
   color: inherit;
@@ -256,11 +250,13 @@
   margin: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height $transition-base;
+  transition: max-height 0.75s ease-in-out;
 
   &.open {
-    max-height: 1000px; /* Adjust based on content height */
+    max-height: 1000px;
+    /* Adjust based on content height */
   }
+
 }
 
 .drawer-label {
