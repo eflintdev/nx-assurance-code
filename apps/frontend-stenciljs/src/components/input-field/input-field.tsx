@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, State, Element } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, State, Element, Watch } from '@stencil/core';
 
 /**
  * A reusable input field component supporting input/select/textarea.
@@ -66,6 +66,18 @@ export class InputField {
   @Event() fieldBlur!: EventEmitter<{ id?: string; name?: string; valid: boolean }>;
 
   @State() _uid = '';
+
+  /**
+   * Watches for changes on the options data for the selection list in the form
+   * @param newValue new value
+   * @param _oldValue old value
+   */
+  @Watch('options', { immediate: true })
+  watchStates(newValue: string, _oldValue: string) {
+    if (newValue) {
+      this.renderControl();
+    }
+  }
 
   /**
    * Lifecycle method called after component is loaded.
@@ -155,11 +167,11 @@ export class InputField {
     if (this.field === 'select') {
       return (
         <select {...common} {...inputAttributes}>
-          {(this.options || []).map((opt) => (
+          { this.options && this.options?.length > 0 ? this.options.map((opt) => (
             <option value={opt.value} disabled={!!opt.disabled}>
               {opt.label}
             </option>
-          ))}
+          )) : ''}
         </select>
       );
     }
