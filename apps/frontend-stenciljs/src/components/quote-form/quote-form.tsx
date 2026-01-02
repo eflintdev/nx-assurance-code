@@ -4,8 +4,36 @@ import { QuoteFormType, StateOptionType  } from '../../types/types.ts';
 import { getAlertIcon } from '../../utils/header.utils.tsx';
 
 /**
- * Quote Form (assembled using <input-field>)
- * Emits `formSubmit` with the collected data when valid.
+ * QuoteForm Component
+ *
+ * @component
+ * @example
+ *   // Basic usage with minimal props
+ *   <quote-form></quote-form>
+ *
+ *   // With custom content and patterns
+ *   <quote-form
+ *     formTitle="Get a Quote"
+ *     intro="Please fill out this form to receive a quote"
+ *     phonePattern="^\(\d{3}\) \d{3}-\d{4}$"
+ *     zipPattern="^\d{5}$"
+ *     states={stateOptions}
+ *     onFormSubmit={handleSubmit}
+ *   ></quote-form>
+ *
+ * @prop {string} formTitle - Title displayed at the top of the form
+ * @prop {string} intro - Introduction text below the title
+ * @prop {string} requiredLabel - Label for required field indicator (e.g., "Required")
+ * @prop {string[]} consentParagraphs - Array of HTML strings for consent text
+ * @prop {StateOptionType[]} states - Array of state options for the state select field
+ * @prop {string} zipPattern - Regex pattern string for zip code validation
+ * @prop {string} phonePattern - Regex pattern string for phone number validation
+ *
+ * @state {QuoteFormType} values - Current form field values (firstName, lastName, email, phone, address, city, zip, state)
+ * @state {Record<string, string>} errors - Error messages mapped by field name
+ * @state {boolean} submitting - Whether the form is currently submitting
+ *
+ * @event {CustomEvent<QuoteFormType>} formSubmit - Emitted when form is successfully validated and submitted
  */
 @Component({
   tag: 'quote-form',

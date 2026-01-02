@@ -2,9 +2,26 @@ import { Component, h, Prop, Fragment } from '@stencil/core';
 import { BreadcrumbItem } from '@apps-shared/lib/types';
 
 /**
- * Site Content wrapper, extracted from index.html <main>.
- * Note: Custom element tags require a hyphen by spec. The tag used is
- * `site-content` while the component folder is named `content` per request.
+ * SiteContent Component
+ *
+ * Main content area component that displays page content with breadcrumb navigation and structured sections.
+ *
+ * Features:
+ * - Breadcrumb navigation for page hierarchy
+ * - Main content paragraphs section
+ * - Quote/form slot for flexible content injection
+ * - Bottom notes/disclaimer section
+ *
+ * @component
+ * @example
+ *   <site-content
+ *     breadcrumbs={breadcrumbs}
+ *     paragraphs={{ main: ['Paragraph 1', 'Paragraph 2'], bottom: ['Disclaimer'] }}>
+ *     <quote-form></quote-form>
+ *   </site-content>
+ *
+ * @prop {BreadcrumbItem[]} breadcrumbs - Array of breadcrumb items with label, href, and current status
+ * @prop {Object} paragraphs - Content paragraphs object with main and bottom string arrays
  */
 @Component({
   tag: 'site-content',

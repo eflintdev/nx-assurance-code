@@ -1,20 +1,30 @@
+/**
+ * Input Field Component Styles
+ * Styling for the input-field Stencil component including labels, controls,
+ * validation states, and responsive behavior.
+ */
+
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+/* Global box-sizing reset - ensures predictable element sizing */
 * {
   box-sizing: border-box;
 }
 
+/* Shadow DOM host - sets component to block-level display */
 :host {
   display: block;
 }
 
+/* Root container - stacks label, input, and description vertically */
 .if-root {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
+/* Label text - semibold, semantic color with letter spacing */
 .if-label {
   font-size: 1.125rem;
   font-weight: $font-weight-semibold;
@@ -22,21 +32,25 @@
   letter-spacing: 0.5px;
 }
 
+/* Required field indicator - red asterisk with left margin */
 .if-req {
   color: $color-required;
   margin-left: $spacing-sm;
 }
 
+/* Input control - applies base styles with custom height and border */
 .if-control {
   @include input-base;
   min-height: 2.78125rem;
   border-color: rgb(154, 154, 154);
 }
 
+/* Description text - helper or validation message below input */
 .if-desc {
   font-size: 0.85rem;
   color: $color-gray-text;
 
+  /* Error state - red, bold text for validation errors */
   &.is-error {
     color: #ff0000;
     font-weight: 700;
@@ -44,7 +58,9 @@
   }
 }
 
+/* Form validation error state - applied when component has validation errors */
 :host(.form-errors) {
+  /* Root with error state padding and transparent border placeholders */
   .if-root {
     padding-top: 1.125rem;
     padding-bottom: 0.5rem;
@@ -52,22 +68,25 @@
     border-bottom: 1px solid transparent;
   }
 
+  /* Error field container - light red background with red borders */
   .has-error {
     border-bottom: 1px solid #c89797;
     border-top: 1px solid #c89797;
     background-color: #fff7f7;
 
-
+    /* Input within error state - dark red border */
     input {
       border-color: 1px solid #790000;
     }
 
+    /* Error message with additional top spacing */
     & .if-desc.is-error {
       padding-top: 1rem;
     }
   }
 }
 
+/* Responsive - increase input height on larger screens */
 @include small {
   .if-control {
     min-height: 3.25rem;

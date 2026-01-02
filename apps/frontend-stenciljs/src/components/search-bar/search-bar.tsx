@@ -1,5 +1,22 @@
 import { Component, State, h } from '@stencil/core';
 
+/**
+ * SearchBar Component
+ *
+ * @component
+ * @example
+ *   // Basic usage - typically used in search-modal
+ *   <search-bar></search-bar>
+ *
+ *   // Can also be used standalone
+ *   <div>
+ *     <search-bar></search-bar>
+ *   </div>
+ *
+ * @state {string} searchValue - The current value of the search input field.
+ *   Automatically updated on user input via handleInput handler.
+ *   Passed to the input field via two-way binding.
+ */
 @Component({
   tag: 'search-bar',
   styleUrl: 'search-bar.scss',

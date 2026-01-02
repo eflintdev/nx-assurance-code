@@ -1,6 +1,13 @@
+/**
+ * Banner Section Component Styles
+ * Provides styling for responsive banner with background image,
+ * heading text, and overlay elements across multiple breakpoints.
+ */
+
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+/* Main banner section - full width with background image and flex layout */
 .banner-section {
   width: 100%;
   height: 18.875rem;
@@ -12,6 +19,7 @@
   background-repeat: no-repeat;
 }
 
+/* Container for banner content with max-width constraint */
 .banner-container {
   width: 100%;
   max-width: 69rem;
@@ -20,6 +28,7 @@
   padding: 0 1rem;
 }
 
+/* Heading styling for desktop and mobile versions */
 .banner-section h1,
 .banner-section__mobile h1 {
   margin: 0;
@@ -31,6 +40,7 @@
   display: none;
 }
 
+/* Container color styling with mobile variant */
 .banner-container {
   color: $color-black;
 
@@ -41,6 +51,7 @@
   }
 }
 
+/* Background overlay elements for mobile and desktop variants */
 .background-overlay {
   &__mobile, &__desktop {
     position: absolute;
@@ -54,6 +65,7 @@
   }
 }
 
+/* Mobile responsive - adjusted height and heading display */
 @include mobile {
   .banner-section {
     height: 11.3125rem;
@@ -71,6 +83,7 @@
     display: none;
   }
 
+  /* Mobile heading visible with reduced size and adjusted padding */
   .banner-section__mobile h1 {
     display: block;
     font-size: 2.1875rem;
@@ -80,6 +93,7 @@
   }
 }
 
+/* Extra small viewport overlay styling */
 @media (max-width: 63.9375rem) {
   .banner-section {
     position: relative;
@@ -97,35 +111,20 @@
   }
 }
 
+/* Tablet responsive - reduced height with background adjustments */
 @include tablet {
   .banner-section {
     position: relative;
     height: 9.4375rem;
     background-size: cover;
     background-position: top;
-
-
-    // &::after {
-    //   display: block;
-    //   content: '';
-    //   position: absolute;
-    //   width: 100%;
-    //   height: 100%;
-    //   background-color: transparent;
-    //   background-image: linear-gradient(115deg, var(#ccc) 65%, rgba(255, 255, 255, 0) 0%);
-    //   opacity: 1;
-    //   inset: 0;
-    //   z-index: 1;
-    //   background-position: top;
-    // }
-
-
   }
 
   .banner-section h1 {
     display: none;
   }
 
+  /* Tablet heading with adjusted size and padding */
   .banner-section__mobile h1 {
     display: block;
     font-size: 2.1875rem;
@@ -135,6 +134,7 @@
   }
 }
 
+/* Desktop responsive - full-size banner with background overlay and heading visible */
 @include desktop {
   .banner-container h1 {
     z-index: 0;
@@ -146,6 +146,7 @@
     background-size: contain;
     background-position: center right;
 
+    /* Decorative skewed background element */
     ::after {
       position: absolute;
       content: '';
@@ -156,20 +157,22 @@
       top: 0;
       left: -33.9%;
       z-index: -1;
-      // clip-path: polygon(0% 0%, 69.5% 0%, 62.5% 100%, 0% 100%)
       transform: skew(-25deg)
     }
   }
 
+  /* Desktop heading visible with max-width constraint */
   .banner-section h1 {
     display: block;
     max-width: 38.15625rem;
   }
 
+  /* Hide mobile variant on desktop */
   .banner-section__mobile h1 {
     display: none;
   }
 
+  /* Show desktop overlay variant with positioning */
   .background-overlay {
     &__desktop {
       display: block;

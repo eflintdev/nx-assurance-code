@@ -1,6 +1,13 @@
+/**
+ * Custom Link Component Styles
+ * Provides minimal styling for the custom link Stencil component
+ * with inline-block display for proper text flow integration.
+ */
+
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+/* Shadow DOM host - sets component to inline-block display */
 :host {
   display: inline-block;
 }

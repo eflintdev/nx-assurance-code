@@ -1,10 +1,18 @@
+/**
+ * Side Drawer Component Styles
+ * Provides styling for a fixed side drawer navigation with backdrop overlay,
+ * accordion menu support, and mobile responsive behavior.
+ */
+
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+/* Shadow DOM host - sets component to block-level display */
 :host {
   display: block;
 }
 
+/* Drawer backdrop - semi-transparent overlay with smooth transitions */
 .drawer-backdrop {
   position: fixed;
   top: 0;
@@ -17,12 +25,14 @@
   transition: opacity $transition-base, visibility $transition-base;
   z-index: 998;
 
+  /* Open state - visible backdrop with full opacity */
   &.open {
     opacity: 1;
     visibility: visible;
   }
 }
 
+/* Side drawer container - fixed left side panel with slide animation */
 .side-drawer {
   position: fixed;
   top: 0;
@@ -38,6 +48,7 @@
   z-index: 999;
   overflow-y: auto;
 
+  /* Open state - slide drawer into view */
   &.open {
     transform: translateX(0);
   }
@@ -46,7 +57,7 @@
     width: 100%;
   }
 
-  /* Mobile-style scrollbar */
+  /* Webkit scrollbar styling - custom mobile-style scrollbar */
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -59,6 +70,7 @@
     background: transparent;
   }
 
+  /* Scrollbar thumb with hover effect */
   &::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 4px;
@@ -69,16 +81,18 @@
     }
   }
 
-  /* Firefox scrollbar */
+  /* Firefox scrollbar styling */
   scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
   scrollbar-width: thin;
 }
 
+/* Drawer header - top section with heading and border */
 .drawer-header {
   padding: 1.5rem;
   border-bottom: 1px solid $color-hover-gray;
   background-color: $color-white;
 
+  /* Header heading - semibold blue text */
   h2 {
     margin: 0;
     font-size: 1.2rem;
@@ -87,6 +101,7 @@
   }
 }
 
+/* Close button - positioned absolute in header with hover effect */
 .close-btn {
   position: absolute;
   top: 1rem;
@@ -104,14 +119,17 @@
   height: 40px;
   border-radius: 4px;
 
+  /* Hover state - blue color transition */
   &:hover {
     color: $color-hover-blue;
   }
 
+  /* Focus state - remove default outline */
   &:focus {
     outline: none;
   }
 
+  /* Close icon SVG styling */
   svg {
     display: block;
     width: 24px;
@@ -119,17 +137,20 @@
   }
 }
 
+/* Drawer navigation section with padding */
 .drawer-nav {
   padding: 3.125rem 1.25rem 0 1.25rem;
   /* 50px top padding */
 }
 
+/* Drawer menu list - unstyled with reset spacing */
 .drawer-menu {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* Drawer link item - flex layout with icon and hover effect */
 .drawer-link {
   display: flex;
   align-items: center;
@@ -139,6 +160,7 @@
   text-decoration: none;
   transition: all $transition-base;
 
+  /* Hover state - light background with blue color */
   &:hover {
     background-color: $color-gray-light-1;
     color: $color-secondary-blue;
@@ -146,6 +168,7 @@
   }
 }
 
+/* Drawer icon - left side icon with consistent sizing */
 .drawer-icon {
   font-size: 1.2rem;
   flex-shrink: 0;
@@ -160,6 +183,7 @@
   }
 }
 
+/* Accordion trigger button - expandable menu header */
 .accordion-trigger {
   display: flex;
   align-items: center;
@@ -172,22 +196,25 @@
   font-size: 1rem;
      border-bottom: 1px solid #757575;
 
-
+  /* Hover state - darker text */
   &:hover {
     color: $color-black;
   }
 
+  /* Expanded state - maintains border color */
   &.expanded {
     background-color: $color-white;
     border-bottom: 1px solid #757575;
   }
 }
 
+/* Accordion icon prefix - leading icon for accordion item */
 .accordion-icon-prefix {
   font-size: 1.2rem;
   flex-shrink: 0;
 }
 
+/* Accordion label - flexible text element with hover effect */
 .accordion-label {
   flex: 1;
   font-weight: 400;
@@ -195,11 +222,13 @@
   text-decoration: none;
   cursor: pointer;
 
+  /* Hover state - darker text */
   &:hover {
     color: $color-black;
   }
 }
 
+/* Accordion toggle button - expand/collapse arrow button */
 .accordion-toggle-btn {
   display: flex;
   align-items: center;
@@ -214,15 +243,18 @@
   min-width: 32px;
   min-height: 32px;
 
+  /* Hover state - blue color */
   &:hover {
     color: $color-hover-blue;
   }
 
+  /* Focus state - remove default outline */
   &:focus {
     outline: none;
   }
 }
 
+/* Accordion icon - rotatable arrow icon with smooth transition */
 .accordion-icon {
   display: flex;
   align-items: center;
@@ -233,6 +265,7 @@
   flex-shrink: 0;
   color: currentColor;
 
+  /* Icon SVG styling */
   svg {
     display: block;
     width: 100%;
@@ -240,10 +273,12 @@
   }
 }
 
+/* Accordion icon rotation - 45 degree rotation when expanded */
 .accordion-trigger.expanded .accordion-toggle-btn .accordion-icon {
   transform: rotate(45deg);
 }
 
+/* Accordion menu - collapsible submenu with smooth height animation */
 .accordion-menu {
   list-style: none;
   padding: 0;
@@ -252,14 +287,15 @@
   overflow: hidden;
   transition: max-height 0.75s ease-in-out;
 
+  /* Open state - expanded menu with max-height */
   &.open {
     max-height: 1000px;
     /* Adjust based on content height */
   }
-
 }
 
 .drawer-label {
   font-size: 0.95rem;
   font-weight: 500;
+  /* Emphasized text label for drawer sections */
 }

@@ -5,6 +5,16 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+BrandLogo Component
+
+Displays brand/company logo in different variants based on the provided type.
+
+Supports two logo variants:
+- nav-logo: Navigation bar logo variant
+- full-slogan: Full logo with company slogan
+
 ## Properties
 
 | Property | Attribute | Description                          | Type     | Default     |

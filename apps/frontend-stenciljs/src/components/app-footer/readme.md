@@ -5,6 +5,20 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+AppFooter Component
+
+Main application footer with branding, navigation links, contact information, and social media integration.
+
+Features:
+- Two-section layout: top (branding and links) and bottom (contact and social media)
+- Displays company full-slogan logo
+- Phone number with call-to-action
+- Multiple footer link sections
+- Social media icon links
+- Company disclaimer and copyright information
+
 ## Properties
 
 | Property                   | Attribute      | Description            | Type           | Default     |

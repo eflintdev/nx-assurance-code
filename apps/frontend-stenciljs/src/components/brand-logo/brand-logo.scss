@@ -1,10 +1,18 @@
+/**
+ * Brand Logo Component Styles
+ * Provides styling for the brand logo SVG element with responsive sizing
+ * across different breakpoints.
+ */
+
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+/* Shadow DOM host - sets component to inline-block display */
 :host {
   display: inline-block;
 }
 
+/* SVG logo element with default sizing and block display */
 svg {
   width: 11.875rem;
   height: 3.625rem;
@@ -12,9 +20,10 @@ svg {
 
 }
 
-
+/* Mobile responsive - reduced logo size for navigation */
 @include mobile {
   svg {
+    /* Navigation logo variant with smaller dimensions */
     &.logo--nav {
       width: 9.0625rem;
       height: 2.5rem;

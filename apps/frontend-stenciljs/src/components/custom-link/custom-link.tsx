@@ -1,5 +1,18 @@
 import { Component, Prop, h } from '@stencil/core';
 
+/**
+ * CustomLink Component
+ *
+ * A custom link component.
+ *
+ * @prop {string} label - Required. The display text for the link.
+ * @prop {string} href - Required. The URL destination for the link.
+ * @prop {('footer-top' | 'footer-bottom')} variant
+ *   - Style variant for the link styling context
+ *   - 'footer-top' (default): Used in the top footer section with navigation links
+ *   - 'footer-bottom': Used in the bottom footer section for legal/policy links
+ *   - Controls which CSS class is applied (custom-link--footer-top or custom-link--footer-bottom)
+ */
 @Component({
   tag: 'custom-link',
   styleUrl: 'custom-link.scss',

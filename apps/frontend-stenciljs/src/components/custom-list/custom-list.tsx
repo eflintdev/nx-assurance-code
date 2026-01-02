@@ -1,5 +1,19 @@
 import { Component, Prop, h, Fragment } from '@stencil/core';
 
+/**
+ * CustomList Component
+ *
+ * A custom list component
+ *
+ * @prop {Array<{title: string; items: Array<{label: string; href: string; icon?: string}>}>} listBlocks
+ *   - Array of list block objects to render
+ *   - Each block contains:
+ *     - title: Section heading (string)
+ *     - items: Array of link items with:
+ *       - label: Display text for the link
+ *       - href: URL destination
+ *       - icon: Optional emoji or icon character to display before label
+ */
 @Component({
   tag: 'custom-list',
   styleUrl: 'custom-list.scss',

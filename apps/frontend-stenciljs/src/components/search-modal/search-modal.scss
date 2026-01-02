@@ -1,14 +1,23 @@
+/**
+ * Search Modal Component Styles
+ * Provides styling for a full-screen search modal with backdrop overlay,
+ * content area, and close button with open/closed states.
+ */
+
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+/* Shadow DOM host - sets component to block-level display */
 :host {
   display: block;
 }
 
-*{
+/* Global box-sizing reset - ensures predictable element sizing */
+* {
   box-sizing: border-box;
 }
 
+/* Modal backdrop - full-screen overlay with blue gradient and open state */
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -24,6 +33,7 @@
   align-items: center;
   justify-content: center;
 
+  /* Open state - visible backdrop with full opacity */
   &.open {
     opacity: 1;
     visibility: visible;
@@ -31,6 +41,7 @@
   }
 }
 
+/* Modal content container - max-width constrained with padding */
 .modal-content {
   position: relative;
   width: 100%;
@@ -39,19 +50,24 @@
   padding: 3rem 2rem 2rem 2rem;
 }
 
+/* Modal search container with info, title, and description sections */
 .modal-search {
+  /* Info section with padding */
   &__info{
     padding: 0 1rem;
   }
+  /* Description and title with Manrope font family */
   &__description,
   &__title {
     font-family: 'Manrope', Arial, sans-serif;
   }
 
+  /* Modal title - large heading with margin */
   &__title {
     font-size: 2.25rem;
     margin: 0 0 1rem;
   }
+  /* Modal description - semibold text below title */
   &__description{
     font-weight: 600;
     font-size: 1.125rem;
@@ -60,8 +76,7 @@
   }
 }
 
-
-
+/* Close button - positioned absolute with white color and hover effect */
 .close-btn {
   position: absolute;
   top: 0rem;
@@ -76,15 +91,18 @@
   transition: opacity $transition-base;
   font-weight: 300;
 
+  /* Hover state - slightly transparent */
   &:hover {
     opacity: 0.8;
   }
 
+  /* Focus state - remove default outline */
   &:focus {
     outline: none;
   }
 }
 
+/* Modal body - white text with full width */
 .modal-body {
   color: $color-white;
   width: 100%;

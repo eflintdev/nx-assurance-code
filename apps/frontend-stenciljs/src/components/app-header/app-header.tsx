@@ -1,5 +1,24 @@
 import { Component, Prop, h } from '@stencil/core';
 
+/**
+ * AppHeader Component
+ *
+ * Main application header with navigation controls, branding, and user interaction elements.
+ *
+ * Features:
+ * - Menu toggle button that opens the side drawer
+ * - Brand logo display
+ * - Search button that opens the search modal
+ * - Phone number link
+ * - Login link with icon
+ *
+ * @component
+ * @example
+ *   <app-header brandName="Company" phone="1-800-123-4567"></app-header>
+ *
+ * @prop {string} brandName - Company name/logo text
+ * @prop {string} phone - Phone number to display and link to
+ */
 @Component({
   tag: 'app-header',
   styleUrl: 'app-header.scss',

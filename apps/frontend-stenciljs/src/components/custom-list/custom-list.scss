@@ -1,13 +1,23 @@
+/**
+ * Custom List Component Styles
+ * Provides styling for custom list with titles, items, links, and
+ * side drawer menu variations.
+ */
+
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+/* Shadow DOM host - sets component to block-level display */
 :host {
   display: block;
 }
 
+/* List block container with vertical padding */
 .list-block {
   padding: 0.75rem 0;
 }
+
+/* Side drawer menu variant - dark colored titles with bold weight */
 :host(.side-drawer__menu__list){
   .list-block-title {
     color: #4d4d4f !important;
@@ -16,6 +26,7 @@
   
 }
 
+/* List block title - capitalized blue heading with letter spacing */
 .list-block-title {
   margin: 0 0 0.5rem 0rem;
   font-size: 1.375rem;
@@ -25,12 +36,14 @@
   letter-spacing: 0.5px;
 }
 
+/* List items container - unstyled list with reset spacing */
 .list-block-items {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* List item - removes borders from first and last items */
 .list-item {
   border-top: none;
 
@@ -39,6 +52,7 @@
   }
 }
 
+/* List link - inline-block with hover color transition */
 .list-link {
   display: inline-block;
   margin: 0;
@@ -53,10 +67,12 @@
   }
 }
 
+/* List icon - hidden from display */
 .list-icon {
   display: none;
 }
 
+/* List label - non-flex item for label text */
 .list-label {
   flex: none;
 }

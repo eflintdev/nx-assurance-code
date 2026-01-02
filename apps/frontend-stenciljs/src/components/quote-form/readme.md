@@ -7,8 +7,7 @@
 
 ## Overview
 
-Quote Form (assembled using <input-field>)
-Emits `formSubmit` with the collected data when valid.
+QuoteForm Component
 
 ## Properties
 

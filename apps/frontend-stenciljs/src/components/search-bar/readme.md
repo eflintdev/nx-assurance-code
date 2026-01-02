@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+SearchBar Component
+
 ## Dependencies
 
 ### Used by

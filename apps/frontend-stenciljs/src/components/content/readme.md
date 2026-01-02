@@ -7,16 +7,22 @@
 
 ## Overview
 
-Site Content wrapper, extracted from index.html <main>.
-Note: Custom element tags require a hyphen by spec. The tag used is
-`site-content` while the component folder is named `content` per request.
+SiteContent Component
+
+Main content area component that displays page content with breadcrumb navigation and structured sections.
+
+Features:
+- Breadcrumb navigation for page hierarchy
+- Main content paragraphs section
+- Quote/form slot for flexible content injection
+- Bottom notes/disclaimer section
 
 ## Properties
 
-| Property                   | Attribute | Description                     | Type               | Default     |
-| -------------------------- | --------- | ------------------------------- | ------------------ | ----------- |
-| `breadcrumbs` _(required)_ | --        | Breadcrumb items for navigation | `BreadcrumbItem[]` | `undefined` |
-| `paragraphs` _(required)_  | --        | Content paragraphs              | `string[]`         | `undefined` |
+| Property                   | Attribute | Description                     | Type                                    | Default     |
+| -------------------------- | --------- | ------------------------------- | --------------------------------------- | ----------- |
+| `breadcrumbs` _(required)_ | --        | Breadcrumb items for navigation | `BreadcrumbItem[]`                      | `undefined` |
+| `paragraphs` _(required)_  | --        | Content paragraphs              | `{ main: string[]; bottom: string[]; }` | `undefined` |
 
 
 ----------------------------------------------

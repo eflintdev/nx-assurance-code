@@ -5,6 +5,12 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+CustomLink Component
+
+A custom link component.
+
 ## Properties
 
 | Property             | Attribute | Description                                              | Type                              | Default        |

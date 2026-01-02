@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+SideDrawer Component
+
 ## Properties
 
 | Property   | Attribute | Description                         | Type                  | Default                |

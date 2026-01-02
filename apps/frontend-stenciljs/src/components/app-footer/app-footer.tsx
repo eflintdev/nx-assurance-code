@@ -1,6 +1,33 @@
 import { Component, Prop, h } from '@stencil/core';
 import { FooterLink, SocialLink } from '@apps-shared';
 
+/**
+ * AppFooter Component
+ *
+ * Main application footer with branding, navigation links, contact information, and social media integration.
+ *
+ * Features:
+ * - Two-section layout: top (branding and links) and bottom (contact and social media)
+ * - Displays company full-slogan logo
+ * - Phone number with call-to-action
+ * - Multiple footer link sections
+ * - Social media icon links
+ * - Company disclaimer and copyright information
+ *
+ * @component
+ * @example
+ *   <app-footer
+ *     companyName="Company Name"
+ *     phone="1-800-123-4567"
+ *     links={footerLinks}
+ *     socialLinks={socialMedia}>
+ *   </app-footer>
+ *
+ * @prop {string} companyName - Company name for branding and copyright
+ * @prop {string} phone - Phone number for quote call-to-action
+ * @prop {FooterLink[]} links - Array of footer navigation links
+ * @prop {SocialLink[]} socialLinks - Array of social media links with platform and URL
+ */
 @Component({
   tag: 'app-footer',
   styleUrl: 'app-footer.scss',

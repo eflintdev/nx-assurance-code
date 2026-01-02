@@ -54,7 +54,7 @@ export class InputField {
   @Prop() maxlength?: number;
 
   // Select support
-  @Prop() options?: Array<{ label: string; value: string; disabled?: boolean }>;
+  @Prop({ mutable: true, reflect: true }) options?: Array<{ label: string; value: string; disabled?: boolean }>;
 
   // Messaging
   @Prop() helpText?: string;

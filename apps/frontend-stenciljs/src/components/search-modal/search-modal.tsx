@@ -1,5 +1,20 @@
 import { Component, State, h } from '@stencil/core';
 
+/**
+ * SearchModal Component
+ *
+ * @component
+ * @example
+ *   // Basic usage - modal is managed by app-header
+ *   <search-modal></search-modal>
+ *
+ *   // Toggle from external code
+ *   window.dispatchEvent(new CustomEvent('toggleSearchModal'));
+ *
+ * @state {boolean} isOpen - Whether the modal is currently open or closed.
+ *   When true, the backdrop and modal content are visible with full opacity.
+ *   When false, the modal is hidden with zero opacity and visibility.
+ */
 @Component({
   tag: 'search-modal',
   styleUrl: 'search-modal.scss',

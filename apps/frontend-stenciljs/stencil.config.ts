@@ -33,7 +33,7 @@ if (process.env.NX_BUILD_ENV === 'react') {
       // Optionally include defineCustomElements if not using lazy-loading
       // includeDefineCustomElements: true,
     }));
-} else if (process.env.NX_BUILD_ENV == 'angular') {
+} else if (process.env.NX_BUILD_ENV === 'angular') {
   outputTargets.push(
     angularOutputTarget({
       componentCorePackage: 'frontend-stenciljs',

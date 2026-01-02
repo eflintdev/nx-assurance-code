@@ -10,6 +10,28 @@ import { QuoteFormType, StateOptionType } from "./types/types";
 export { FooterLink, SocialLink } from "@apps-shared";
 export { QuoteFormType, StateOptionType } from "./types/types";
 export namespace Components {
+    /**
+     * AppFooter Component
+     * Main application footer with branding, navigation links, contact information, and social media integration.
+     * Features:
+     * - Two-section layout: top (branding and links) and bottom (contact and social media)
+     * - Displays company full-slogan logo
+     * - Phone number with call-to-action
+     * - Multiple footer link sections
+     * - Social media icon links
+     * - Company disclaimer and copyright information
+     * @component 
+     * @example   <app-footer
+     *     companyName="Company Name"
+     *     phone="1-800-123-4567"
+     *     links={footerLinks}
+     *     socialLinks={socialMedia}>
+     *   </app-footer>
+     * @prop {string} companyName - Company name for branding and copyright
+     * @prop {string} phone - Phone number for quote call-to-action
+     * @prop {FooterLink[]} links - Array of footer navigation links
+     * @prop {SocialLink[]} socialLinks - Array of social media links with platform and URL
+     */
     interface AppFooter {
         /**
           * Company name
@@ -28,6 +50,20 @@ export namespace Components {
          */
         "socialLinks": SocialLink[];
     }
+    /**
+     * AppHeader Component
+     * Main application header with navigation controls, branding, and user interaction elements.
+     * Features:
+     * - Menu toggle button that opens the side drawer
+     * - Brand logo display
+     * - Search button that opens the search modal
+     * - Phone number link
+     * - Login link with icon
+     * @component 
+     * @example   <app-header brandName="Company" phone="1-800-123-4567"></app-header>
+     * @prop {string} brandName - Company name/logo text
+     * @prop {string} phone - Phone number to display and link to
+     */
     interface AppHeader {
         /**
           * Company name/logo
@@ -38,18 +74,51 @@ export namespace Components {
          */
         "phone": string;
     }
+    /**
+     * BannerSection Component
+     * Hero banner section that displays a prominent heading with responsive design.
+     * Features:
+     * - Responsive desktop and mobile layouts
+     * - Mobile wedge overlay for visual enhancement
+     * - Customizable heading text
+     * @component 
+     * @example   <banner-section heading="Welcome to Our Platform"></banner-section>
+     * @prop {string} heading - Banner heading text to display
+     */
     interface BannerSection {
         /**
           * Banner heading text
          */
         "heading": string;
     }
+    /**
+     * BrandLogo Component
+     * Displays brand/company logo in different variants based on the provided type.
+     * Supports two logo variants:
+     * - nav-logo: Navigation bar logo variant
+     * - full-slogan: Full logo with company slogan
+     * @component 
+     * @example   <brand-logo type="nav-logo"></brand-logo>
+     *   <brand-logo type="full-slogan"></brand-logo>
+     * @prop {string} type - Logo variant type: 'nav-logo' or 'full-slogan'
+     */
     interface BrandLogo {
         /**
           * Brand logo identifier or kind (type)
          */
         "type": string;
     }
+    /**
+     * CustomLink Component
+     * A custom link component.
+     * @prop {string} label - Required. The display text for the link.
+     * @prop {string} href - Required. The URL destination for the link.
+     * @prop {('footer-top' | 'footer-bottom')} variant
+     * - Style variant for the link styling context
+     * - 'footer-top' (default): Used in the top footer section with navigation links
+     * - 'footer-bottom': Used in the bottom footer section for legal/policy links
+     * - Controls which CSS class is applied (custom-link--footer-top or custom-link--footer-bottom)
+     */
     interface CustomLink {
         /**
           * Link URL
@@ -65,6 +134,18 @@ export namespace Components {
          */
         "variant": 'footer-top' | 'footer-bottom';
     }
+    /**
+     * CustomList Component
+     * A custom list component
+     * @prop {Array<{title: string; items: Array<{label: string; href: string; icon?: string}>}>} listBlocks
+     * - Array of list block objects to render
+     * - Each block contains:
+     * - title: Section heading (string)
+     * - items: Array of link items with:
+     * - label: Display text for the link
+     * - href: URL destination
+     * - icon: Optional emoji or icon character to display before label
+     */
     interface CustomList {
         /**
           * List blocks with title and items
@@ -130,8 +211,30 @@ export namespace Components {
         "value"?: string | number;
     }
     /**
-     * Quote Form (assembled using <input-field>)
-     * Emits `formSubmit` with the collected data when valid.
+     * QuoteForm Component
+     * @component 
+     * @example   // Basic usage with minimal props
+     *   <quote-form></quote-form>
+     *   // With custom content and patterns
+     *   <quote-form
+     *     formTitle="Get a Quote"
+     *     intro="Please fill out this form to receive a quote"
+     *     phonePattern="^\(\d{3}\) \d{3}-\d{4}$"
+     *     zipPattern="^\d{5}$"
+     *     states={stateOptions}
+     *     onFormSubmit={handleSubmit}
+     *   ></quote-form>
+     * @prop {string} formTitle - Title displayed at the top of the form
+     * @prop {string} intro - Introduction text below the title
+     * @prop {string} requiredLabel - Label for required field indicator (e.g., "Required")
+     * @prop {string[]} consentParagraphs - Array of HTML strings for consent text
+     * @prop {StateOptionType[]} states - Array of state options for the state select field
+     * @prop {string} zipPattern - Regex pattern string for zip code validation
+     * @prop {string} phonePattern - Regex pattern string for phone number validation
+     * @state {QuoteFormType} values - Current form field values (firstName, lastName, email, phone, address, city, zip, state)
+     * @state {Record<string, string>} errors - Error messages mapped by field name
+     * @state {boolean} submitting - Whether the form is currently submitting
+     * @event {CustomEvent<QuoteFormType>} formSubmit - Emitted when form is successfully validated and submitted
      */
     interface QuoteForm {
         "consentParagraphs": string[];
@@ -142,10 +245,50 @@ export namespace Components {
         "states": StateOptionType[];
         "zipPattern": string;
     }
+    /**
+     * SearchBar Component
+     * @component 
+     * @example   // Basic usage - typically used in search-modal
+     *   <search-bar></search-bar>
+     *   // Can also be used standalone
+     *   <div>
+     *     <search-bar></search-bar>
+     *   </div>
+     * @state {string} searchValue - The current value of the search input field.
+     * Automatically updated on user input via handleInput handler.
+     * Passed to the input field via two-way binding.
+     */
     interface SearchBar {
     }
+    /**
+     * SearchModal Component
+     * @component 
+     * @example   // Basic usage - modal is managed by app-header
+     *   <search-modal></search-modal>
+     *   // Toggle from external code
+     *   window.dispatchEvent(new CustomEvent('toggleSearchModal'));
+     * @state {boolean} isOpen - Whether the modal is currently open or closed.
+     * When true, the backdrop and modal content are visible with full opacity.
+     * When false, the modal is hidden with zero opacity and visibility.
+     */
     interface SearchModal {
     }
+    /**
+     * SideDrawer Component
+     * @component 
+     * @example   // Basic usage
+     *   <side-drawer></side-drawer>
+     *   // With custom sections prop
+     *   <side-drawer sections={customSections}></side-drawer>
+     * @prop {SideDrawerSection[]} sections - Array of drawer sections containing:
+     * - key: unique identifier for the section
+     * - label: display text for the section
+     * - icon: optional emoji or icon character
+     * - href: optional link href (defaults to section key as anchor)
+     * - listBlocks: array of list items to render in accordion content
+     * @state {boolean} isOpen - Whether the drawer is currently open or closed
+     * @state {Record<string, boolean>} expandedSections - Map of section keys to their expanded state
+     */
     interface SideDrawer {
         /**
           * Accordion sections with list blocks
@@ -154,9 +297,21 @@ export namespace Components {
         "sections": SideDrawerSection[];
     }
     /**
-     * Site Content wrapper, extracted from index.html <main>.
-     * Note: Custom element tags require a hyphen by spec. The tag used is
-     * `site-content` while the component folder is named `content` per request.
+     * SiteContent Component
+     * Main content area component that displays page content with breadcrumb navigation and structured sections.
+     * Features:
+     * - Breadcrumb navigation for page hierarchy
+     * - Main content paragraphs section
+     * - Quote/form slot for flexible content injection
+     * - Bottom notes/disclaimer section
+     * @component 
+     * @example   <site-content
+     *     breadcrumbs={breadcrumbs}
+     *     paragraphs={{ main: ['Paragraph 1', 'Paragraph 2'], bottom: ['Disclaimer'] }}>
+     *     <quote-form></quote-form>
+     *   </site-content>
+     * @prop {BreadcrumbItem[]} breadcrumbs - Array of breadcrumb items with label, href, and current status
+     * @prop {Object} paragraphs - Content paragraphs object with main and bottom string arrays
      */
     interface SiteContent {
         /**
@@ -178,36 +333,117 @@ export interface QuoteFormCustomEvent<T> extends CustomEvent<T> {
     target: HTMLQuoteFormElement;
 }
 declare global {
+    /**
+     * AppFooter Component
+     * Main application footer with branding, navigation links, contact information, and social media integration.
+     * Features:
+     * - Two-section layout: top (branding and links) and bottom (contact and social media)
+     * - Displays company full-slogan logo
+     * - Phone number with call-to-action
+     * - Multiple footer link sections
+     * - Social media icon links
+     * - Company disclaimer and copyright information
+     * @component 
+     * @example   <app-footer
+     *     companyName="Company Name"
+     *     phone="1-800-123-4567"
+     *     links={footerLinks}
+     *     socialLinks={socialMedia}>
+     *   </app-footer>
+     * @prop {string} companyName - Company name for branding and copyright
+     * @prop {string} phone - Phone number for quote call-to-action
+     * @prop {FooterLink[]} links - Array of footer navigation links
+     * @prop {SocialLink[]} socialLinks - Array of social media links with platform and URL
+     */
     interface HTMLAppFooterElement extends Components.AppFooter, HTMLStencilElement {
     }
     var HTMLAppFooterElement: {
         prototype: HTMLAppFooterElement;
         new (): HTMLAppFooterElement;
     };
+    /**
+     * AppHeader Component
+     * Main application header with navigation controls, branding, and user interaction elements.
+     * Features:
+     * - Menu toggle button that opens the side drawer
+     * - Brand logo display
+     * - Search button that opens the search modal
+     * - Phone number link
+     * - Login link with icon
+     * @component 
+     * @example   <app-header brandName="Company" phone="1-800-123-4567"></app-header>
+     * @prop {string} brandName - Company name/logo text
+     * @prop {string} phone - Phone number to display and link to
+     */
     interface HTMLAppHeaderElement extends Components.AppHeader, HTMLStencilElement {
     }
     var HTMLAppHeaderElement: {
         prototype: HTMLAppHeaderElement;
         new (): HTMLAppHeaderElement;
     };
+    /**
+     * BannerSection Component
+     * Hero banner section that displays a prominent heading with responsive design.
+     * Features:
+     * - Responsive desktop and mobile layouts
+     * - Mobile wedge overlay for visual enhancement
+     * - Customizable heading text
+     * @component 
+     * @example   <banner-section heading="Welcome to Our Platform"></banner-section>
+     * @prop {string} heading - Banner heading text to display
+     */
     interface HTMLBannerSectionElement extends Components.BannerSection, HTMLStencilElement {
     }
     var HTMLBannerSectionElement: {
         prototype: HTMLBannerSectionElement;
         new (): HTMLBannerSectionElement;
     };
+    /**
+     * BrandLogo Component
+     * Displays brand/company logo in different variants based on the provided type.
+     * Supports two logo variants:
+     * - nav-logo: Navigation bar logo variant
+     * - full-slogan: Full logo with company slogan
+     * @component 
+     * @example   <brand-logo type="nav-logo"></brand-logo>
+     *   <brand-logo type="full-slogan"></brand-logo>
+     * @prop {string} type - Logo variant type: 'nav-logo' or 'full-slogan'
+     */
     interface HTMLBrandLogoElement extends Components.BrandLogo, HTMLStencilElement {
     }
     var HTMLBrandLogoElement: {
         prototype: HTMLBrandLogoElement;
         new (): HTMLBrandLogoElement;
     };
+    /**
+     * CustomLink Component
+     * A custom link component.
+     * @prop {string} label - Required. The display text for the link.
+     * @prop {string} href - Required. The URL destination for the link.
+     * @prop {('footer-top' | 'footer-bottom')} variant
+     * - Style variant for the link styling context
+     * - 'footer-top' (default): Used in the top footer section with navigation links
+     * - 'footer-bottom': Used in the bottom footer section for legal/policy links
+     * - Controls which CSS class is applied (custom-link--footer-top or custom-link--footer-bottom)
+     */
     interface HTMLCustomLinkElement extends Components.CustomLink, HTMLStencilElement {
     }
     var HTMLCustomLinkElement: {
         prototype: HTMLCustomLinkElement;
         new (): HTMLCustomLinkElement;
     };
+    /**
+     * CustomList Component
+     * A custom list component
+     * @prop {Array<{title: string; items: Array<{label: string; href: string; icon?: string}>}>} listBlocks
+     * - Array of list block objects to render
+     * - Each block contains:
+     * - title: Section heading (string)
+     * - items: Array of link items with:
+     * - label: Display text for the link
+     * - href: URL destination
+     * - icon: Optional emoji or icon character to display before label
+     */
     interface HTMLCustomListElement extends Components.CustomList, HTMLStencilElement {
     }
     var HTMLCustomListElement: {
@@ -252,8 +488,30 @@ declare global {
         "formSubmit": QuoteFormType;
     }
     /**
-     * Quote Form (assembled using <input-field>)
-     * Emits `formSubmit` with the collected data when valid.
+     * QuoteForm Component
+     * @component 
+     * @example   // Basic usage with minimal props
+     *   <quote-form></quote-form>
+     *   // With custom content and patterns
+     *   <quote-form
+     *     formTitle="Get a Quote"
+     *     intro="Please fill out this form to receive a quote"
+     *     phonePattern="^\(\d{3}\) \d{3}-\d{4}$"
+     *     zipPattern="^\d{5}$"
+     *     states={stateOptions}
+     *     onFormSubmit={handleSubmit}
+     *   ></quote-form>
+     * @prop {string} formTitle - Title displayed at the top of the form
+     * @prop {string} intro - Introduction text below the title
+     * @prop {string} requiredLabel - Label for required field indicator (e.g., "Required")
+     * @prop {string[]} consentParagraphs - Array of HTML strings for consent text
+     * @prop {StateOptionType[]} states - Array of state options for the state select field
+     * @prop {string} zipPattern - Regex pattern string for zip code validation
+     * @prop {string} phonePattern - Regex pattern string for phone number validation
+     * @state {QuoteFormType} values - Current form field values (firstName, lastName, email, phone, address, city, zip, state)
+     * @state {Record<string, string>} errors - Error messages mapped by field name
+     * @state {boolean} submitting - Whether the form is currently submitting
+     * @event {CustomEvent<QuoteFormType>} formSubmit - Emitted when form is successfully validated and submitted
      */
     interface HTMLQuoteFormElement extends Components.QuoteForm, HTMLStencilElement {
         addEventListener<K extends keyof HTMLQuoteFormElementEventMap>(type: K, listener: (this: HTMLQuoteFormElement, ev: QuoteFormCustomEvent<HTMLQuoteFormElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -269,18 +527,58 @@ declare global {
         prototype: HTMLQuoteFormElement;
         new (): HTMLQuoteFormElement;
     };
+    /**
+     * SearchBar Component
+     * @component 
+     * @example   // Basic usage - typically used in search-modal
+     *   <search-bar></search-bar>
+     *   // Can also be used standalone
+     *   <div>
+     *     <search-bar></search-bar>
+     *   </div>
+     * @state {string} searchValue - The current value of the search input field.
+     * Automatically updated on user input via handleInput handler.
+     * Passed to the input field via two-way binding.
+     */
     interface HTMLSearchBarElement extends Components.SearchBar, HTMLStencilElement {
     }
     var HTMLSearchBarElement: {
         prototype: HTMLSearchBarElement;
         new (): HTMLSearchBarElement;
     };
+    /**
+     * SearchModal Component
+     * @component 
+     * @example   // Basic usage - modal is managed by app-header
+     *   <search-modal></search-modal>
+     *   // Toggle from external code
+     *   window.dispatchEvent(new CustomEvent('toggleSearchModal'));
+     * @state {boolean} isOpen - Whether the modal is currently open or closed.
+     * When true, the backdrop and modal content are visible with full opacity.
+     * When false, the modal is hidden with zero opacity and visibility.
+     */
     interface HTMLSearchModalElement extends Components.SearchModal, HTMLStencilElement {
     }
     var HTMLSearchModalElement: {
         prototype: HTMLSearchModalElement;
         new (): HTMLSearchModalElement;
     };
+    /**
+     * SideDrawer Component
+     * @component 
+     * @example   // Basic usage
+     *   <side-drawer></side-drawer>
+     *   // With custom sections prop
+     *   <side-drawer sections={customSections}></side-drawer>
+     * @prop {SideDrawerSection[]} sections - Array of drawer sections containing:
+     * - key: unique identifier for the section
+     * - label: display text for the section
+     * - icon: optional emoji or icon character
+     * - href: optional link href (defaults to section key as anchor)
+     * - listBlocks: array of list items to render in accordion content
+     * @state {boolean} isOpen - Whether the drawer is currently open or closed
+     * @state {Record<string, boolean>} expandedSections - Map of section keys to their expanded state
+     */
     interface HTMLSideDrawerElement extends Components.SideDrawer, HTMLStencilElement {
     }
     var HTMLSideDrawerElement: {
@@ -288,9 +586,21 @@ declare global {
         new (): HTMLSideDrawerElement;
     };
     /**
-     * Site Content wrapper, extracted from index.html <main>.
-     * Note: Custom element tags require a hyphen by spec. The tag used is
-     * `site-content` while the component folder is named `content` per request.
+     * SiteContent Component
+     * Main content area component that displays page content with breadcrumb navigation and structured sections.
+     * Features:
+     * - Breadcrumb navigation for page hierarchy
+     * - Main content paragraphs section
+     * - Quote/form slot for flexible content injection
+     * - Bottom notes/disclaimer section
+     * @component 
+     * @example   <site-content
+     *     breadcrumbs={breadcrumbs}
+     *     paragraphs={{ main: ['Paragraph 1', 'Paragraph 2'], bottom: ['Disclaimer'] }}>
+     *     <quote-form></quote-form>
+     *   </site-content>
+     * @prop {BreadcrumbItem[]} breadcrumbs - Array of breadcrumb items with label, href, and current status
+     * @prop {Object} paragraphs - Content paragraphs object with main and bottom string arrays
      */
     interface HTMLSiteContentElement extends Components.SiteContent, HTMLStencilElement {
     }
@@ -314,6 +624,28 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    /**
+     * AppFooter Component
+     * Main application footer with branding, navigation links, contact information, and social media integration.
+     * Features:
+     * - Two-section layout: top (branding and links) and bottom (contact and social media)
+     * - Displays company full-slogan logo
+     * - Phone number with call-to-action
+     * - Multiple footer link sections
+     * - Social media icon links
+     * - Company disclaimer and copyright information
+     * @component 
+     * @example   <app-footer
+     *     companyName="Company Name"
+     *     phone="1-800-123-4567"
+     *     links={footerLinks}
+     *     socialLinks={socialMedia}>
+     *   </app-footer>
+     * @prop {string} companyName - Company name for branding and copyright
+     * @prop {string} phone - Phone number for quote call-to-action
+     * @prop {FooterLink[]} links - Array of footer navigation links
+     * @prop {SocialLink[]} socialLinks - Array of social media links with platform and URL
+     */
     interface AppFooter {
         /**
           * Company name
@@ -332,6 +664,20 @@ declare namespace LocalJSX {
          */
         "socialLinks": SocialLink[];
     }
+    /**
+     * AppHeader Component
+     * Main application header with navigation controls, branding, and user interaction elements.
+     * Features:
+     * - Menu toggle button that opens the side drawer
+     * - Brand logo display
+     * - Search button that opens the search modal
+     * - Phone number link
+     * - Login link with icon
+     * @component 
+     * @example   <app-header brandName="Company" phone="1-800-123-4567"></app-header>
+     * @prop {string} brandName - Company name/logo text
+     * @prop {string} phone - Phone number to display and link to
+     */
     interface AppHeader {
         /**
           * Company name/logo
@@ -342,18 +688,51 @@ declare namespace LocalJSX {
          */
         "phone"?: string;
     }
+    /**
+     * BannerSection Component
+     * Hero banner section that displays a prominent heading with responsive design.
+     * Features:
+     * - Responsive desktop and mobile layouts
+     * - Mobile wedge overlay for visual enhancement
+     * - Customizable heading text
+     * @component 
+     * @example   <banner-section heading="Welcome to Our Platform"></banner-section>
+     * @prop {string} heading - Banner heading text to display
+     */
     interface BannerSection {
         /**
           * Banner heading text
          */
         "heading": string;
     }
+    /**
+     * BrandLogo Component
+     * Displays brand/company logo in different variants based on the provided type.
+     * Supports two logo variants:
+     * - nav-logo: Navigation bar logo variant
+     * - full-slogan: Full logo with company slogan
+     * @component 
+     * @example   <brand-logo type="nav-logo"></brand-logo>
+     *   <brand-logo type="full-slogan"></brand-logo>
+     * @prop {string} type - Logo variant type: 'nav-logo' or 'full-slogan'
+     */
     interface BrandLogo {
         /**
           * Brand logo identifier or kind (type)
          */
         "type"?: string;
     }
+    /**
+     * CustomLink Component
+     * A custom link component.
+     * @prop {string} label - Required. The display text for the link.
+     * @prop {string} href - Required. The URL destination for the link.
+     * @prop {('footer-top' | 'footer-bottom')} variant
+     * - Style variant for the link styling context
+     * - 'footer-top' (default): Used in the top footer section with navigation links
+     * - 'footer-bottom': Used in the bottom footer section for legal/policy links
+     * - Controls which CSS class is applied (custom-link--footer-top or custom-link--footer-bottom)
+     */
     interface CustomLink {
         /**
           * Link URL
@@ -369,6 +748,18 @@ declare namespace LocalJSX {
          */
         "variant"?: 'footer-top' | 'footer-bottom';
     }
+    /**
+     * CustomList Component
+     * A custom list component
+     * @prop {Array<{title: string; items: Array<{label: string; href: string; icon?: string}>}>} listBlocks
+     * - Array of list block objects to render
+     * - Each block contains:
+     * - title: Section heading (string)
+     * - items: Array of link items with:
+     * - label: Display text for the link
+     * - href: URL destination
+     * - icon: Optional emoji or icon character to display before label
+     */
     interface CustomList {
         /**
           * List blocks with title and items
@@ -437,8 +828,30 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     /**
-     * Quote Form (assembled using <input-field>)
-     * Emits `formSubmit` with the collected data when valid.
+     * QuoteForm Component
+     * @component 
+     * @example   // Basic usage with minimal props
+     *   <quote-form></quote-form>
+     *   // With custom content and patterns
+     *   <quote-form
+     *     formTitle="Get a Quote"
+     *     intro="Please fill out this form to receive a quote"
+     *     phonePattern="^\(\d{3}\) \d{3}-\d{4}$"
+     *     zipPattern="^\d{5}$"
+     *     states={stateOptions}
+     *     onFormSubmit={handleSubmit}
+     *   ></quote-form>
+     * @prop {string} formTitle - Title displayed at the top of the form
+     * @prop {string} intro - Introduction text below the title
+     * @prop {string} requiredLabel - Label for required field indicator (e.g., "Required")
+     * @prop {string[]} consentParagraphs - Array of HTML strings for consent text
+     * @prop {StateOptionType[]} states - Array of state options for the state select field
+     * @prop {string} zipPattern - Regex pattern string for zip code validation
+     * @prop {string} phonePattern - Regex pattern string for phone number validation
+     * @state {QuoteFormType} values - Current form field values (firstName, lastName, email, phone, address, city, zip, state)
+     * @state {Record<string, string>} errors - Error messages mapped by field name
+     * @state {boolean} submitting - Whether the form is currently submitting
+     * @event {CustomEvent<QuoteFormType>} formSubmit - Emitted when form is successfully validated and submitted
      */
     interface QuoteForm {
         "consentParagraphs"?: string[];
@@ -450,10 +863,50 @@ declare namespace LocalJSX {
         "states"?: StateOptionType[];
         "zipPattern"?: string;
     }
+    /**
+     * SearchBar Component
+     * @component 
+     * @example   // Basic usage - typically used in search-modal
+     *   <search-bar></search-bar>
+     *   // Can also be used standalone
+     *   <div>
+     *     <search-bar></search-bar>
+     *   </div>
+     * @state {string} searchValue - The current value of the search input field.
+     * Automatically updated on user input via handleInput handler.
+     * Passed to the input field via two-way binding.
+     */
     interface SearchBar {
     }
+    /**
+     * SearchModal Component
+     * @component 
+     * @example   // Basic usage - modal is managed by app-header
+     *   <search-modal></search-modal>
+     *   // Toggle from external code
+     *   window.dispatchEvent(new CustomEvent('toggleSearchModal'));
+     * @state {boolean} isOpen - Whether the modal is currently open or closed.
+     * When true, the backdrop and modal content are visible with full opacity.
+     * When false, the modal is hidden with zero opacity and visibility.
+     */
     interface SearchModal {
     }
+    /**
+     * SideDrawer Component
+     * @component 
+     * @example   // Basic usage
+     *   <side-drawer></side-drawer>
+     *   // With custom sections prop
+     *   <side-drawer sections={customSections}></side-drawer>
+     * @prop {SideDrawerSection[]} sections - Array of drawer sections containing:
+     * - key: unique identifier for the section
+     * - label: display text for the section
+     * - icon: optional emoji or icon character
+     * - href: optional link href (defaults to section key as anchor)
+     * - listBlocks: array of list items to render in accordion content
+     * @state {boolean} isOpen - Whether the drawer is currently open or closed
+     * @state {Record<string, boolean>} expandedSections - Map of section keys to their expanded state
+     */
     interface SideDrawer {
         /**
           * Accordion sections with list blocks
@@ -462,9 +915,21 @@ declare namespace LocalJSX {
         "sections"?: SideDrawerSection[];
     }
     /**
-     * Site Content wrapper, extracted from index.html <main>.
-     * Note: Custom element tags require a hyphen by spec. The tag used is
-     * `site-content` while the component folder is named `content` per request.
+     * SiteContent Component
+     * Main content area component that displays page content with breadcrumb navigation and structured sections.
+     * Features:
+     * - Breadcrumb navigation for page hierarchy
+     * - Main content paragraphs section
+     * - Quote/form slot for flexible content injection
+     * - Bottom notes/disclaimer section
+     * @component 
+     * @example   <site-content
+     *     breadcrumbs={breadcrumbs}
+     *     paragraphs={{ main: ['Paragraph 1', 'Paragraph 2'], bottom: ['Disclaimer'] }}>
+     *     <quote-form></quote-form>
+     *   </site-content>
+     * @prop {BreadcrumbItem[]} breadcrumbs - Array of breadcrumb items with label, href, and current status
+     * @prop {Object} paragraphs - Content paragraphs object with main and bottom string arrays
      */
     interface SiteContent {
         /**
@@ -495,11 +960,92 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * AppFooter Component
+             * Main application footer with branding, navigation links, contact information, and social media integration.
+             * Features:
+             * - Two-section layout: top (branding and links) and bottom (contact and social media)
+             * - Displays company full-slogan logo
+             * - Phone number with call-to-action
+             * - Multiple footer link sections
+             * - Social media icon links
+             * - Company disclaimer and copyright information
+             * @component 
+             * @example   <app-footer
+             *     companyName="Company Name"
+             *     phone="1-800-123-4567"
+             *     links={footerLinks}
+             *     socialLinks={socialMedia}>
+             *   </app-footer>
+             * @prop {string} companyName - Company name for branding and copyright
+             * @prop {string} phone - Phone number for quote call-to-action
+             * @prop {FooterLink[]} links - Array of footer navigation links
+             * @prop {SocialLink[]} socialLinks - Array of social media links with platform and URL
+             */
             "app-footer": LocalJSX.AppFooter & JSXBase.HTMLAttributes<HTMLAppFooterElement>;
+            /**
+             * AppHeader Component
+             * Main application header with navigation controls, branding, and user interaction elements.
+             * Features:
+             * - Menu toggle button that opens the side drawer
+             * - Brand logo display
+             * - Search button that opens the search modal
+             * - Phone number link
+             * - Login link with icon
+             * @component 
+             * @example   <app-header brandName="Company" phone="1-800-123-4567"></app-header>
+             * @prop {string} brandName - Company name/logo text
+             * @prop {string} phone - Phone number to display and link to
+             */
             "app-header": LocalJSX.AppHeader & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
+            /**
+             * BannerSection Component
+             * Hero banner section that displays a prominent heading with responsive design.
+             * Features:
+             * - Responsive desktop and mobile layouts
+             * - Mobile wedge overlay for visual enhancement
+             * - Customizable heading text
+             * @component 
+             * @example   <banner-section heading="Welcome to Our Platform"></banner-section>
+             * @prop {string} heading - Banner heading text to display
+             */
             "banner-section": LocalJSX.BannerSection & JSXBase.HTMLAttributes<HTMLBannerSectionElement>;
+            /**
+             * BrandLogo Component
+             * Displays brand/company logo in different variants based on the provided type.
+             * Supports two logo variants:
+             * - nav-logo: Navigation bar logo variant
+             * - full-slogan: Full logo with company slogan
+             * @component 
+             * @example   <brand-logo type="nav-logo"></brand-logo>
+             *   <brand-logo type="full-slogan"></brand-logo>
+             * @prop {string} type - Logo variant type: 'nav-logo' or 'full-slogan'
+             */
             "brand-logo": LocalJSX.BrandLogo & JSXBase.HTMLAttributes<HTMLBrandLogoElement>;
+            /**
+             * CustomLink Component
+             * A custom link component.
+             * @prop {string} label - Required. The display text for the link.
+             * @prop {string} href - Required. The URL destination for the link.
+             * @prop {('footer-top' | 'footer-bottom')} variant
+             * - Style variant for the link styling context
+             * - 'footer-top' (default): Used in the top footer section with navigation links
+             * - 'footer-bottom': Used in the bottom footer section for legal/policy links
+             * - Controls which CSS class is applied (custom-link--footer-top or custom-link--footer-bottom)
+             */
             "custom-link": LocalJSX.CustomLink & JSXBase.HTMLAttributes<HTMLCustomLinkElement>;
+            /**
+             * CustomList Component
+             * A custom list component
+             * @prop {Array<{title: string; items: Array<{label: string; href: string; icon?: string}>}>} listBlocks
+             * - Array of list block objects to render
+             * - Each block contains:
+             * - title: Section heading (string)
+             * - items: Array of link items with:
+             * - label: Display text for the link
+             * - href: URL destination
+             * - icon: Optional emoji or icon character to display before label
+             */
             "custom-list": LocalJSX.CustomList & JSXBase.HTMLAttributes<HTMLCustomListElement>;
             /**
              * A reusable input field component supporting input/select/textarea.
@@ -518,17 +1064,91 @@ declare module "@stencil/core" {
              */
             "input-field": LocalJSX.InputField & JSXBase.HTMLAttributes<HTMLInputFieldElement>;
             /**
-             * Quote Form (assembled using <input-field>)
-             * Emits `formSubmit` with the collected data when valid.
+             * QuoteForm Component
+             * @component 
+             * @example   // Basic usage with minimal props
+             *   <quote-form></quote-form>
+             *   // With custom content and patterns
+             *   <quote-form
+             *     formTitle="Get a Quote"
+             *     intro="Please fill out this form to receive a quote"
+             *     phonePattern="^\(\d{3}\) \d{3}-\d{4}$"
+             *     zipPattern="^\d{5}$"
+             *     states={stateOptions}
+             *     onFormSubmit={handleSubmit}
+             *   ></quote-form>
+             * @prop {string} formTitle - Title displayed at the top of the form
+             * @prop {string} intro - Introduction text below the title
+             * @prop {string} requiredLabel - Label for required field indicator (e.g., "Required")
+             * @prop {string[]} consentParagraphs - Array of HTML strings for consent text
+             * @prop {StateOptionType[]} states - Array of state options for the state select field
+             * @prop {string} zipPattern - Regex pattern string for zip code validation
+             * @prop {string} phonePattern - Regex pattern string for phone number validation
+             * @state {QuoteFormType} values - Current form field values (firstName, lastName, email, phone, address, city, zip, state)
+             * @state {Record<string, string>} errors - Error messages mapped by field name
+             * @state {boolean} submitting - Whether the form is currently submitting
+             * @event {CustomEvent<QuoteFormType>} formSubmit - Emitted when form is successfully validated and submitted
              */
             "quote-form": LocalJSX.QuoteForm & JSXBase.HTMLAttributes<HTMLQuoteFormElement>;
+            /**
+             * SearchBar Component
+             * @component 
+             * @example   // Basic usage - typically used in search-modal
+             *   <search-bar></search-bar>
+             *   // Can also be used standalone
+             *   <div>
+             *     <search-bar></search-bar>
+             *   </div>
+             * @state {string} searchValue - The current value of the search input field.
+             * Automatically updated on user input via handleInput handler.
+             * Passed to the input field via two-way binding.
+             */
             "search-bar": LocalJSX.SearchBar & JSXBase.HTMLAttributes<HTMLSearchBarElement>;
+            /**
+             * SearchModal Component
+             * @component 
+             * @example   // Basic usage - modal is managed by app-header
+             *   <search-modal></search-modal>
+             *   // Toggle from external code
+             *   window.dispatchEvent(new CustomEvent('toggleSearchModal'));
+             * @state {boolean} isOpen - Whether the modal is currently open or closed.
+             * When true, the backdrop and modal content are visible with full opacity.
+             * When false, the modal is hidden with zero opacity and visibility.
+             */
             "search-modal": LocalJSX.SearchModal & JSXBase.HTMLAttributes<HTMLSearchModalElement>;
+            /**
+             * SideDrawer Component
+             * @component 
+             * @example   // Basic usage
+             *   <side-drawer></side-drawer>
+             *   // With custom sections prop
+             *   <side-drawer sections={customSections}></side-drawer>
+             * @prop {SideDrawerSection[]} sections - Array of drawer sections containing:
+             * - key: unique identifier for the section
+             * - label: display text for the section
+             * - icon: optional emoji or icon character
+             * - href: optional link href (defaults to section key as anchor)
+             * - listBlocks: array of list items to render in accordion content
+             * @state {boolean} isOpen - Whether the drawer is currently open or closed
+             * @state {Record<string, boolean>} expandedSections - Map of section keys to their expanded state
+             */
             "side-drawer": LocalJSX.SideDrawer & JSXBase.HTMLAttributes<HTMLSideDrawerElement>;
             /**
-             * Site Content wrapper, extracted from index.html <main>.
-             * Note: Custom element tags require a hyphen by spec. The tag used is
-             * `site-content` while the component folder is named `content` per request.
+             * SiteContent Component
+             * Main content area component that displays page content with breadcrumb navigation and structured sections.
+             * Features:
+             * - Breadcrumb navigation for page hierarchy
+             * - Main content paragraphs section
+             * - Quote/form slot for flexible content injection
+             * - Bottom notes/disclaimer section
+             * @component 
+             * @example   <site-content
+             *     breadcrumbs={breadcrumbs}
+             *     paragraphs={{ main: ['Paragraph 1', 'Paragraph 2'], bottom: ['Disclaimer'] }}>
+             *     <quote-form></quote-form>
+             *   </site-content>
+             * @prop {BreadcrumbItem[]} breadcrumbs - Array of breadcrumb items with label, href, and current status
+             * @prop {Object} paragraphs - Content paragraphs object with main and bottom string arrays
              */
             "site-content": LocalJSX.SiteContent & JSXBase.HTMLAttributes<HTMLSiteContentElement>;
         }

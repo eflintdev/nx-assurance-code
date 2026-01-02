@@ -2,6 +2,27 @@ import { Component, Prop, State, h, Fragment } from '@stencil/core';
 import { SIDE_DRAWER_SECTIONS } from '@apps-shared/lib/constants';
 import { SideDrawerSection } from '@apps-shared/lib/types';
 
+/**
+ * SideDrawer Component
+ *
+ * @component
+ * @example
+ *   // Basic usage
+ *   <side-drawer></side-drawer>
+ *
+ *   // With custom sections prop
+ *   <side-drawer sections={customSections}></side-drawer>
+ *
+ * @prop {SideDrawerSection[]} sections - Array of drawer sections containing:
+ *   - key: unique identifier for the section
+ *   - label: display text for the section
+ *   - icon: optional emoji or icon character
+ *   - href: optional link href (defaults to section key as anchor)
+ *   - listBlocks: array of list items to render in accordion content
+ *
+ * @state {boolean} isOpen - Whether the drawer is currently open or closed
+ * @state {Record<string, boolean>} expandedSections - Map of section keys to their expanded state
+ */
 @Component({
   tag: 'side-drawer',
   styleUrl: 'side-drawer.scss',
@@ -75,11 +96,14 @@ export class SideDrawer {
   render() {
     return (
       <Fragment>
+        {/* Backdrop overlay - semi-transparent darkening behind drawer */}
         <div
           class={`drawer-backdrop ${this.isOpen ? 'open' : ''}`}
           onClick={this.handleBackdropClick}
         ></div>
+        {/* Main drawer container - slides in from left when open */}
         <aside class={`side-drawer ${this.isOpen ? 'open' : ''}`}>
+          {/* Close button - positioned in top-right corner of drawer */}
           <button
             class="close-btn"
             onClick={this.handleCloseClick}
@@ -90,13 +114,16 @@ export class SideDrawer {
               <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </button>
+          {/* Navigation section - contains accordion menu items */}
           <nav class="drawer-nav" aria-label="Side drawer">
             <ul class="drawer-menu">
               {this.sections?.length > 0 ? this.sections.map((section) => (
                 <li key={section.key} class="accordion-item">
+                  {/* Accordion trigger - section header with optional icon and toggle button */}
                   <div class={`accordion-trigger ${this.expandedSections[section.key] ? 'expanded' : ''}`}>
                     {section.icon && <span class="accordion-icon-prefix">{section.icon}</span>}
                     <a href={section.href || `#${section.key}`} class="accordion-label">{section.label}</a>
+                    {/* Toggle button - only shown if section has list blocks */}
                     { section.listBlocks.length > 0 ?
                     <button
                       class="accordion-toggle-btn"
@@ -115,7 +142,7 @@ export class SideDrawer {
                      '' }
                   </div>
 
-                  {/* Accordion Content - delegates to custom-list */}
+                  {/* Accordion content area - collapsible menu with custom-list component */}
                   <div
                     id={`${section.key}-submenu`}
                     class={`accordion-menu ${this.expandedSections[section.key] ? 'open' : ''}`}
