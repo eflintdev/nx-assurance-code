@@ -20,6 +20,21 @@ import {
   BANNER_HEADING
 } from '@apps-shared/lib/constants';
 
+/**
+ * App Component
+ *
+ * Root component for the React application that orchestrates the main page layout and component composition.
+ *
+ * Features:
+ * - Full-page layout with header, banner, sidebar, modals, content, and footer
+ * - Integrates all major page sections using custom Stencil web components
+ * - Centralizes data management using shared constants
+ * - Handles navigation, search, and form submission flows
+ *
+ * @component
+ * @example
+ *   <App />
+ */
 export function App() {
   return (
     <>

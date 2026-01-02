@@ -22,6 +22,22 @@ import {
   BANNER_HEADING,
 } from '@apps-shared/lib/constants';
 
+/**
+ * App Component
+ *
+ * Root component for the Angular application that orchestrates the main layout and layout data.
+ *
+ * Features:
+ * - Standalone component with custom elements schema for Stencil web components
+ * - View encapsulation disabled to allow global styles
+ * - Integrates header, footer, side drawer, and content sections
+ * - Manages all application-wide data constants and configuration
+ * - Routes-aware component using Angular Router
+ *
+ * @component
+ * @example
+ *   <app-root></app-root>
+ */
 @Component({
   standalone: true,
   imports: [RouterModule, CustomComponentsModule],
