@@ -13,7 +13,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  
 }
 
 .if-label {
@@ -31,7 +30,7 @@
 .if-control {
   @include input-base;
   min-height: 2.78125rem;
-  border-color: rgb(154,154,154);
+  border-color: rgb(154, 154, 154);
 }
 
 .if-desc {
@@ -39,12 +38,38 @@
   color: $color-gray-text;
 
   &.is-error {
-    color: $color-error;
+    color: #ff0000;
+    font-weight: 700;
+    font-size: 0.813rem;
+  }
+}
+
+:host(.form-errors) {
+  .if-root {
+    padding-top: 1.125rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+  }
+
+  .has-error {
+    border-bottom: 1px solid #c89797;
+    border-top: 1px solid #c89797;
+    background-color: #fff7f7;
+
+
+    input {
+      border-color: 1px solid #790000;
+    }
+
+    & .if-desc.is-error {
+      padding-top: 1rem;
+    }
   }
 }
 
 @include small {
-  .if-control{
+  .if-control {
     min-height: 3.25rem;
   }
 }

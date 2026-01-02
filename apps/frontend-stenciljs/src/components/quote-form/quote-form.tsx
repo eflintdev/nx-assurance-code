@@ -1,6 +1,7 @@
 import { Component, h, State, Event, EventEmitter, Listen, Prop } from '@stencil/core';
 import { validateQuoteForm } from '../../utils/quote-form.utils';
 import { QuoteFormType, StateOptionType  } from '../../types/types.ts';
+import { getAlertIcon } from '../../utils/header.utils.tsx';
 
 /**
  * Quote Form (assembled using <input-field>)
@@ -110,16 +111,22 @@ export class QuoteForm {
   }
 
   render() {
+    const errors = Object.keys(this.errors).length > 0 ? ' form-errors' : '';
     return (
-      <form class="qf-form" onSubmit={this.onSubmit} noValidate>
+      <form class={`qf-form ${errors}`} onSubmit={this.onSubmit} noValidate>
         <h2 class="qf-title">{this.formTitle}</h2>
         <p class="qf-intro">
           {this.intro}<br />
           <span class="qf-required"><span aria-hidden="true">*</span> {this.requiredLabel}</span>
         </p>
-
+        { Object.keys(this.errors).length > 0 ?
+        <div class="qf-validation__message qf-validation__message--alert">
+          {getAlertIcon()}There was a problem with your submission. Please review the fields below.
+        </div> :
+         ''}
         <div class="qf-grid">
           <input-field
+            class={errors}
             label="First Name"
             name="firstName"
             required
@@ -128,6 +135,7 @@ export class QuoteForm {
           ></input-field>
 
           <input-field
+            class={errors}
             label="Last Name"
             name="lastName"
             required
@@ -136,6 +144,7 @@ export class QuoteForm {
           ></input-field>
 
           <input-field
+            class={errors}
             label="Email"
             name="email"
             type="email"
@@ -145,6 +154,7 @@ export class QuoteForm {
           ></input-field>
 
           <input-field
+            class={errors}
             label="Preferred Phone"
             name="phone"
             type="tel"
@@ -155,6 +165,7 @@ export class QuoteForm {
           ></input-field>
 
           <input-field
+            class={errors}
             label="Address"
             name="address"
             required
@@ -163,6 +174,7 @@ export class QuoteForm {
           ></input-field>
 
           <input-field
+            class={errors}
             label="City"
             name="city"
             required
@@ -171,6 +183,7 @@ export class QuoteForm {
           ></input-field>
 
           <input-field
+            class={errors}
             label="Zip"
             name="zip"
             required
@@ -180,6 +193,7 @@ export class QuoteForm {
           ></input-field>
 
           <input-field
+            class={errors}
             label="State"
             name="state"
             field="select"

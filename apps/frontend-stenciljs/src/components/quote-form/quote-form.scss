@@ -12,8 +12,6 @@
   padding-top: 0;
 }
 
-
-
 .qf-title {
   margin: 0;
   @include font-heading(2rem, $font-weight-semibold);
@@ -70,6 +68,17 @@
     color: $color-primary-blue;
     font-size: 0.625rem;
   }
+}
+
+.qf-validation__message {
+  display: flex;
+  align-items: center;
+  border: 0.125rem solid #ff0000;
+  box-shadow: 0 0 0 #ff6d6d;
+  border-radius: 0.3125rem;
+  margin-bottom: 41px;
+  padding: 1.19rem 1.125rem;
+  font-weight: 600;
 }
 
 .qf-actions {
@@ -152,4 +161,3 @@
     padding-top: 0.4rem;
   }
 }
-

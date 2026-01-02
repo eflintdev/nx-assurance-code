@@ -112,3 +112,13 @@ export const getBannerMobileWedgeOverlay = () => {
     </defs>
   </svg>);
 };
+
+export const getAlertIcon = () => {
+  return (
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="#790000" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#FFFFFF" stroke-width="1.5"/>
+      <path d="M12 6H10V12H12V6Z" fill="#FFFFFF"/>
+      <path d="M12 14H10V16H12V14Z" fill="#FFFFFF"/>
+    </svg>
+  );
+};

@@ -182,7 +182,7 @@ export class InputField {
     const describedBy = this.helpText || this.errorText ? `${id}-desc` : undefined;
 
     return (
-      <div class={`if-root ${this.rootClass || ''}`.trim()}>
+      <div class={(`if-root ${this.rootClass || ''}`.trim()) + (`${this.errorText ? ' has-error' : ''}`)}>
         {this.label && (
           <label htmlFor={id} class={`if-label ${this.labelClass || ''}`.trim()}>
             {this.label}
